@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bogj28malvc01"]
+
+[ext_resource type="Texture2D" uid="uid://bqxmmkhtq8amy" path="res://textures/FullCharge.png" id="1_xvdc5"]
+
+[node name="Charge" type="Sprite2D"]
+texture_filter = 1
+position = Vector2(999, 565)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_xvdc5")

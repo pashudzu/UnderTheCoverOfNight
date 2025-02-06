@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfw8pijtdy1sj"]
+
+[ext_resource type="PackedScene" uid="uid://caqmxnyuosjrs" path="res://models/basement.glb" id="1_bg58p"]
+
+[node name="basement" instance=ExtResource("1_bg58p")]
+
+[node name="CollisionShape3D" parent="Basement/Basement" index="0" groups=["Wood"]]
+
+[node name="CollisionShape3D" parent="frame/frame" index="0" groups=["Wood"]]
+
+[node name="CollisionShape3D" parent="door2/door2" index="0" groups=["Wood"]]
+
+[node name="CollisionShape3D" parent="door1/door1" index="0" groups=["Wood"]]

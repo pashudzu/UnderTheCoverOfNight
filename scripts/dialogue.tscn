@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://uwi8bvjma7nc"]
+
+[node name="Dialogue" type="Polygon2D"]
+color = Color(0.0627451, 0.0627451, 0.0627451, 0.560784)
+polygon = PackedVector2Array(256, 576, 896, 576, 896, 480, 256, 480)

@@ -1,0 +1,455 @@
+[gd_scene load_steps=39 format=3 uid="uid://b3fctgxoddghu"]
+
+[ext_resource type="Script" path="res://scripts/CharacterBody.cs" id="1_31f3j"]
+[ext_resource type="PackedScene" uid="uid://cljfi6uu0vgj4" path="res://scenes/ui/glitch_effect.tscn" id="2_2mq1p"]
+[ext_resource type="PackedScene" uid="uid://bf1cu8uasyvj5" path="res://scenes/snow_particles.tscn" id="2_ccsqm"]
+[ext_resource type="PackedScene" uid="uid://m6mficmce4ok" path="res://scenes/ui/pause_menu.tscn" id="2_teuc2"]
+[ext_resource type="PackedScene" uid="uid://4hm2cyr1dpm7" path="res://scenes/ui/inventory.tscn" id="3_mphs2"]
+[ext_resource type="PackedScene" uid="uid://dpep1xhufhc1i" path="res://scenes/ui/press_e_sprite.tscn" id="4_uwpvm"]
+[ext_resource type="PackedScene" uid="uid://bogj28malvc01" path="res://scenes/ui/charge.tscn" id="5_yiy2k"]
+[ext_resource type="AudioStream" uid="uid://dii8e86wye5if" path="res://sounds/wood sound (1).wav" id="8_0w0v4"]
+[ext_resource type="AudioStream" uid="uid://de5ok0jjbjjcc" path="res://sounds/snow step.wav" id="8_15ukx"]
+[ext_resource type="AudioStream" uid="uid://d1mxh72kd5su6" path="res://sounds/snow step2.wav" id="9_1i1e3"]
+[ext_resource type="AudioStream" uid="uid://dtw1rk85xtctm" path="res://sounds/wood sound (2).wav" id="9_g3jix"]
+[ext_resource type="AudioStream" uid="uid://f1q0hbjldlug" path="res://sounds/wood sound (3).wav" id="10_0hrgj"]
+[ext_resource type="AudioStream" uid="uid://d62n850vgq64" path="res://sounds/snow step3.wav" id="10_jedub"]
+[ext_resource type="AudioStream" uid="uid://d0p88vxnalfhn" path="res://sounds/wood sound (4).wav" id="11_2c4sh"]
+[ext_resource type="AudioStream" uid="uid://b26s8mst62imh" path="res://sounds/snow step4.wav" id="11_oav7a"]
+[ext_resource type="AudioStream" uid="uid://ce2nsm7gdu6gv" path="res://sounds/snow step5.wav" id="12_22x2p"]
+[ext_resource type="AudioStream" uid="uid://buso2w0dp22yp" path="res://sounds/snow step6.wav" id="13_d6jul"]
+[ext_resource type="AudioStream" uid="uid://1gsxyebfh6it" path="res://sounds/snow step speedup.wav" id="14_er4qu"]
+[ext_resource type="AudioStream" uid="uid://nvhbsq2ilopi" path="res://sounds/MonsterIsNearby.wav" id="14_xlpfy"]
+[ext_resource type="AudioStream" uid="uid://dc03inv6nbrlo" path="res://sounds/wind.ogg" id="15_fy630"]
+[ext_resource type="PackedScene" uid="uid://uwi8bvjma7nc" path="res://scripts/dialogue.tscn" id="19_cgvyw"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vn04q"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gby2m"]
+playback_mode = 1
+streams_count = 6
+stream_0/stream = ExtResource("9_1i1e3")
+stream_0/weight = 0.0
+stream_1/stream = ExtResource("10_jedub")
+stream_2/stream = ExtResource("11_oav7a")
+stream_3/stream = ExtResource("12_22x2p")
+stream_4/stream = ExtResource("13_d6jul")
+stream_5/stream = ExtResource("8_15ukx")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_00803"]
+playback_mode = 1
+streams_count = 6
+stream_0/stream = ExtResource("14_er4qu")
+stream_1/stream = ExtResource("9_1i1e3")
+stream_2/stream = ExtResource("10_jedub")
+stream_3/stream = ExtResource("11_oav7a")
+stream_4/stream = ExtResource("12_22x2p")
+stream_5/stream = ExtResource("13_d6jul")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qneug"]
+streams_count = 4
+stream_0/stream = ExtResource("8_0w0v4")
+stream_1/stream = ExtResource("9_g3jix")
+stream_2/stream = ExtResource("10_0hrgj")
+stream_3/stream = ExtResource("11_2c4sh")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mtcuj"]
+radius = 0.39726
+height = 2.01745
+
+[sub_resource type="Animation" id="Animation_mj8pp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.07, -0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D/WalkingSnowAudio:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Head/Camera3D/RunningSnowAudio:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_66xeu"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1, 1.03333, 1.06667, 1.1, 1.13333, 1.16667, 1.2, 1.23333, 1.26667, 1.3, 1.33333, 1.36667, 1.4, 1.43333, 1.46667, 1.5, 1.53333, 1.56667, 1.6, 1.63333, 1.66667, 1.7, 1.73333, 1.76667, 1.8, 1.83333, 1.86667, 1.9, 1.93333, 1.96667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.07, -0.5), Vector3(0, 0.0705867, -0.5), Vector3(0, 0.0722933, -0.5), Vector3(0, 0.07504, -0.5), Vector3(0, 0.0787467, -0.5), Vector3(0, 0.0833333, -0.5), Vector3(0, 0.08872, -0.5), Vector3(0, 0.0948267, -0.5), Vector3(0, 0.101573, -0.5), Vector3(0, 0.10888, -0.5), Vector3(0, 0.116667, -0.5), Vector3(0, 0.124853, -0.5), Vector3(0, 0.13336, -0.5), Vector3(0, 0.142107, -0.5), Vector3(0, 0.151013, -0.5), Vector3(0, 0.16, -0.5), Vector3(0, 0.168987, -0.5), Vector3(0, 0.177893, -0.5), Vector3(0, 0.18664, -0.5), Vector3(0, 0.195147, -0.5), Vector3(0, 0.203333, -0.5), Vector3(0, 0.21112, -0.5), Vector3(0, 0.218427, -0.5), Vector3(0, 0.225173, -0.5), Vector3(0, 0.23128, -0.5), Vector3(0, 0.236667, -0.5), Vector3(0, 0.241253, -0.5), Vector3(0, 0.24496, -0.5), Vector3(0, 0.247707, -0.5), Vector3(0, 0.249413, -0.5), Vector3(0, 0.25, -0.5), Vector3(0, 0.249413, -0.5), Vector3(0, 0.247707, -0.5), Vector3(0, 0.24496, -0.5), Vector3(0, 0.241253, -0.5), Vector3(0, 0.236667, -0.5), Vector3(0, 0.23128, -0.5), Vector3(0, 0.225173, -0.5), Vector3(0, 0.218427, -0.5), Vector3(0, 0.21112, -0.5), Vector3(0, 0.203333, -0.5), Vector3(0, 0.195147, -0.5), Vector3(0, 0.18664, -0.5), Vector3(0, 0.177893, -0.5), Vector3(0, 0.168987, -0.5), Vector3(0, 0.16, -0.5), Vector3(0, 0.151013, -0.5), Vector3(0, 0.142107, -0.5), Vector3(0, 0.13336, -0.5), Vector3(0, 0.124853, -0.5), Vector3(0, 0.116667, -0.5), Vector3(0, 0.10888, -0.5), Vector3(0, 0.101573, -0.5), Vector3(0, 0.0948267, -0.5), Vector3(0, 0.08872, -0.5), Vector3(0, 0.0833333, -0.5), Vector3(0, 0.0787467, -0.5), Vector3(0, 0.07504, -0.5), Vector3(0, 0.0722933, -0.5), Vector3(0, 0.0705867, -0.5), Vector3(0, 0.07, -0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1, 1.03333, 1.06667, 1.1, 1.13333, 1.16667, 1.2, 1.23333, 1.26667, 1.3, 1.33333, 1.36667, 1.4, 1.43333, 1.46667, 1.5, 1.53333, 1.56667, 1.6, 1.63333, 1.66667, 1.7, 1.73333, 1.76667, 1.8, 1.83333, 1.86667, 1.9, 1.93333, 1.96667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(2.58567e-05, 0, 0), Vector3(9.82556e-05, 0, 0), Vector3(0.00020944, 0, 0), Vector3(0.000351652, 0, 0), Vector3(0.000517135, 0, 0), Vector3(0.000698132, 0, 0), Vector3(0.000886886, 0, 0), Vector3(0.00107564, 0, 0), Vector3(0.00125664, 0, 0), Vector3(0.00142212, 0, 0), Vector3(0.00156433, 0, 0), Vector3(0.00167552, 0, 0), Vector3(0.00174792, 0, 0), Vector3(0.00177377, 0, 0), Vector3(0.00174533, 0, 0), Vector3(0.00165018, 0, 0), Vector3(0.00148831, 0, 0), Vector3(0.0012706, 0, 0), Vector3(0.0010079, 0, 0), Vector3(0.00071106, 0, 0), Vector3(0.000390954, 0, 0), Vector3(5.84362e-05, 0, 0), Vector3(-0.000275633, 0, 0), Vector3(-0.000600394, 0, 0), Vector3(-0.000904986, 0, 0), Vector3(-0.00117855, 0, 0), Vector3(-0.00141023, 0, 0), Vector3(-0.00158916, 0, 0), Vector3(-0.00170448, 0, 0), Vector3(-0.00174533, 0, 0), Vector3(-0.00170448, 0, 0), Vector3(-0.00158916, 0, 0), Vector3(-0.00141023, 0, 0), Vector3(-0.00117855, 0, 0), Vector3(-0.000904986, 0, 0), Vector3(-0.000600393, 0, 0), Vector3(-0.000275633, 0, 0), Vector3(5.84364e-05, 0, 0), Vector3(0.000390954, 0, 0), Vector3(0.000711061, 0, 0), Vector3(0.0010079, 0, 0), Vector3(0.0012706, 0, 0), Vector3(0.00148831, 0, 0), Vector3(0.00165018, 0, 0), Vector3(0.00174533, 0, 0), Vector3(0.00177377, 0, 0), Vector3(0.00174792, 0, 0), Vector3(0.00167552, 0, 0), Vector3(0.00156433, 0, 0), Vector3(0.00142212, 0, 0), Vector3(0.00125664, 0, 0), Vector3(0.00107564, 0, 0), Vector3(0.000886886, 0, 0), Vector3(0.000698132, 0, 0), Vector3(0.000517135, 0, 0), Vector3(0.000351652, 0, 0), Vector3(0.00020944, 0, 0), Vector3(9.82556e-05, 0, 0), Vector3(2.58567e-05, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ar8ia"]
+resource_name = "jump"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.000444736, 0, 0), Vector3(0.0016962, 0, 0), Vector3(0.00363029, 0, 0), Vector3(0.00612288, 0, 0), Vector3(0.00904986, 0, 0), Vector3(0.0122871, 0, 0), Vector3(0.0157106, 0, 0), Vector3(0.019196, 0, 0), Vector3(0.0226195, 0, 0), Vector3(0.0258567, 0, 0), Vector3(0.0287837, 0, 0), Vector3(0.0312763, 0, 0), Vector3(0.0332104, 0, 0), Vector3(0.0344619, 0, 0), Vector3(0.0349066, 0, 0), Vector3(0.0344619, 0, 0), Vector3(0.0332104, 0, 0), Vector3(0.0312763, 0, 0), Vector3(0.0287837, 0, 0), Vector3(0.0258567, 0, 0), Vector3(0.0226195, 0, 0), Vector3(0.019196, 0, 0), Vector3(0.0157106, 0, 0), Vector3(0.0122871, 0, 0), Vector3(0.00904986, 0, 0), Vector3(0.00612288, 0, 0), Vector3(0.00363029, 0, 0), Vector3(0.0016962, 0, 0), Vector3(0.000444736, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4wv80"]
+resource_name = "new_animation"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.0349066, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3and2"]
+resource_name = "run"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.07, -0.5), Vector3(0.00971852, 0.0593096, -0.5), Vector3(0.0350815, 0.0314104, -0.5), Vector3(0.0704, -0.00744, -0.5), Vector3(0.109985, -0.0509837, -0.5), Vector3(0.148148, -0.092963, -0.5), Vector3(0.1792, -0.12712, -0.5), Vector3(0.197452, -0.147197, -0.5), Vector3(0.198281, -0.147197, -0.5), Vector3(0.1856, -0.12712, -0.5), Vector3(0.162963, -0.092963, -0.5), Vector3(0.133215, -0.0509837, -0.5), Vector3(0.0992, -0.00744, -0.5), Vector3(0.0637629, 0.0314104, -0.5), Vector3(0.0297481, 0.0593096, -0.5), Vector3(-0.0297482, 0.0593096, -0.5), Vector3(-0.063763, 0.0314104, -0.5), Vector3(-0.0992, -0.00744, -0.5), Vector3(-0.133215, -0.0509837, -0.5), Vector3(-0.162963, -0.092963, -0.5), Vector3(-0.1856, -0.12712, -0.5), Vector3(-0.198281, -0.147197, -0.5), Vector3(-0.197452, -0.147197, -0.5), Vector3(-0.1792, -0.12712, -0.5), Vector3(-0.148148, -0.092963, -0.5), Vector3(-0.109985, -0.0509837, -0.5), Vector3(-0.0704, -0.00744, -0.5), Vector3(-0.0350815, 0.0314104, -0.5), Vector3(-0.00971852, 0.0593096, -0.5), Vector3(0, 0.07, -0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.000848101, 0, 0.0025443), Vector3(0.00306144, 0, 0.00918432), Vector3(0.00614356, 0, 0.0184307), Vector3(0.00959802, 0, 0.0287941), Vector3(0.0129284, 0, 0.0387851), Vector3(0.0156382, 0, 0.0469145), Vector3(0.0172309, 0, 0.0516928), Vector3(0.0173033, 0, 0.05191), Vector3(0.0161967, 0, 0.04859), Vector3(0.0142212, 0, 0.0426636), Vector3(0.0116252, 0, 0.0348756), Vector3(0.00865684, 0, 0.0259705), Vector3(0.00556437, 0, 0.0166931), Vector3(0.00259602, 0, 0.00778805), Vector3(-0.00259602, 0, -0.00778805), Vector3(-0.00556437, 0, -0.0166931), Vector3(-0.00865684, 0, -0.0259705), Vector3(-0.0116252, 0, -0.0348756), Vector3(-0.0142212, 0, -0.0426636), Vector3(-0.0161967, 0, -0.04859), Vector3(-0.0173033, 0, -0.05191), Vector3(-0.0172309, 0, -0.0516928), Vector3(-0.0156382, 0, -0.0469145), Vector3(-0.0129284, 0, -0.0387851), Vector3(-0.00959802, 0, -0.0287941), Vector3(-0.00614356, 0, -0.0184307), Vector3(-0.00306144, 0, -0.00918431), Vector3(-0.000848101, 0, -0.0025443), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D/RunningSnowAudio:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false, false]
+}
+
+[sub_resource type="Animation" id="Animation_xmdrl"]
+resource_name = "walk"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1, 1.03333, 1.06667, 1.1, 1.13333, 1.16667, 1.2, 1.23333, 1.26667, 1.3, 1.33333, 1.36667, 1.4, 1.43333, 1.46667, 1.5, 1.53333, 1.56667, 1.6, 1.63333, 1.66667, 1.7, 1.73333, 1.76667, 1.8, 1.83333, 1.86667, 1.9, 1.93333, 1.96667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.07, -0.5), Vector3(0.00254815, 0.067197, -0.5), Vector3(0.00971852, 0.0593096, -0.5), Vector3(0.0208, 0.04712, -0.5), Vector3(0.0350815, 0.0314104, -0.5), Vector3(0.0518519, 0.012963, -0.5), Vector3(0.0704, -0.00744, -0.5), Vector3(0.0900148, -0.0290163, -0.5), Vector3(0.109985, -0.0509837, -0.5), Vector3(0.1296, -0.07256, -0.5), Vector3(0.148148, -0.092963, -0.5), Vector3(0.164919, -0.11141, -0.5), Vector3(0.1792, -0.12712, -0.5), Vector3(0.190281, -0.13931, -0.5), Vector3(0.197452, -0.147197, -0.5), Vector3(0.2, -0.15, -0.5), Vector3(0.198281, -0.147197, -0.5), Vector3(0.193363, -0.13931, -0.5), Vector3(0.1856, -0.12712, -0.5), Vector3(0.175348, -0.11141, -0.5), Vector3(0.162963, -0.092963, -0.5), Vector3(0.1488, -0.07256, -0.5), Vector3(0.133215, -0.0509837, -0.5), Vector3(0.116563, -0.0290163, -0.5), Vector3(0.0992, -0.00744, -0.5), Vector3(0.0814815, 0.012963, -0.5), Vector3(0.0637629, 0.0314104, -0.5), Vector3(0.0464, 0.04712, -0.5), Vector3(0.0297481, 0.0593096, -0.5), Vector3(0.014163, 0.067197, -0.5), Vector3(2.22045e-17, 0.07, -0.5), Vector3(-0.014163, 0.067197, -0.5), Vector3(-0.0297482, 0.0593096, -0.5), Vector3(-0.0464, 0.04712, -0.5), Vector3(-0.063763, 0.0314104, -0.5), Vector3(-0.0814815, 0.012963, -0.5), Vector3(-0.0992, -0.00744, -0.5), Vector3(-0.116563, -0.0290163, -0.5), Vector3(-0.133215, -0.0509837, -0.5), Vector3(-0.1488, -0.07256, -0.5), Vector3(-0.162963, -0.092963, -0.5), Vector3(-0.175348, -0.11141, -0.5), Vector3(-0.1856, -0.12712, -0.5), Vector3(-0.193363, -0.13931, -0.5), Vector3(-0.198281, -0.147197, -0.5), Vector3(-0.2, -0.15, -0.5), Vector3(-0.197452, -0.147197, -0.5), Vector3(-0.190281, -0.13931, -0.5), Vector3(-0.1792, -0.12712, -0.5), Vector3(-0.164919, -0.11141, -0.5), Vector3(-0.148148, -0.092963, -0.5), Vector3(-0.1296, -0.07256, -0.5), Vector3(-0.109985, -0.0509837, -0.5), Vector3(-0.0900148, -0.0290163, -0.5), Vector3(-0.0704, -0.00744, -0.5), Vector3(-0.0518518, 0.012963, -0.5), Vector3(-0.0350815, 0.0314104, -0.5), Vector3(-0.0208, 0.04712, -0.5), Vector3(-0.00971852, 0.0593096, -0.5), Vector3(-0.00254815, 0.067197, -0.5), Vector3(0, 0.07, -0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1, 1.03333, 1.06667, 1.1, 1.13333, 1.16667, 1.2, 1.23333, 1.26667, 1.3, 1.33333, 1.36667, 1.4, 1.43333, 1.46667, 1.5, 1.53333, 1.56667, 1.6, 1.63333, 1.66667, 1.7, 1.73333, 1.76667, 1.8, 1.83333, 1.86667, 1.9, 1.93333, 1.96667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.000222368, 0, 0.000667104), Vector3(0.000848101, 0, 0.0025443), Vector3(0.00181514, 0, 0.00544543), Vector3(0.00306144, 0, 0.00918432), Vector3(0.00452493, 0, 0.0135748), Vector3(0.00614356, 0, 0.0184307), Vector3(0.00785528, 0, 0.0235658), Vector3(0.00959802, 0, 0.0287941), Vector3(0.0113097, 0, 0.0339292), Vector3(0.0129284, 0, 0.0387851), Vector3(0.0143919, 0, 0.0431756), Vector3(0.0156382, 0, 0.0469145), Vector3(0.0166052, 0, 0.0498156), Vector3(0.0172309, 0, 0.0516928), Vector3(0.0174533, 0, 0.0523599), Vector3(0.0173033, 0, 0.05191), Vector3(0.0168741, 0, 0.0506223), Vector3(0.0161967, 0, 0.04859), Vector3(0.015302, 0, 0.0459061), Vector3(0.0142212, 0, 0.0426636), Vector3(0.0129853, 0, 0.0389558), Vector3(0.0116252, 0, 0.0348756), Vector3(0.010172, 0, 0.0305161), Vector3(0.00865684, 0, 0.0259705), Vector3(0.0071106, 0, 0.0213318), Vector3(0.00556437, 0, 0.0166931), Vector3(0.00404917, 0, 0.0121475), Vector3(0.00259602, 0, 0.00778805), Vector3(0.00123595, 0, 0.00370786), Vector3(1.93771e-18, 0, 5.81312e-18), Vector3(-0.00123595, 0, -0.00370786), Vector3(-0.00259602, 0, -0.00778805), Vector3(-0.00404917, 0, -0.0121475), Vector3(-0.00556437, 0, -0.0166931), Vector3(-0.0071106, 0, -0.0213318), Vector3(-0.00865684, 0, -0.0259705), Vector3(-0.010172, 0, -0.0305161), Vector3(-0.0116252, 0, -0.0348756), Vector3(-0.0129853, 0, -0.0389558), Vector3(-0.0142212, 0, -0.0426636), Vector3(-0.015302, 0, -0.0459061), Vector3(-0.0161967, 0, -0.04859), Vector3(-0.0168741, 0, -0.0506223), Vector3(-0.0173033, 0, -0.05191), Vector3(-0.0174533, 0, -0.0523599), Vector3(-0.0172309, 0, -0.0516928), Vector3(-0.0166052, 0, -0.0498156), Vector3(-0.0156382, 0, -0.0469145), Vector3(-0.0143919, 0, -0.0431756), Vector3(-0.0129284, 0, -0.0387851), Vector3(-0.0113097, 0, -0.0339292), Vector3(-0.00959802, 0, -0.0287941), Vector3(-0.00785528, 0, -0.0235658), Vector3(-0.00614356, 0, -0.0184307), Vector3(-0.00452493, 0, -0.0135748), Vector3(-0.00306144, 0, -0.00918431), Vector3(-0.00181514, 0, -0.00544543), Vector3(-0.000848101, 0, -0.0025443), Vector3(-0.000222368, 0, -0.000667103), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D/WalkingSnowAudio:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667, 0.6, 0.633333, 0.666667, 0.7, 0.733333, 0.766667, 0.8, 0.833333, 0.866667, 0.9, 0.933333, 0.966667, 1, 1.03333, 1.06667, 1.1, 1.13333, 1.16667, 1.2, 1.23333, 1.26667, 1.3, 1.33333, 1.36667, 1.4, 1.43333, 1.46667, 1.5, 1.53333, 1.56667, 1.6, 1.63333, 1.66667, 1.7, 1.73333, 1.76667, 1.8, 1.83333, 1.86667, 1.9, 1.93333, 1.96667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_teal0"]
+_data = {
+"RESET": SubResource("Animation_mj8pp"),
+"idle": SubResource("Animation_66xeu"),
+"jump": SubResource("Animation_ar8ia"),
+"new_animation": SubResource("Animation_4wv80"),
+"run": SubResource("Animation_3and2"),
+"walk": SubResource("Animation_xmdrl")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nvgk1"]
+size = Vector3(0.05, 0.05, 0.05)
+
+[sub_resource type="Animation" id="Animation_7yok7"]
+resource_name = "I-need-petrol"
+length = 2.0
+
+[sub_resource type="Animation" id="Animation_mjo6j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_00w8q"]
+resource_name = "show_text"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3maqg"]
+_data = {
+"I-need-petrol": SubResource("Animation_7yok7"),
+"RESET": SubResource("Animation_mjo6j"),
+"show_text": SubResource("Animation_00w8q")
+}
+
+[node name="player" type="Node3D"]
+
+[node name="CharacterBody" type="CharacterBody3D" parent="." groups=["Player"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_31f3j")
+
+[node name="neck" type="MeshInstance3D" parent="CharacterBody"]
+transform = Transform3D(0.272158, 0, 0, 0, 0.191794, 0, 0, 0, 0.275927, 0, 0.107662, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_vn04q")
+skeleton = NodePath("../Body")
+
+[node name="Body" type="MeshInstance3D" parent="CharacterBody"]
+transform = Transform3D(0.793312, 0, 0, 0, 0.582426, 0, 0, 0, 0.774761, 0, -0.416868, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_vn04q")
+
+[node name="Head" type="MeshInstance3D" parent="CharacterBody"]
+transform = Transform3D(0.702367, 0, 0, 0, 0.3866, 0, 0, 0, 0.66593, 0, 0.630062, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_vn04q")
+skeleton = NodePath("../Body")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody/Head"]
+transform = Transform3D(1.42376, 0, 0, 0, 2.58665, 0, 0, 0, 1.50166, 0, 0.07, -0.5)
+current = true
+near = 0.001
+far = 51.57
+
+[node name="GlitchEffect" parent="CharacterBody/Head/Camera3D" instance=ExtResource("2_2mq1p")]
+visible = false
+
+[node name="WalkingSnowAudio" type="AudioStreamPlayer3D" parent="CharacterBody/Head/Camera3D"]
+stream = SubResource("AudioStreamRandomizer_gby2m")
+
+[node name="RunningSnowAudio" type="AudioStreamPlayer3D" parent="CharacterBody/Head/Camera3D"]
+stream = SubResource("AudioStreamRandomizer_00803")
+max_db = 1.0
+bus = &"SFX"
+
+[node name="WalkingWoodAudio" type="AudioStreamPlayer3D" parent="CharacterBody/Head/Camera3D"]
+stream = SubResource("AudioStreamRandomizer_qneug")
+volume_db = -80.0
+max_db = 2.0
+
+[node name="GhostSound" type="AudioStreamPlayer3D" parent="CharacterBody/Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.657124, 0.332965)
+stream = ExtResource("14_xlpfy")
+
+[node name="WindSound" type="AudioStreamPlayer3D" parent="CharacterBody/Head/Camera3D"]
+stream = ExtResource("15_fy630")
+max_db = -5.0
+autoplay = true
+
+[node name="PauseMenu" parent="CharacterBody" instance=ExtResource("2_teuc2")]
+visible = false
+
+[node name="Inventory" parent="CharacterBody" instance=ExtResource("3_mphs2")]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody"]
+shape = SubResource("CapsuleShape3D_mtcuj")
+
+[node name="LeftHand" type="Node3D" parent="CharacterBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.398442, 0.191253, -0.565099)
+
+[node name="RightHand" type="Node3D" parent="CharacterBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.308015, 0.191596, -0.565099)
+
+[node name="PressESprite" parent="CharacterBody" instance=ExtResource("4_uwpvm")]
+visible = false
+position = Vector2(800, 750)
+
+[node name="Charge" parent="CharacterBody" instance=ExtResource("5_yiy2k")]
+visible = false
+position = Vector2(200, 800)
+
+[node name="RunBar" type="ProgressBar" parent="CharacterBody"]
+offset_left = 600.0
+offset_top = 800.0
+offset_right = 900.0
+offset_bottom = 827.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Animations" type="AnimationPlayer" parent="CharacterBody"]
+libraries = {
+"": SubResource("AnimationLibrary_teal0")
+}
+
+[node name="CheckSurfaceArea3D" type="Area3D" parent="CharacterBody"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody/CheckSurfaceArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03696, 0)
+shape = SubResource("BoxShape3D_nvgk1")
+
+[node name="Dialogue" parent="CharacterBody" instance=ExtResource("19_cgvyw")]
+visible = false
+position = Vector2(200, 250)
+
+[node name="Label" type="Label" parent="CharacterBody/Dialogue"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 272.0
+offset_top = 496.0
+offset_right = 882.0
+offset_bottom = 560.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Продавец: здравствуйте, что вам нужно?"
+horizontal_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="TextAnimation" type="AnimationPlayer" parent="CharacterBody/Dialogue/Label"]
+libraries = {
+"": SubResource("AnimationLibrary_3maqg")
+}
+
+[node name="SnowParticles" parent="CharacterBody" instance=ExtResource("2_ccsqm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.07893, -0.035738, -1)

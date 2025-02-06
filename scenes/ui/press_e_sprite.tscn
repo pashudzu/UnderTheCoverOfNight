@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpep1xhufhc1i"]
+
+[ext_resource type="Texture2D" uid="uid://caktuxqpvpnj8" path="res://textures/pressE.png" id="1_4p366"]
+
+[node name="PressESprite" type="Sprite2D"]
+position = Vector2(600, 600)
+texture = ExtResource("1_4p366")

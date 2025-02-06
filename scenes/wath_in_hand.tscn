@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://o2gqd70rt3gt"]
+
+[ext_resource type="PackedScene" uid="uid://ciu80mswvgedp" path="res://models/watch.glb" id="1_je1po"]
+
+[node name="WathInHand" instance=ExtResource("1_je1po")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0)

@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://bf1cu8uasyvj5"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7clas"]
+emission_shape_scale = Vector3(3, 3, 3)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -10.9
+angle_max = 349.1
+direction = Vector3(1, -1, 1)
+spread = 0.0
+flatness = 0.694
+initial_velocity_min = -8.27
+initial_velocity_max = 41.32
+angular_velocity_min = -132.0
+angular_velocity_max = 216.0
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+radial_velocity_min = 439.39
+radial_velocity_max = 697.07
+gravity = Vector3(0, -7, 0)
+damping_max = 7.5
+turbulence_enabled = true
+turbulence_noise_scale = 1.647
+collision_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uwms2"]
+heightmap_scale = -5.483
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_qyaiv"]
+material = SubResource("StandardMaterial3D_uwms2")
+size = Vector2(0.1, 0.1)
+
+[node name="SnowParticles" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.921066, -0.0793114, 0)
+cast_shadow = 0
+amount = 150
+lifetime = 0.15
+visibility_aabb = AABB(-4, -4, -4, 10, 4, 10)
+process_material = SubResource("ParticleProcessMaterial_7clas")
+draw_pass_1 = SubResource("QuadMesh_qyaiv")

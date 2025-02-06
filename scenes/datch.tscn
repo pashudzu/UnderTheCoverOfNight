@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://03weutxo8u5n"]
+
+[ext_resource type="PackedScene" uid="uid://c3ja84o5r25q6" path="res://models/datch.glb" id="1_wnp3s"]
+
+[node name="datch" instance=ExtResource("1_wnp3s")]
+
+[node name="CollisionShape3D" parent="floor_first/floor_first" index="0" groups=["Wood"]]
+
+[node name="CollisionShape3D" parent="floor_second/floor_second" index="0" groups=["Wood"]]
+
+[node name="CollisionShape3D" parent="extension/extension" index="0" groups=["Wood"]]
+
+[node name="CollisionShape3D" parent="stove/stove" index="0" groups=["Wood"]]
+
+[node name="CollisionShape3D" parent="table/table" index="0" groups=["Wood"]]
+
+[node name="CollisionShape3D" parent="chair/chair" index="0" groups=["Wood"]]
+
+[node name="CollisionShape3D" parent="bed/bed" index="0" groups=["Wood"]]
+
+[node name="CollisionShape3D" parent="bed/bed_001" index="0" groups=["Wood"]]
+
+[node name="CollisionShape3D" parent="dresser/chair_001/chair_001" index="0" groups=["Wood"]]
+
+[node name="CollisionShape3D" parent="dresser/dresser" index="0" groups=["Wood"]]

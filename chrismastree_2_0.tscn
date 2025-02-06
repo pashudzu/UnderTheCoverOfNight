@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cbggaamd13bnh"]
+
+[ext_resource type="PackedScene" uid="uid://cjtg0mblgdf0h" path="res://models/chrismastree2.0.glb" id="1_ikv3i"]
+
+[node name="chrismastree2_0" instance=ExtResource("1_ikv3i")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="tree" parent="." index="0"]
+lod_bias = 0.1
+
+[node name="leaves" parent="tree" index="0"]
+lod_bias = 0.1
+
+[node name="SnowBall_001" parent="." index="1"]
+lod_bias = 0.5

@@ -1,0 +1,260 @@
+[gd_scene load_steps=6 format=3 uid="uid://4hm2cyr1dpm7"]
+
+[ext_resource type="Script" path="res://scripts/Inventory.cs" id="1_koubk"]
+[ext_resource type="Texture2D" uid="uid://03ujvhly2ncr" path="res://textures/slot.png" id="2_hln3r"]
+[ext_resource type="Texture2D" uid="uid://b4kpih0k8xwwb" path="res://textures/Без имени.png" id="3_6kuda"]
+[ext_resource type="Texture2D" uid="uid://bpmlsx3scfcdy" path="res://textures/person.png" id="4_qqdwg"]
+[ext_resource type="Texture2D" uid="uid://dowb8nnxwt40q" path="res://textures/png-clipart-brown-envelope-paper-envelope-sealing-wax-letter-old-envelope-miscellaneous-rectangle-thumbnail-removebg-preview.png" id="5_e6p5t"]
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -250.0
+offset_right = 400.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_koubk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0901961, 0.0901961, 0.0901961, 0.588235)
+
+[node name="GridContainer" type="GridContainer" parent="ColorRect"]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 150.0
+offset_right = 249.0
+offset_bottom = 354.0
+columns = 2
+
+[node name="TextureButton1" type="TextureButton" parent="ColorRect/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_hln3r")
+
+[node name="TextureButton2" type="TextureButton" parent="ColorRect/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("2_hln3r")
+
+[node name="TextureButton3" type="TextureButton" parent="ColorRect/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("2_hln3r")
+
+[node name="TextureButton4" type="TextureButton" parent="ColorRect/GridContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("2_hln3r")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -110.0
+offset_top = 23.0
+offset_right = 110.0
+offset_bottom = 83.0
+grow_horizontal = 2
+theme_override_font_sizes/bold_font_size = 40
+bbcode_enabled = true
+text = "[b]Инвенарь[/b]"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.0
+offset_top = 23.0
+offset_right = 125.0
+offset_bottom = 93.0
+grow_horizontal = 2
+texture = ExtResource("3_6kuda")
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.0
+offset_top = 103.0
+offset_right = 313.0
+offset_bottom = 673.0
+grow_horizontal = 2
+scale = Vector2(0.619282, 0.644029)
+texture = ExtResource("4_qqdwg")
+
+[node name="LeftHandButton" type="TextureButton" parent="ColorRect"]
+texture_filter = 1
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 252.0
+offset_top = 334.0
+offset_right = 352.0
+offset_bottom = 434.0
+texture_normal = ExtResource("2_hln3r")
+
+[node name="RightHandButton" type="TextureButton" parent="ColorRect"]
+texture_filter = 1
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 0
+offset_left = 487.0
+offset_top = 332.0
+offset_right = 587.0
+offset_bottom = 432.0
+texture_normal = ExtResource("2_hln3r")
+
+[node name="PanelContainer" type="PanelContainer" parent="ColorRect"]
+layout_mode = 0
+offset_left = 620.0
+offset_top = 80.0
+offset_right = 770.0
+offset_bottom = 380.0
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="ColorRect"]
+layout_mode = 0
+offset_left = 668.0
+offset_top = 92.0
+offset_right = 728.0
+offset_bottom = 152.0
+texture = ExtResource("5_e6p5t")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -85.0
+offset_right = -40.0
+offset_bottom = 115.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="FirstPanel" type="Panel" parent="GridContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="GridContainer/FirstPanel"]
+layout_mode = 0
+offset_right = 130.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.541176)
+
+[node name="Label" type="Label" parent="GridContainer/FirstPanel/ColorRect"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 123.0
+offset_bottom = 35.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="GridContainer/FirstPanel/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FirstPanel2" type="Panel" parent="GridContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="GridContainer/FirstPanel2"]
+layout_mode = 0
+offset_top = 45.0
+offset_right = 130.0
+offset_bottom = 85.0
+color = Color(0, 0, 0, 0.541176)
+
+[node name="Label" type="Label" parent="GridContainer/FirstPanel2/ColorRect"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 123.0
+offset_bottom = 35.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="GridContainer/FirstPanel2/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FirstPanel3" type="Panel" parent="GridContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="GridContainer/FirstPanel3"]
+layout_mode = 0
+offset_top = 90.0
+offset_right = 130.0
+offset_bottom = 130.0
+color = Color(0, 0, 0, 0.541176)
+
+[node name="Label" type="Label" parent="GridContainer/FirstPanel3/ColorRect"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 123.0
+offset_bottom = 35.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="GridContainer/FirstPanel3/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FirstPanel4" type="Panel" parent="GridContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="GridContainer/FirstPanel4"]
+layout_mode = 0
+offset_top = 135.0
+offset_right = 130.0
+offset_bottom = 175.0
+color = Color(0, 0, 0, 0.541176)
+
+[node name="Label" type="Label" parent="GridContainer/FirstPanel4/ColorRect"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 123.0
+offset_bottom = 35.0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="GridContainer/FirstPanel4/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

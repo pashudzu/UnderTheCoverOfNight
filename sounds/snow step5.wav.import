@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ce2nsm7gdu6gv"
+path="res://.godot/imported/snow step5.wav-0404bd7fbf7c963fb1c67e4e1884c306.sample"
+
+[deps]
+
+source_file="res://sounds/snow step5.wav"
+dest_files=["res://.godot/imported/snow step5.wav-0404bd7fbf7c963fb1c67e4e1884c306.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

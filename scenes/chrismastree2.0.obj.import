@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ddqna3gkcciea"
+path="res://.godot/imported/chrismastree2.0.obj-dd35b7120d16680f06a8460cd72b707f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/chrismastree2.0.obj-dd35b7120d16680f06a8460cd72b707f.mesh"]
+
+source_file="res://scenes/chrismastree2.0.obj"
+dest_files=["res://.godot/imported/chrismastree2.0.obj-dd35b7120d16680f06a8460cd72b707f.mesh", "res://.godot/imported/chrismastree2.0.obj-dd35b7120d16680f06a8460cd72b707f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

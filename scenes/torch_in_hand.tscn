@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgf0676wrta04"]
+
+[ext_resource type="Script" path="res://scenes/SpotLight3d2.cs" id="1_iai0q"]
+[ext_resource type="PackedScene" uid="uid://e4eclhdoam02" path="res://textures/Torch.glb" id="1_wki4j"]
+
+[node name="TorchInHand" type="Node3D"]
+transform = Transform3D(0.35, 0, 1.42109e-14, 0, 0.35, 0, -1.42109e-14, 0, 0.35, 0, 0, 0)
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5506e-16, 0.1, -0.303819)
+light_energy = 8.472
+light_specular = 1.0
+shadow_enabled = true
+spot_range = 6.0
+spot_attenuation = 0.2
+spot_angle = 35.0
+spot_angle_attenuation = 64.0
+script = ExtResource("1_iai0q")
+
+[node name="Torch" parent="." instance=ExtResource("1_wki4j")]
+transform = Transform3D(-1.5299e-08, 0, 0.35, 0, 0.35, 0, -0.35, 0, -1.5299e-08, 0, 0, 0)

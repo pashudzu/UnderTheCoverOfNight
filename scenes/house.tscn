@@ -1,0 +1,117 @@
+[gd_scene load_steps=10 format=3 uid="uid://bbmxue7401opm"]
+
+[ext_resource type="PackedScene" uid="uid://cbgrvdl53g5e1" path="res://scenes/house.glb" id="1_iej5q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_345gf"]
+size = Vector3(15.0273, 12.0761, 0.591797)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_imuyv"]
+size = Vector3(2, 2, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tq25a"]
+size = Vector3(2.00043, 1.96423, 0.126343)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bgbqk"]
+size = Vector3(0.1, 2, 1.25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8twqw"]
+size = Vector3(0.109, 2, 0.45)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vt0oa"]
+size = Vector3(0.0955505, 0.128235, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i6ebf"]
+size = Vector3(1.9903, 0.34082, 2.12488)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p32ef"]
+size = Vector3(11.2109, 1, 9.3103)
+
+[node name="house" instance=ExtResource("1_iej5q")]
+
+[node name="Cube" parent="." index="0"]
+transform = Transform3D(0.107547, 0, 0.00130274, 0, 0.107555, 0, -0.00130274, 0, 0.107547, 3.72354, -1.39417, -1.034)
+lod_bias = 0.4
+
+[node name="dresser" parent="." index="1"]
+lod_bias = 0.4
+
+[node name="roof" parent="." index="2"]
+lod_bias = 0.4
+
+[node name="second-floor-walls1" parent="." index="3"]
+lod_bias = 0.4
+
+[node name="StaticBody3D" type="StaticBody3D" parent="second-floor-walls1" index="0" groups=["Snow"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="second-floor-walls1/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.125885, -0.330903, 4.05648)
+shape = SubResource("BoxShape3D_345gf")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="second-floor-walls1/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, -0.707107, 0.707107, 0, -0.707107, -0.707107, 0.125885, -0.330903, -4.0851)
+shape = SubResource("BoxShape3D_345gf")
+
+[node name="second-floor-walls2" parent="." index="4"]
+lod_bias = 0.4
+
+[node name="door" parent="." index="5"]
+lod_bias = 0.4
+
+[node name="first-walls-and-floor" parent="." index="6"]
+lod_bias = 0.4
+
+[node name="StaticBody3D" type="StaticBody3D" parent="first-walls-and-floor" index="0" groups=["Wood"]]
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="first-walls-and-floor/StaticBody3D" index="0"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.948508, 0, -0.00410037)
+shape = SubResource("BoxShape3D_imuyv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="first-walls-and-floor/StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00357056, -0.0247192, -0.991095)
+shape = SubResource("BoxShape3D_tq25a")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="first-walls-and-floor/StaticBody3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00357056, -0.0247192, 1.00402)
+shape = SubResource("BoxShape3D_tq25a")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="first-walls-and-floor/StaticBody3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94955, -0.0232544, 0.423236)
+shape = SubResource("BoxShape3D_bgbqk")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="first-walls-and-floor/StaticBody3D" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.877102, 0.00567633, -0.847437)
+shape = SubResource("BoxShape3D_8twqw")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="first-walls-and-floor/StaticBody3D" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.947724, 0.943723, -0.496841)
+shape = SubResource("BoxShape3D_vt0oa")
+disabled = true
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="first-walls-and-floor/StaticBody3D" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00497437, -0.836673, 0)
+shape = SubResource("BoxShape3D_i6ebf")
+
+[node name="mirror_002" parent="." index="7"]
+lod_bias = 0.4
+
+[node name="mirror_001" parent="." index="8"]
+lod_bias = 0.4
+
+[node name="mirror_003" parent="." index="9"]
+lod_bias = 0.4
+
+[node name="bed" parent="." index="10"]
+lod_bias = 0.4
+
+[node name="SnowBall_001" parent="." index="11"]
+lod_bias = 0.4
+
+[node name="SnowBall_002" parent="." index="12"]
+lod_bias = 0.4
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="13" groups=["Wood"]]
+transform = Transform3D(0.107547, 0, 0.00130274, 0, 0.107555, 0, -0.00130274, 0, 0.107547, 3.72354, -1.39417, -1.034)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(0.889705, 0.456537, -0.000260115, -0.456534, 0.889701, 0.00249678, 0.0013713, -0.00210265, 0.999997, 2.74854, 0.602427, 0.350872)
+shape = SubResource("BoxShape3D_p32ef")

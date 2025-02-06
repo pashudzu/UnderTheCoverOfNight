@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv5ja1gvyv7ou"]
+
+[ext_resource type="PackedScene" uid="uid://cin883dbbk2t1" path="res://pine.glb" id="1_q3k7g"]
+
+[node name="pine" instance=ExtResource("1_q3k7g")]
+
+[node name="Cylinder_004" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13095, 0.0017579)

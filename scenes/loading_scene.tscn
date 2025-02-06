@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2vb37yliafxf"]
+
+[ext_resource type="Script" path="res://scenes/LoadingScene.cs" id="1_lvncu"]
+[ext_resource type="Texture2D" uid="uid://b5jtbk5ul3jk4" path="res://textures/photo_2024-12-20_19-16-06.jpg" id="1_ogbcv"]
+
+[node name="LoadingScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lvncu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1274, 457)
+scale = Vector2(2, 2)
+texture = ExtResource("1_ogbcv")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 547.0
+offset_top = 844.0
+offset_right = 1047.0
+offset_bottom = 871.0
+max_value = 1.0
+value = 1.0

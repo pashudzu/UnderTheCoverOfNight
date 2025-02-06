@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://da1y4v4atigx"
+path.s3tc="res://.godot/imported/ghost_Marble002_1K-JPG_Color.jpg-eed223418ee363ba77cdd6ff805a5dcb.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "41c4df69779e33f3423408aeaac7d627"
+}
+
+[deps]
+
+source_file="res://models/ghost_Marble002_1K-JPG_Color.jpg"
+dest_files=["res://.godot/imported/ghost_Marble002_1K-JPG_Color.jpg-eed223418ee363ba77cdd6ff805a5dcb.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

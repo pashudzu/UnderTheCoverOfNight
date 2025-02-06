@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://db6vcqiy0ev4e"]
+
+[ext_resource type="Script" path="res://scenes/Watch.cs" id="1_hfsvs"]
+[ext_resource type="PackedScene" uid="uid://kodcdqb2o35h" path="res://scenes/watch.tscn" id="2_8anj8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iaxgd"]
+size = Vector3(5, 5, 5)
+
+[node name="WatchOnFloor" type="Area3D"]
+script = ExtResource("1_hfsvs")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.00967979, 0)
+shape = SubResource("BoxShape3D_iaxgd")
+
+[node name="watch" parent="." instance=ExtResource("2_8anj8")]
