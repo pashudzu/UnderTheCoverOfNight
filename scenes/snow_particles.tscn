@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bf1cu8uasyvj5"]
+[gd_scene load_steps=4 format=3 uid="uid://dfp0cm7s4k1xo"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7clas"]
 emission_shape_scale = Vector3(3, 3, 3)

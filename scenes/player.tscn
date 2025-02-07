@@ -1,8 +1,8 @@
 [gd_scene load_steps=39 format=3 uid="uid://b3fctgxoddghu"]
 
 [ext_resource type="Script" path="res://scripts/CharacterBody.cs" id="1_31f3j"]
+[ext_resource type="PackedScene" uid="uid://ybjrto1uhpox" path="res://scenes/snowParticles.tscn" id="1_s3vnn"]
 [ext_resource type="PackedScene" uid="uid://cljfi6uu0vgj4" path="res://scenes/ui/glitch_effect.tscn" id="2_2mq1p"]
-[ext_resource type="PackedScene" uid="uid://bf1cu8uasyvj5" path="res://scenes/snow_particles.tscn" id="2_ccsqm"]
 [ext_resource type="PackedScene" uid="uid://m6mficmce4ok" path="res://scenes/ui/pause_menu.tscn" id="2_teuc2"]
 [ext_resource type="PackedScene" uid="uid://4hm2cyr1dpm7" path="res://scenes/ui/inventory.tscn" id="3_mphs2"]
 [ext_resource type="PackedScene" uid="uid://dpep1xhufhc1i" path="res://scenes/ui/press_e_sprite.tscn" id="4_uwpvm"]
@@ -333,6 +333,8 @@ _data = {
 
 [node name="player" type="Node3D"]
 
+[node name="GPUParticles3D" parent="." instance=ExtResource("1_s3vnn")]
+
 [node name="CharacterBody" type="CharacterBody3D" parent="." groups=["Player"]]
 collision_layer = 3
 collision_mask = 3
@@ -450,6 +452,3 @@ visible_ratio = 0.0
 libraries = {
 "": SubResource("AnimationLibrary_3maqg")
 }
-
-[node name="SnowParticles" parent="CharacterBody" instance=ExtResource("2_ccsqm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.07893, -0.035738, -1)
