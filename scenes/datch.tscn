@@ -23,3 +23,11 @@
 [node name="CollisionShape3D" parent="dresser/chair_001/chair_001" index="0" groups=["Wood"]]
 
 [node name="CollisionShape3D" parent="dresser/dresser" index="0" groups=["Wood"]]
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="." index="40"]
+transform = Transform3D(0.598269, -0.801296, 0, 0.801296, 0.598269, 0, 0, 0, 1, -1.54891, 5.221, -0.0811157)
+size = Vector3(5.30151, 0.194153, 8.2157)
+
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="." index="41"]
+transform = Transform3D(-0.59982, -0.800135, 0, 0.800135, -0.59982, 0, 0, 0, 1, 1.53161, 5.13433, -0.0685425)
+size = Vector3(5.30151, 0.194153, 8.24084)
