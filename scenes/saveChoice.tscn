@@ -1,14 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://de8bcvbp4ojiq"]
+[gd_scene load_steps=3 format=3 uid="uid://de8bcvbp4ojiq"]
 
+[ext_resource type="Script" path="res://scenes/SaveChoice.cs" id="1_rq51k"]
 [ext_resource type="FontFile" uid="uid://dqaavidfe0cpf" path="res://RubikDistressed-Regular.ttf" id="1_ywdby"]
 
-[node name="Control" type="Control"]
+[node name="ChoiceOfSaves" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_rq51k")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -25,7 +27,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.427451)
 
-[node name="Button" type="Button" parent="ColorRect"]
+[node name="SaveSlotButton" type="Button" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -38,7 +40,7 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 25
 text = "Сохранение 1"
 
-[node name="Button2" type="Button" parent="ColorRect"]
+[node name="SaveSlotButton2" type="Button" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -51,7 +53,7 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 25
 text = "Сохранение 2"
 
-[node name="Button3" type="Button" parent="ColorRect"]
+[node name="SaveSlotButton3" type="Button" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

@@ -30,6 +30,7 @@ public partial class VBoxContainer : Godot.VBoxContainer {
 		
 		config.SetValue("Player", "player_position_x", GameManager.Instance.Player.GlobalPosition.X);
 		config.SetValue("Player", "player_position_y", GameManager.Instance.Player.GlobalPosition.Y);
+		config.SetValue("Scene", "current_scene", GetTree().CurrentScene.Name);
 		
 		config.Save("res://configs/save.cfg");
 		

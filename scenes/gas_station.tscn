@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://nck85qgetc16"]
 
-[ext_resource type="PackedScene" uid="uid://dckc58bbe671m" path="res://gas station.glb" id="1_50f60"]
+[ext_resource type="PackedScene" uid="uid://dckc58bbe671m" path="res://models/gas station.glb" id="1_50f60"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dwn06"]
 size = Vector3(1.99, 1.935, 1.995)
