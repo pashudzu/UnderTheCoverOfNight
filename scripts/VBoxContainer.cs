@@ -4,12 +4,12 @@ using System;
 public partial class VBoxContainer : Godot.VBoxContainer {
 	public override void _Ready() {
 		Button resume = GetNodeOrNull<Button>("Resume");
-		Button backToMenu = GetNodeOrNull<Button>("BackToMenu");
-		Button quit = GetNodeOrNull<Button>("Quit");
+		Button settings = GetNodeOrNull<Button>("Settings");
+		Button saveAndQuit = GetNodeOrNull<Button>("Save&Quit");
 		
 		resume.Connect("pressed", Callable.From(OnRusumeButtonPressed));
-		backToMenu.Connect("pressed", Callable.From(OnBackToMenuPressed));
-		quit.Connect("pressed", Callable.From(OnQuitPresssed));
+		settings.Connect("pressed", Callable.From(OnsettingsButtonPressed));
+		saveAndQuit.Connect("pressed", Callable.From(OnSaveAndQuitButtonPresssed));
 	}
 	
 	public override void _Input(InputEvent @event) {
@@ -21,11 +21,20 @@ public partial class VBoxContainer : Godot.VBoxContainer {
 	public void OnRusumeButtonPressed() {
 		Resume();
 	}
-	public void OnBackToMenuPressed() {
+	public void OnsettingsButtonPressed() {
 		GetTree().ChangeSceneToFile("res://scenes/ui/menu.tscn");
 		Input.SetMouseMode(Input.MouseModeEnum.Visible);
 	}
-	public void OnQuitPresssed() {
+	public void OnSaveAndQuitButtonPresssed() {
+		var config = new ConfigFile();
+		
+		config.SetValue("Player", "player_position_x", GameManager.Instance.Player.GlobalPosition.X);
+		config.SetValue("Player", "player_position_y", GameManager.Instance.Player.GlobalPosition.Y);
+		
+		config.Save("res://configs/save.cfg");
+		
+		GD.Print("Игра сохранена");
+		
 		GetTree().Quit();
 	}
 	private void Resume() {

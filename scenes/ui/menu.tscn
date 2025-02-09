@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4vwsi6e2dq3d"]
 
-[ext_resource type="Script" path="res://scenes/ui/Menu.cs" id="1_il315"]
+[ext_resource type="Script" path="res://scripts/Menu.cs" id="1_il315"]
 [ext_resource type="FontFile" uid="uid://dqaavidfe0cpf" path="res://RubikDistressed-Regular.ttf" id="2_v0jm8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_36t4t"]

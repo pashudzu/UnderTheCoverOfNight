@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=4 uid="uid://b7oju2cfomnm5"]
 
-[ext_resource type="Script" path="res://scenes/Petrol.cs" id="1_b7idq"]
+[ext_resource type="Script" path="res://scripts/Petrol.cs" id="1_b7idq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_whisq"]
 size = Vector3(5, 5, 5)

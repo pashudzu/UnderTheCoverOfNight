@@ -33,12 +33,12 @@ size_flags_vertical = 4
 theme_override_font_sizes/font_size = 30
 text = "Вернуться"
 
-[node name="BackToMenu" type="Button" parent="VBoxContainer"]
+[node name="Settings" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Выйти в меню"
+text = "Настройки"
 
-[node name="Quit" type="Button" parent="VBoxContainer"]
+[node name="Save&Quit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "Выйти из игры"
+text = "Сохранить и выйти"

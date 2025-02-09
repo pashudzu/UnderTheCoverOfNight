@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2vb37yliafxf"]
 
-[ext_resource type="Script" path="res://scenes/LoadingScene.cs" id="1_lvncu"]
+[ext_resource type="Script" path="res://scripts/LoadingScene.cs" id="1_lvncu"]
 [ext_resource type="Texture2D" uid="uid://b5jtbk5ul3jk4" path="res://textures/photo_2024-12-20_19-16-06.jpg" id="1_ogbcv"]
 
 [node name="LoadingScene" type="Control"]

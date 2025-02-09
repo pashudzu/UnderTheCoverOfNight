@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=3 uid="uid://de8bcvbp4ojiq"]
+
+[ext_resource type="FontFile" uid="uid://dqaavidfe0cpf" path="res://RubikDistressed-Regular.ttf" id="1_ywdby"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -250.0
+offset_right = 300.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.427451)
+
+[node name="Button" type="Button" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -188.0
+offset_top = 150.0
+offset_right = 188.0
+offset_bottom = 234.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 25
+text = "Сохранение 1"
+
+[node name="Button2" type="Button" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -188.0
+offset_top = 250.0
+offset_right = 188.0
+offset_bottom = 334.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 25
+text = "Сохранение 2"
+
+[node name="Button3" type="Button" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -188.0
+offset_top = 350.0
+offset_right = 188.0
+offset_bottom = 434.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 25
+text = "Сохранение 3"
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -188.5
+offset_top = 19.865
+offset_right = 188.5
+offset_bottom = 113.865
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.906024, 0.130013, 0.206023, 1)
+theme_override_fonts/font = ExtResource("1_ywdby")
+theme_override_font_sizes/font_size = 41
+text = "Выбери сохранение игры!"

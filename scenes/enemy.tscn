@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=4 uid="uid://cdqao72vmih20"]
 
-[ext_resource type="Script" path="res://scenes/Enemy.cs" id="1_d2see"]
+[ext_resource type="Script" path="res://scripts/Enemy.cs" id="1_d2see"]
 [ext_resource type="Texture2D" uid="uid://da1y4v4atigx" path="res://models/ghost_Marble002_1K-JPG_Color.jpg" id="2_4hk2c"]
 [ext_resource type="Texture2D" uid="uid://cxrx7bq3t3byk" path="res://models/ghost_Marble002_1K-JPG_NormalGL.jpg" id="3_sses2"]
 
