@@ -2,8 +2,7 @@
 **Genre:** Horror👹 <br>
 **Engine:** Godot Mono🔵 <br>
 **Setting:** A snowy Russian village❄️<br>
-**
-Objective:** Escape from village while avoiding the monster🏃 <br>
+**Objective:** Escape from village while avoiding the monster🏃 <br>
 
 # About the game
 "Under the cover of night" is an atmospheric horror game where the player finds themselves in the abandoned village of Voronitsa. However right after the first day there was no happiness. When protagonist woke up at night he realized he wasn't alone - the monster was staring at him. To survive protagonist must explore the area and find petrol station to buy petrol and refuel car. Before it's too late.
