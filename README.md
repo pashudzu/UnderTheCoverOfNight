@@ -14,11 +14,11 @@ Dynamic weather effect
 A carefully created audio experience.
 
 # How to Play
-- **WSAD** - Move <br>
-- **Shift** - Sprint <br>
-- **Tab** - Inventory <br>
-- **E** - Interact <br>
-- **F** - Turn Fleshlight on/off <br>
+- `WSAD` - Move <br>
+- `Shift` - Sprint <br>
+- `Tab` - Inventory <br>
+- `E` - Interact <br>
+- `F` - Turn Fleshlight on/off <br>
 
 # Development
 The game is built in Godot engine Mono using C#. Also game using addons Godot-jolt and HTerrain.
