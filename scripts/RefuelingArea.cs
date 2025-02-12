@@ -3,16 +3,16 @@ using System;
 
 public partial class RefuelingArea : Area3D
 {
-	private Area3D carEnterArea;
-	private bool bodyInArea = false;
-	private Node3D player;
-	private Sprite2D pressESprite;
+	private bool _bodyInArea = false;
+	private Node3D _player;
+	private Sprite2D _pressESprite;
+	private Area3D _carEnterArea;
 	
 	public override void _Ready()
 	{
-		carEnterArea = GetParent().GetNode<Area3D>("CarEnterArea");
-		player = GameManager.Instance.Player;
-		pressESprite = player.GetNode<Sprite2D>("CharacterBody/PressESprite");
+		_carEnterArea = GetParent().GetNode<Area3D>("CarEnterArea");
+		_player = GameManager.Instance.Player;
+		_pressESprite = _player.GetNode<Sprite2D>("CharacterBody/PressESprite");
 		Connect("body_entered", new Callable(this, nameof(OnRefuelingAreaEntered)));
 		Connect("body_exited", new Callable(this, nameof(OnRefuelingAreaExited)));
 	}
@@ -20,9 +20,9 @@ public partial class RefuelingArea : Area3D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (bodyInArea && Input.IsActionJustPressed("take_item")) {
+		if (_bodyInArea && Input.IsActionJustPressed("take_item")) {
 			if (petrolInHand()) {
-				carEnterArea.Monitoring = true;
+				_carEnterArea.Monitoring = true;
 				GD.Print("Машина заправлена.");
 				GameManager.Instance.CarIsFueled = true;
 				QueueFree();
@@ -36,18 +36,18 @@ public partial class RefuelingArea : Area3D
 		if (body.IsInGroup("Player")) {
 			ChangePressESpriteVisibility();
 			
-			bodyInArea = true;
+			_bodyInArea = true;
 		}
 	}
 	private void OnRefuelingAreaExited(Node3D body) {
 		if (body.IsInGroup("Player")) {
 			ChangePressESpriteVisibility();
 			
-			bodyInArea = false;
+			_bodyInArea = false;
 		}
 	}
 	private void ChangePressESpriteVisibility() {
-		pressESprite.Visible = !pressESprite.Visible;
+		_pressESprite.Visible = !_pressESprite.Visible;
 	}
 	private bool petrolInHand () {
 		string leftHandChild = GameManager.Instance.LeftHandChild;

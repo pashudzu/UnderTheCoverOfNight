@@ -3,25 +3,26 @@ using System;
 
 public partial class SaveChoice : Control
 {
-	private Button saveSlotButton;
-	Godot.Collections.Dictionary gameData = new Godot.Collections.Dictionary();
-	private float playerPositionX;
-	private float playerPositionY;
-	string currentScene;
+	private Button _saveSlotButton;
+	private Godot.Collections.Dictionary _gameData = new Godot.Collections.Dictionary();
+	private float _playerPositionX;
+	private float _playerPositionY;
+	private float _playerPositionZ;
+	private string _currentScene;
 	
 	public override void _Ready()
 	{
-		saveSlotButton = GetNode<Button>("ColorRect/SaveSlotButton");
-		saveSlotButton.Connect("pressed", Callable.From(OnSaveSlotButtonPressed));
+		_saveSlotButton = GetNode<Button>("ColorRect/SaveSlotButton");
+		_saveSlotButton.Connect("pressed", Callable.From(OnSaveSlotButtonPressed));
 	}
 	
 	public void OnSaveSlotButtonPressed() {
 		GettingConfigData();
-		ChangeScene();
 		SetPastGameProgress();
+		ChangeScene();
 	}
 	private void ChangeScene() {
-		string scenePath = "res://scenes/"+ currentScene +".tscn";
+		string scenePath = "res://scenes/"+ _currentScene +".tscn";
 		GD.Print(scenePath);
 		GameManager.Instance.DownloadableScene = scenePath;
 		PackedScene loadScene = (PackedScene)ResourceLoader.Load("res://scenes/loading_scene.tscn");
@@ -38,19 +39,24 @@ public partial class SaveChoice : Control
 		}
 		
 		foreach (String Player in config.GetSections()) {
-			playerPositionX = (float)config.GetValue(Player, "player_position_x");
-			playerPositionY = (float)config.GetValue(Player, "player_position_y");
+			_playerPositionX = (float)config.GetValue("Player", "player_position_x");
+			_playerPositionY = (float)config.GetValue("Player", "player_position_y");
+			_playerPositionZ = (float)config.GetValue("Player", "player_position_z");
 		}
 		foreach (String Scene in config.GetSections()) {
-			currentScene = (string)config.GetValue(Scene, "current_scene");
+			_currentScene = (string)config.GetValue("Scene", "current_scene");
+		}
+		foreach (String CutSceneFlag in config.GetSections()) {
+			GameManager.Instance.IsBeginingCutSceneSeen = (bool)config.GetValue("CutSceneFlag", "is_begining_cut_scene_seen");
 		}
 	}
 	
 	private void SetPastGameProgress() {
-		CharacterBody3D playerCharacterBody = GameManager.Instance.Player.GetNode<CharacterBody3D>("CharacterBody");
-		Vector3 newPosition = playerCharacterBody.GlobalPosition;
-		newPosition.X = playerPositionX;
-		newPosition.Y = playerPositionY;
-		playerCharacterBody.GlobalPosition = newPosition;
+		Vector3 newPosition;
+		newPosition.X = _playerPositionX;
+		newPosition.Y = _playerPositionY;
+		newPosition.Z = _playerPositionZ;
+		GameManager.Instance.SavedPlayerPosition = newPosition;
+		GD.Print($"После импорта данных из save.cfg позиция игрока: {GameManager.Instance.SavedPlayerPosition}");
 	}
 }

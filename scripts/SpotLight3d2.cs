@@ -4,25 +4,25 @@ using System;
 public partial class SpotLight3d2 : SpotLight3D
 {
 	[Export] public float batteryCharge = 100.0f;
-	private float maxEnergy = 100.0f;
-	private float minEnergy = 0.0f;
-	private float dischargeRate = 0.1111f;
-	private Node3D player = GameManager.Instance.Player;
-	private Sprite2D chargeSprite;
-	private Texture2D fullCharge, twoThirdsCharge, oneThirdCharge, emptyCharge;
+	private float _maxEnergy = 100.0f;
+	private float _minEnergy = 0.0f;
+	private float _dischargeRate = 0.1111f;
+	private Node3D _player = GameManager.Instance.Player;
+	private Sprite2D _chargeSprite;
+	private Texture2D _fullCharge, _twoThirdsCharge, _oneThirdCharge, _emptyCharge;
 	
 	public override void _Ready(){
-		chargeSprite = player.GetNode<Sprite2D>("CharacterBody/Charge");
-		fullCharge = (Texture2D)GD.Load("res://textures/FullCharge.png");
-		twoThirdsCharge = (Texture2D)GD.Load("res://textures/67%Battery.png");
-		oneThirdCharge = (Texture2D)GD.Load("res://textures/33%Battery.png");
-		emptyCharge = (Texture2D)GD.Load("res://textures/0%Battery.png");
-		chargeSprite.Show();
+		_chargeSprite = _player.GetNode<Sprite2D>("CharacterBody/Charge");
+		_fullCharge = (Texture2D)GD.Load("res://textures/FullCharge.png");
+		_twoThirdsCharge = (Texture2D)GD.Load("res://textures/67%Battery.png");
+		_oneThirdCharge = (Texture2D)GD.Load("res://textures/33%Battery.png");
+		_emptyCharge = (Texture2D)GD.Load("res://textures/0%Battery.png");
+		_chargeSprite.Show();
 	}
 	
 	public override void _Process(double delta)
 	{
-		if (Input.IsActionJustPressed("torch_power") && maxEnergy != 0) {
+		if (Input.IsActionJustPressed("torch_power") && _maxEnergy != 0) {
 			Visible = !Visible;
 		}
 		if (Visible) {
@@ -30,10 +30,10 @@ public partial class SpotLight3d2 : SpotLight3D
 		}
 	}
 	private void Discharge(double delta) {
-		if (batteryCharge <= maxEnergy && batteryCharge > minEnergy) {
-			batteryCharge -= dischargeRate * (float)delta;
+		if (batteryCharge <= _maxEnergy && batteryCharge > _minEnergy) {
+			batteryCharge -= _dischargeRate * (float)delta;
 		}
-		if (batteryCharge <= minEnergy) {
+		if (batteryCharge <= _minEnergy) {
 			Visible = false;
 			batteryCharge = 0.0f;
 		}
@@ -41,20 +41,20 @@ public partial class SpotLight3d2 : SpotLight3D
 	}
 	private void UpdateChargeSprite() {
 		if (batteryCharge > 67.0f) {
-			chargeSprite.Texture = fullCharge;
+			_chargeSprite.Texture = _fullCharge;
 		}
 		else if (batteryCharge > 33.0f) {
-			chargeSprite.Texture = twoThirdsCharge;
+			_chargeSprite.Texture = _twoThirdsCharge;
 		}
 		else if (batteryCharge > 0.0f) {
-			chargeSprite.Texture = oneThirdCharge;
+			_chargeSprite.Texture = _oneThirdCharge;
 		}
 		else {
-			chargeSprite.Texture = emptyCharge;
+			_chargeSprite.Texture = _emptyCharge;
 			GD.Print("Фонарик разряжен.");
 		}
 	}
 	public override void _ExitTree() {
-		chargeSprite.Hide();
+		_chargeSprite.Hide();
 	}
 }

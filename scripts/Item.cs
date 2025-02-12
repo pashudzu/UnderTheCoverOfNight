@@ -17,8 +17,8 @@ public partial class Item : Area3D
 	public Texture2D itemTextureInSlot;
 	public Texture2D itemTexture;
 	public PackedScene itemScene;
-	private Node3D player;
-	private Sprite2D pressESprite;
+	private Node3D _player;
+	private Sprite2D _pressESprite;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
@@ -26,8 +26,8 @@ public partial class Item : Area3D
 		if (GameManager.Instance.Player == null) {
 			return;
 		}
-		player = GameManager.Instance.Player;
-		pressESprite = player.GetNode<Sprite2D>("CharacterBody/PressESprite");
+		_player = GameManager.Instance.Player;
+		_pressESprite = _player.GetNode<Sprite2D>("CharacterBody/PressESprite");
 		if (Connect("body_entered", new Callable(this, nameof(OnBodyEntered))) == Error.Ok) {
 			GD.Print("Сигнал body_entered успешно установлен");
 		}
@@ -65,6 +65,6 @@ public partial class Item : Area3D
 		Inventory.Instance.addItem(this);
 	}
 	private void ChangePressESpriteVisibility() {
-		pressESprite.Visible = !pressESprite.Visible;
+		_pressESprite.Visible = !_pressESprite.Visible;
 	}
 }

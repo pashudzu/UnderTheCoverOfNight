@@ -3,64 +3,70 @@ using System;
 
 public partial class Begining : Node3D
 {
-	AnimationPlayer animation;
-	Camera3D cutSceneCamera;
-	Camera3D basicCamera;
-	Area3D bakeArea;
-	Sprite2D pressESprite;
-	bool playerInArea = false;
-	Node3D fireParticles;
-	Polygon2D dialogue;
+	AnimationPlayer _animation;
+	Camera3D _cutSceneCamera;
+	Camera3D _basicCamera;
+	Area3D _bakeArea;
+	Sprite2D _pressESprite;
+	bool _playerInArea = false;
+	Node3D _fireParticles;
+	Polygon2D _dialogue;
 	
 	public override void _Ready()
 	{
-		cutSceneCamera = GetNode<Camera3D>("Car/CutSceneCamera");
-		cutSceneCamera.MakeCurrent();
-		animation = GetNode<AnimationPlayer>("AnimationPlayer");
-		animation.Play("BeginingCutScene");
-		basicCamera = GetNode<Camera3D>("Player/CharacterBody/Head/Camera3D");
-		bakeArea = GetNode<Area3D>("MainHome/BakeArea");
-		pressESprite = GetNode<Sprite2D>("Player/CharacterBody/PressESprite");
-		fireParticles = GetNode<Node3D>("house/FireParticles");
-		dialogue = GetNode<Polygon2D>("Car/Dialogue");
-		bakeArea.Connect("body_entered", new Callable(this, nameof(OnBakeAreaEntered)));
-		bakeArea.Connect("body_exited", new Callable(this, nameof(OnBakeAreaExited)));
+		_animation = GetNode<AnimationPlayer>("AnimationPlayer");
+		if (!GameManager.Instance.IsBeginingCutSceneSeen) {
+			_animation.Play("BeginingCutScene");
+		} else {
+			GetNode<Polygon2D>("Car/Dialogue").Hide();
+		}
+		
+		_cutSceneCamera = GetNode<Camera3D>("Car/CutSceneCamera");
+		_cutSceneCamera.MakeCurrent();
+		
+		_basicCamera = GetNode<Camera3D>("Player/CharacterBody/Head/Camera3D");
+		_bakeArea = GetNode<Area3D>("MainHome/BakeArea");
+		_pressESprite = GetNode<Sprite2D>("Player/CharacterBody/PressESprite");
+		_fireParticles = GetNode<Node3D>("house/FireParticles");
+		_dialogue = GetNode<Polygon2D>("Car/Dialogue");
+		
+		_bakeArea.Connect("body_entered", new Callable(this, nameof(OnBakeAreaEntered)));
+		_bakeArea.Connect("body_exited", new Callable(this, nameof(OnBakeAreaExited)));
 	}
 
 	public override void _Process(double delta)
 	{
-		if (animation != null && !animation.IsPlaying()) {
-			basicCamera.MakeCurrent();
+		if (!_animation.IsPlaying()) {
+			_basicCamera.MakeCurrent();
+			GameManager.Instance.IsBeginingCutSceneSeen = true;
 		}
-		if (playerInArea) {
+		if (_playerInArea) {
 			ShowFire();
 		}
-		if (animation.IsPlaying() && Input.IsActionPressed("skip")) {
-			animation.Stop();
-			dialogue.Hide();
+		if (_animation.IsPlaying() && Input.IsActionPressed("skip")) {
+			_animation.Stop();
+			_dialogue.Hide();
 		}
 	}
+	
 	public void OnBakeAreaEntered(Node body) {
 		if (body.IsInGroup("Player")) {
-			ChangePressESpriteVisibility();
-			playerInArea = true;
+			_pressESprite.Visible = true;
+			_playerInArea = true;
 		}
 	}
 	public void OnBakeAreaExited(Node body) {
 		if (body.IsInGroup("Player")) {
-			ChangePressESpriteVisibility();
-			playerInArea = false;
+			_pressESprite.Visible = false;
+			_playerInArea = false;
 		}
 	}
 	private void ShowFire() {
 		if (Input.IsActionJustPressed("take_item")) {
-			fireParticles.Show();
+			_fireParticles.Show();
 			GD.Print("Игрок зажёг печь.");
-			ChangePressESpriteVisibility();
-			bakeArea.QueueFree();
+			_pressESprite.Visible = false;
+			_bakeArea.QueueFree();
 		}
-	}
-	private void ChangePressESpriteVisibility() {
-		pressESprite.Visible = !pressESprite.Visible;
 	}
 }

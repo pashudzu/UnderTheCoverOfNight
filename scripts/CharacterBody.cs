@@ -3,47 +3,46 @@ using System;
 using System.Threading;
 
 public partial class CharacterBody : CharacterBody3D {
-	public const float DEFAULT_SPEED = 2f;
-	public const float JUMP_VELOITY = 4.5f;
-	private const float RUN_SPEED = 4.0f;
-	private const float MAX_PITCH = 75.0f;
-	private const float MIN_PITCH = -20.0f;
-	private float MIN_PITCH_RAD = Mathf.DegToRad(MIN_PITCH);
-	private float MAX_PITCH_RAD = Mathf.DegToRad(MAX_PITCH);
-	public const float SENS = 0.02f;
-	private const float FRICTION = 3f;
-	[Export]private float runEnergy = 100f;
-	private float maxRunEnergy = 100f;
-	private float minRunEnergy = 0f;
-	private float dischargeRate = 10f;
-	[Export]public float speed = DEFAULT_SPEED;
-	private bool isRunning = false;
-	private bool isJumping = false;
-	private bool isWalking = false;
-	private float restTime = 0.0f;
-	private float cameraPitch = 0f;
+	public const float DefaultSpeed = 2f;
+	public const float JumpVelocity = 4.5f;
+	private const float RunSpeed = 4.0f;
+	private const float MaxPitch = 75.0f;
+	private const float MinPitch = -20.0f;
+	private float MinPitchRad = Mathf.DegToRad(MinPitch);
+	private float MaxPitchRad = Mathf.DegToRad(MaxPitch);
+	public const float Sens = 0.02f;
+	private const float Friction = 3f;
+	[Export]private float _runEnergy = 100f;
+	private float _maxRunEnergy = 100f;
+	private float _minRunEnergy = 0f;
+	private float _dischargeRate = 10f;
+	[Export]public float speed = DefaultSpeed;
+	private bool _isRunning = false;
+	private bool _isJumping = false;
+	private bool _isWalking = false;
+	private float _restTime = 0.0f;
+	private float _cameraPitch = 0f;
 	private float _rotationX = 0f;
 	private float _rotationY = 0f;
-	private bool isPaused;
-	private bool firstgo = false;
-	private MeshInstance3D head;
-	private Control pauseMenu;
-	private Control inventory;
-	private Area3D checkSurfaceArea3D;
-	private ProgressBar runBar;
-	public Vector3 playerCurrentPosition;
-	private AnimationPlayer animations;
-	private AudioStreamPlayer3D walkingSnowAudio;
-	private AudioStreamPlayer3D walkingWoodAudio;
-	private bool IsDialogueGoing;
-	private CollisionShape3D characterBodyShape;
+	private bool _isPaused;
+	private bool _firstgo = false;
+	private MeshInstance3D _head;
+	private Control _pauseMenu;
+	private Control _inventory;
+	private Area3D _checkSurfaceArea3D;
+	private ProgressBar _runBar;
+	private AnimationPlayer _animations;
+	private AudioStreamPlayer3D _walkingSnowAudio;
+	private AudioStreamPlayer3D _walkingWoodAudio;
+	private bool _isDialogueGoing;
+	private CollisionShape3D _characterBodyShape;
 	
 	public override void _Ready() {
-		characterBodyShape = GetNode<CollisionShape3D>("CollisionShape3D");
-		walkingSnowAudio = GetNode<AudioStreamPlayer3D>("Head/Camera3D/WalkingSnowAudio");
-		walkingWoodAudio = GetNode<AudioStreamPlayer3D>("Head/Camera3D/WalkingWoodAudio");
-		checkSurfaceArea3D = GetNode<Area3D>("CheckSurfaceArea3D");
-		animations = GetNode<AnimationPlayer>("Animations");
+		_characterBodyShape = GetNode<CollisionShape3D>("CollisionShape3D");
+		_walkingSnowAudio = GetNode<AudioStreamPlayer3D>("Head/Camera3D/WalkingSnowAudio");
+		_walkingWoodAudio = GetNode<AudioStreamPlayer3D>("Head/Camera3D/WalkingWoodAudio");
+		_checkSurfaceArea3D = GetNode<Area3D>("CheckSurfaceArea3D");
+		_animations = GetNode<AnimationPlayer>("Animations");
 		if (GameManager.Instance != null) {
 			GameManager.Instance.Player = GetParent<Node3D>();
 			GD.Print("GameManager.Instance.Player инициализирован.");
@@ -52,11 +51,15 @@ public partial class CharacterBody : CharacterBody3D {
 		}
 		GameManager.Instance.PlayerCharacterBody = this;
 		Input.SetMouseMode(Input.MouseModeEnum.Captured);
-		head = GetNodeOrNull<MeshInstance3D>("Head");
-		pauseMenu = GetNodeOrNull<Control>("PauseMenu");
-		inventory = GetNodeOrNull<Control>("Inventory");
-		runBar = GetNodeOrNull<ProgressBar>("RunBar");
-		checkSurfaceArea3D.Connect("body_entered", new Callable(this, nameof(OnCheckSurfaceAreaEntered)));
+		_head = GetNodeOrNull<MeshInstance3D>("Head");
+		_pauseMenu = GetNodeOrNull<Control>("PauseMenu");
+		_inventory = GetNodeOrNull<Control>("Inventory");
+		_runBar = GetNodeOrNull<ProgressBar>("RunBar");
+		if (GameManager.Instance.SavedPlayerPosition != Vector3.Zero) {
+			GlobalPosition = GameManager.Instance.SavedPlayerPosition;
+			GD.Print($"Позиция игрока возобновлена: {GlobalPosition}.");
+		}
+		_checkSurfaceArea3D.Connect("body_entered", new Callable(this, nameof(OnCheckSurfaceAreaEntered)));
 	}
 	
 	public override void _Input(InputEvent @event) {
@@ -64,24 +67,24 @@ public partial class CharacterBody : CharacterBody3D {
 			Pause();
 		}
 		IsItPaused();
-		if (isPaused) {
-			inventory.Hide();
+		if (_isPaused) {
+			_inventory.Hide();
 		}
 		if (@event is InputEventMouseMotion mouseMotion) {
 			if (IsSomeGuiOpen()) {
 				return;
 			}
-			_rotationX += Mathf.DegToRad(mouseMotion.Relative.X) * SENS;
-			_rotationY += mouseMotion.Relative.Y * SENS;
+			_rotationX += Mathf.DegToRad(mouseMotion.Relative.X) * Sens;
+			_rotationY += mouseMotion.Relative.Y * Sens;
 			
 			Transform3D transform = Transform;
 			transform.Basis = Basis.Identity;
 			Transform = transform;
 			
-			cameraPitch = Mathf.Clamp(Mathf.DegToRad(_rotationY), MIN_PITCH_RAD, MAX_PITCH_RAD);
+			_cameraPitch = Mathf.Clamp(Mathf.DegToRad(_rotationY), MinPitchRad, MaxPitchRad);
 			
 			RotateObjectLocal(Vector3.Down, _rotationX);
-			head.Rotation = new Vector3(-cameraPitch, head.Rotation.Y, Rotation.Z);
+			_head.Rotation = new Vector3(-_cameraPitch, _head.Rotation.Y, Rotation.Z);
 		}
 	}
 	
@@ -95,44 +98,44 @@ public partial class CharacterBody : CharacterBody3D {
 	public void OnCheckSurfaceAreaEntered(Node body) {
 		GD.Print($"body - {body.Name}");
 		if (body.IsInGroup("Snow")) {
-			walkingSnowAudio.VolumeDb = 0f;
-			walkingWoodAudio.VolumeDb = -80f;
-			GD.Print($"Игрок ходит по снегу, walkingSnowAudio = {walkingSnowAudio.VolumeDb}, walkingWoodAudio = {walkingWoodAudio.VolumeDb}");
+			_walkingSnowAudio.VolumeDb = 0f;
+			_walkingWoodAudio.VolumeDb = -80f;
+			GD.Print($"Игрок ходит по снегу, _walkingSnowAudio = {_walkingSnowAudio.VolumeDb}, _walkingWoodAudio = {_walkingWoodAudio.VolumeDb}");
 		} else if (body.IsInGroup("Wood")) {
-			walkingSnowAudio.VolumeDb = -80f;
-			walkingWoodAudio.VolumeDb = 0f;
-			GD.Print($"Игрок ходит по дереву, walkingSnowAudio = {walkingSnowAudio.VolumeDb}, walkingWoodAudio = {walkingWoodAudio.VolumeDb}");
+			_walkingSnowAudio.VolumeDb = -80f;
+			_walkingWoodAudio.VolumeDb = 0f;
+			GD.Print($"Игрок ходит по дереву, _walkingSnowAudio = {_walkingSnowAudio.VolumeDb}, _walkingWoodAudio = {_walkingWoodAudio.VolumeDb}");
 		}
 	}
 	
 	private void SetAnimation() {
 		if (!IsOnFloor()) {
-			isJumping = true;
+			_isJumping = true;
 		} else {
-			isJumping = false;
+			_isJumping = false;
 		}
-		if (isRunning && !isJumping) {
-			animations.Play("run");
-		} else if (isWalking && !isJumping) {
-			animations.Play("walk");
-		} else if (isJumping) {
-			animations.Play("jump");
+		if (_isRunning && !_isJumping) {
+			_animations.Play("run");
+		} else if (_isWalking && !_isJumping) {
+			_animations.Play("walk");
+		} else if (_isJumping) {
+			_animations.Play("jump");
 		} else {
-			animations.Play("idle");
+			_animations.Play("idle");
 		}
 	}
 	
 	private void MovePlayer(double delta) {
 		if (GameManager.Instance.IsEventAnimationIsOngoing) {
-			characterBodyShape.Disabled = true;
+			_characterBodyShape.Disabled = true;
 			return;
 		}
 		else {
-			characterBodyShape.Disabled = false;
+			_characterBodyShape.Disabled = false;
 		}
 		Vector3 velocity = Velocity;
-		IsDialogueGoing = GameManager.Instance.IsDialogueGoing;
-		if (IsDialogueGoing) {
+		_isDialogueGoing = GameManager.Instance.IsDialogueGoing;
+		if (_isDialogueGoing) {
 			return;
 		}
 		
@@ -140,18 +143,18 @@ public partial class CharacterBody : CharacterBody3D {
 		{
 			velocity += GetGravity() * (float)delta;
 		}
-		runBar.Value = runEnergy;
+		_runBar.Value = _runEnergy;
 		UpdateRunBar();
 		
 		bool isRunPressed = Input.IsActionPressed("run");
 		bool isjumpPressed = Input.IsActionPressed("jump");
 		
-		if (isRunPressed && runEnergy > 20f) {
-			if (!isRunning) {
-				speed = RUN_SPEED;
-				isRunning = true;
+		if (isRunPressed && _runEnergy > 20f) {
+			if (!_isRunning) {
+				speed = RunSpeed;
+				_isRunning = true;
 			}
-			runEnergy -= dischargeRate * (float)delta;
+			_runEnergy -= _dischargeRate * (float)delta;
 		}
 		else {
 			ChargeRecovery(delta);
@@ -159,7 +162,7 @@ public partial class CharacterBody : CharacterBody3D {
 
 		if (isjumpPressed && IsOnFloor())
 		{
-			velocity.Y = JUMP_VELOITY;
+			velocity.Y = JumpVelocity;
 		}
 		
 		Vector2 inputDir = Input.GetVector("move_back", "move_forward", "move_left", "move_right");
@@ -168,74 +171,74 @@ public partial class CharacterBody : CharacterBody3D {
 		{
 			velocity.X = direction.X * speed;
 			velocity.Z = direction.Z * speed;
-			isWalking = true;
+			_isWalking = true;
 		}
 		else
 		{
-			velocity.X = Mathf.MoveToward(Velocity.X, 0, FRICTION * (float)delta);
-			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, FRICTION * (float)delta);
-			isWalking = false;
+			velocity.X = Mathf.MoveToward(Velocity.X, 0, Friction * (float)delta);
+			velocity.Z = Mathf.MoveToward(Velocity.Z, 0, Friction * (float)delta);
+			_isWalking = false;
 		}
 		
 		Velocity = velocity;
 		MoveAndSlide();
 	}
 	private void UpdateRunBar() {
-		if (runEnergy == 100f) {
-			runBar.Hide();
+		if (_runEnergy == 100f) {
+			_runBar.Hide();
 		} else {
-			runBar.Show();
+			_runBar.Show();
 		}
 	}
 	
 	private void ChargeRecovery(double delta) {
-		if (isRunning) {
-			speed = DEFAULT_SPEED;
-			isRunning = false;
+		if (_isRunning) {
+			speed = DefaultSpeed;
+			_isRunning = false;
 		}
-		if (runEnergy < 100f) {
-			if (restTime < 5f && runEnergy < 20f) {
-				restTime += (float)delta + 0.1f;
+		if (_runEnergy < 100f) {
+			if (_restTime < 5f && _runEnergy < 20f) {
+				_restTime += (float)delta + 0.1f;
 			}
 			else {
-				runEnergy += dischargeRate * (float)delta;
-				restTime = 0f;
+				_runEnergy += _dischargeRate * (float)delta;
+				_restTime = 0f;
 			}
 		}
-		if (runEnergy > maxRunEnergy) runEnergy = 100;
+		if (_runEnergy > _maxRunEnergy) _runEnergy = 100;
 	}
 	
 	private void Pause() {
-		if (isPaused) {
+		if (_isPaused) {
 			Engine.TimeScale = 1;
-			pauseMenu.Hide();
+			_pauseMenu.Hide();
 			Input.SetMouseMode(Input.MouseModeEnum.Captured);
 		}
 		else {
 			Engine.TimeScale = 0;
-			pauseMenu.Show();
+			_pauseMenu.Show();
 			Input.SetMouseMode(Input.MouseModeEnum.Visible);
 		}
-		firstgo = false;
+		_firstgo = false;
 	}
 	
 	private void IsItPaused() {
 		if (Engine.TimeScale == 1) {
-			isPaused = false;
-			pauseMenu.Hide();
+			_isPaused = false;
+			_pauseMenu.Hide();
 		}
 		else {
-			isPaused = true;
+			_isPaused = true;
 		}
-		if (firstgo) {
-			isPaused = true;
+		if (_firstgo) {
+			_isPaused = true;
 		}
 	}
 	
 	private bool IsInventoryVisible() {
-		return inventory.Visible;
+		return _inventory.Visible;
 	}
 	private bool IsSomeGuiOpen() {
-		return isPaused || firstgo || IsInventoryVisible() || IsDialogueGoing;
+		return _isPaused || _firstgo || IsInventoryVisible() || _isDialogueGoing;
 	}
 }

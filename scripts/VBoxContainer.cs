@@ -30,7 +30,9 @@ public partial class VBoxContainer : Godot.VBoxContainer {
 		
 		config.SetValue("Player", "player_position_x", GameManager.Instance.Player.GlobalPosition.X);
 		config.SetValue("Player", "player_position_y", GameManager.Instance.Player.GlobalPosition.Y);
+		config.SetValue("Player", "player_position_z", GameManager.Instance.Player.GlobalPosition.Z);
 		config.SetValue("Scene", "current_scene", GetTree().CurrentScene.Name);
+		config.SetValue("CutSceneFlag", "is_begining_cut_scene_seen", GameManager.Instance.IsBeginingCutSceneSeen);
 		
 		config.Save("res://configs/save.cfg");
 		

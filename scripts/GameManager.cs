@@ -7,6 +7,7 @@ public partial class GameManager : Node
 	public Node3D World { get; set; }
 	public Node3D Player { get; set; }
 	public CharacterBody3D PlayerCharacterBody { get; set; }
+	public Vector3 SavedPlayerPosition { get; set; } = Vector3.Zero;
 	public Sprite2D PressESprite { get; set; }
 	public bool IsDialogueGoing = false;
 	public bool IsEventAnimationIsOngoing = false;
@@ -16,6 +17,7 @@ public partial class GameManager : Node
 	public string DownloadableScene;
 	public bool playerCaughtUp = false;
 	public bool IsEndHappy;
+	public bool IsBeginingCutSceneSeen = false;
 	
 	public override void _Ready()
 	{

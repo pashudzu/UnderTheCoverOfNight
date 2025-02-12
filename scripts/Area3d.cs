@@ -3,34 +3,34 @@ using System;
 
 public partial class Area3d : Area3D
 {
-	private Node3D player;
-	private Sprite2D pressESprite;
-	private Polygon2D dialogue;
-	private AnimationPlayer textAnimation;
-	private Label label;
-	private bool bodyInRange = false;
-	private bool IsDialogueOngoing = false;
-	private string[] pages = new string[4];
-	private int openPage = 0;
-	private Area3D petrol;
+	private Node3D _player;
+	private Sprite2D _pressESprite;
+	private Polygon2D _dialogue;
+	private AnimationPlayer _textAnimation;
+	private Label _label;
+	private bool _bodyInRange = false;
+	private bool _IsDialogueOngoing = false;
+	private string[] _pages = new string[4];
+	private int _openPage = 0;
+	private Area3D _petrol;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		if (GameManager.Instance.Player == null) {
 			return;
 		}
-		petrol = GetParent().GetParent().GetNode<Area3D>("Petrol");
-		player = GameManager.Instance.Player;
-		label = player.GetNode<Label>("CharacterBody/Dialogue/Label");
-		textAnimation = player.GetNode<AnimationPlayer>("CharacterBody/Dialogue/Label/TextAnimation");
-		dialogue = player.GetNode<Polygon2D>("CharacterBody/Dialogue");
-		pressESprite = player.GetNode<Sprite2D>("CharacterBody/PressESprite");
+		_petrol = GetParent().GetParent().GetNode<Area3D>("Petrol");
+		_player = GameManager.Instance.Player;
+		_label = _player.GetNode<Label>("CharacterBody/Dialogue/Label");
+		_textAnimation = _player.GetNode<AnimationPlayer>("CharacterBody/Dialogue/Label/TextAnimation");
+		_dialogue = _player.GetNode<Polygon2D>("CharacterBody/Dialogue");
+		_pressESprite = _player.GetNode<Sprite2D>("CharacterBody/PressESprite");
 		Connect("body_entered", new Callable(this, nameof(OnBodyEntered)));
 		Connect("body_exited", new Callable(this, nameof(OnBodyExited)));
-		pages[0] = "Продавец: здравствуйте, что вам нужно?";
-		pages[1] = "Ты: здравствуйте, мне нужна канистра бензина на 5 литра.";
-		pages[2] = "Продавец: хорошо, вот, только тут больше 5 литров, секунду...\nДержи, с тебя 250 рублей.";
-		pages[3] = "Ты: спасибо до свидания!";
+		_pages[0] = "Продавец: здравствуйте, что вам нужно?";
+		_pages[1] = "Ты: здравствуйте, мне нужна канистра бензина на 5 литра.";
+		_pages[2] = "Продавец: хорошо, вот, только тут больше 5 литров, секунду...\nДержи, с тебя 250 рублей.";
+		_pages[3] = "Ты: спасибо до свидания!";
 	}
 	public override void _Process(double delta)
 	{
@@ -38,23 +38,23 @@ public partial class Area3d : Area3D
 			return;
 		}
 		if (Input.IsActionJustPressed("next")) {
-			openPage++;
-			if (openPage < 4) {
-				label.SetText(pages[openPage]);
-				textAnimation.Play("show_text");
+			_openPage++;
+			if (_openPage < 4) {
+				_label.SetText(_pages[_openPage]);
+				_textAnimation.Play("show_text");
 			} else {
 				StopDialogue();
 			}
 		}
-		if (Input.IsActionJustPressed("skip") && IsDialogueOngoing) {
+		if (Input.IsActionJustPressed("skip") && _IsDialogueOngoing) {
 			StopDialogue();
 		}
-		if (bodyInRange && Input.IsActionJustPressed("take_item")) {
+		if (_bodyInRange && Input.IsActionJustPressed("take_item")) {
 			Input.SetMouseMode(Input.MouseModeEnum.Visible);
-			dialogue.Visible = true;
-			textAnimation.Play("show_text");
+			_dialogue.Visible = true;
+			_textAnimation.Play("show_text");
 			GameManager.Instance.IsDialogueGoing = true;
-			IsDialogueOngoing = true;
+			_IsDialogueOngoing = true;
 			ChangePressESpriteVisibility();
 		}
 	}
@@ -62,25 +62,25 @@ public partial class Area3d : Area3D
 		Input.SetMouseMode(Input.MouseModeEnum.Captured);
 		GameManager.Instance.IsDialogueGoing = false;
 		ChangePressESpriteVisibility();
-		petrol.Visible = true;
-		petrol.Monitoring = true;
-		GD.Print($"Petrol having {petrol.Visible} visible and {petrol.Monitoring} monitoring");
-		dialogue.QueueFree();
+		_petrol.Visible = true;
+		_petrol.Monitoring = true;
+		GD.Print($"Petrol having {_petrol.Visible} visible and {_petrol.Monitoring} monitoring");
+		_dialogue.QueueFree();
 		QueueFree();
 	}
 	private void OnBodyEntered(Node body) {
 		if (body.IsInGroup("Player")) {
 			ChangePressESpriteVisibility();
-			bodyInRange = true;
+			_bodyInRange = true;
 		}
 	}
 	private void OnBodyExited(Node body) {
 		if(body.IsInGroup("Player")) {
 			ChangePressESpriteVisibility();
-			bodyInRange = false;
+			_bodyInRange = false;
 		}
 	}
 	private void ChangePressESpriteVisibility() {
-		pressESprite.Visible = !pressESprite.Visible;
+		_pressESprite.Visible = !_pressESprite.Visible;
 	}
 }

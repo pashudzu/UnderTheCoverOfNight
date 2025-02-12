@@ -3,22 +3,22 @@ using System;
 
 public partial class EventAnimationPlayer : AnimationPlayer
 {
-	Camera3D mainCamera;
-	Camera3D awakeningCamera;
+	private Camera3D _mainCamera;
+	private Camera3D _awakeningCamera;
 	
 	public override void _Ready()
 	{
 		Play("Awakening");
-		awakeningCamera = GetNode<Camera3D>("Camera3D");
-		mainCamera = GameManager.Instance.Player.GetNode<Camera3D>("CharacterBody/Head/Camera3D");
+		_awakeningCamera = GetNode<Camera3D>("Camera3D");
+		_mainCamera = GameManager.Instance.Player.GetNode<Camera3D>("CharacterBody/Head/Camera3D");
 	}
 	public override void _Process(double delta) {
 		if (IsPlaying()) {
 			GameManager.Instance.IsEventAnimationIsOngoing = true;
-			awakeningCamera.MakeCurrent();
+			_awakeningCamera.MakeCurrent();
 		} else {
 			GameManager.Instance.IsEventAnimationIsOngoing = false;
-			mainCamera.MakeCurrent();
+			_mainCamera.MakeCurrent();
 		}
 	}
 }
