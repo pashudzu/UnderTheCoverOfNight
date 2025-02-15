@@ -27,12 +27,24 @@ public partial class VBoxContainer : Godot.VBoxContainer {
 	}
 	public void OnSaveAndQuitButtonPresssed() {
 		var config = new ConfigFile();
+<<<<<<< Updated upstream
 		
 		config.SetValue("Player", "player_position_x", GameManager.Instance.Player.GlobalPosition.X);
 		config.SetValue("Player", "player_position_y", GameManager.Instance.Player.GlobalPosition.Y);
+=======
+		CharacterBody3D playerCharacterBody = GameManager.Instance.Player.GetNode<CharacterBody3D>("CharacterBody");
+		config.SetValue("Player", "player_position_x", playerCharacterBody.GlobalPosition.X);
+		config.SetValue("Player", "player_position_y", playerCharacterBody.GlobalPosition.Y);
+		config.SetValue("Player", "player_position_z", playerCharacterBody.GlobalPosition.Z);
+>>>>>>> Stashed changes
 		config.SetValue("Scene", "current_scene", GetTree().CurrentScene.Name);
 		
-		config.Save("res://configs/save.cfg");
+		var dir = DirAccess.Open("user://");
+		if (!dir.DirExists("user://configs")) {
+			dir.MakeDir("user://configs");
+		}
+		
+		config.Save("user://configs/save.cfg");
 		
 		GD.Print("Игра сохранена");
 		

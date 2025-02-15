@@ -38,12 +38,21 @@ public partial class CharacterBody : CharacterBody3D {
 	private bool IsDialogueGoing;
 	private CollisionShape3D characterBodyShape;
 	
+<<<<<<< Updated upstream
 	public override void _Ready() {
 		characterBodyShape = GetNode<CollisionShape3D>("CollisionShape3D");
 		walkingSnowAudio = GetNode<AudioStreamPlayer3D>("Head/Camera3D/WalkingSnowAudio");
 		walkingWoodAudio = GetNode<AudioStreamPlayer3D>("Head/Camera3D/WalkingWoodAudio");
 		checkSurfaceArea3D = GetNode<Area3D>("CheckSurfaceArea3D");
 		animations = GetNode<AnimationPlayer>("Animations");
+=======
+	public override async void _Ready() {
+		_characterBodyShape = GetNode<CollisionShape3D>("CollisionShape3D");
+		_walkingSnowAudio = GetNode<AudioStreamPlayer3D>("Head/Camera3D/WalkingSnowAudio");
+		_walkingWoodAudio = GetNode<AudioStreamPlayer3D>("Head/Camera3D/WalkingWoodAudio");
+		_checkSurfaceArea3D = GetNode<Area3D>("CheckSurfaceArea3D");
+		_animations = GetNode<AnimationPlayer>("Animations");
+>>>>>>> Stashed changes
 		if (GameManager.Instance != null) {
 			GameManager.Instance.Player = GetParent<Node3D>();
 			GD.Print("GameManager.Instance.Player инициализирован.");
@@ -52,11 +61,26 @@ public partial class CharacterBody : CharacterBody3D {
 		}
 		GameManager.Instance.PlayerCharacterBody = this;
 		Input.SetMouseMode(Input.MouseModeEnum.Captured);
+<<<<<<< Updated upstream
 		head = GetNodeOrNull<MeshInstance3D>("Head");
 		pauseMenu = GetNodeOrNull<Control>("PauseMenu");
 		inventory = GetNodeOrNull<Control>("Inventory");
 		runBar = GetNodeOrNull<ProgressBar>("RunBar");
 		checkSurfaceArea3D.Connect("body_entered", new Callable(this, nameof(OnCheckSurfaceAreaEntered)));
+=======
+		_head = GetNodeOrNull<MeshInstance3D>("Head");
+		_pauseMenu = GetNodeOrNull<Control>("PauseMenu");
+		_inventory = GetNodeOrNull<Control>("Inventory");
+		_runBar = GetNodeOrNull<ProgressBar>("RunBar");
+		
+		await ToSignal(GetTree(), "process_frame");
+		
+		if (GameManager.Instance.SavedPlayerPosition != Vector3.Zero) {
+			GetParent<Node3D>().GlobalPosition = GameManager.Instance.SavedPlayerPosition;
+			GD.Print($"Позиция игрока возобновлена: {GlobalPosition}.");
+		}
+		_checkSurfaceArea3D.Connect("body_entered", new Callable(this, nameof(OnCheckSurfaceAreaEntered)));
+>>>>>>> Stashed changes
 	}
 	
 	public override void _Input(InputEvent @event) {
