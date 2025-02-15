@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+[merge "ours"]
+    name = "Автоматическое разрешение конфликтов: выбор нашей версии"
+    driver = true
