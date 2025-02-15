@@ -31,24 +31,18 @@ public partial class SaveChoice : Control
 	private void GettingConfigData() {
 		var config = new ConfigFile();
 		
-		Error err = config.Load("res://configs/save.cfg");
+		Error err = config.Load("user://configs/save.cfg");
 		
 		if (err != Error.Ok) {
 			GD.Print("Ошибка загрузки конфига");
 			return;
 		}
 		
-		foreach (String Player in config.GetSections()) {
-			_playerPositionX = (float)config.GetValue("Player", "player_position_x");
-			_playerPositionY = (float)config.GetValue("Player", "player_position_y");
-			_playerPositionZ = (float)config.GetValue("Player", "player_position_z");
-		}
-		foreach (String Scene in config.GetSections()) {
-			_currentScene = (string)config.GetValue("Scene", "current_scene");
-		}
-		foreach (String CutSceneFlag in config.GetSections()) {
-			GameManager.Instance.IsBeginingCutSceneSeen = (bool)config.GetValue("CutSceneFlag", "is_begining_cut_scene_seen");
-		}
+		_playerPositionX = (float)config.GetValue("Player", "player_position_x");
+		_playerPositionY = (float)config.GetValue("Player", "player_position_y");
+		_playerPositionZ = (float)config.GetValue("Player", "player_position_z");
+		_currentScene = (string)config.GetValue("Scene", "current_scene");
+		GameManager.Instance.IsBeginingCutSceneSeen = (bool)config.GetValue("CutSceneFlag", "is_begining_cut_scene_seen");
 	}
 	
 	private void SetPastGameProgress() {
