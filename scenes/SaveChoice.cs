@@ -3,53 +3,26 @@ using System;
 
 public partial class SaveChoice : Control
 {
-	private Button _saveSlotButton;
-	private Vector3 _newPosition;
-	private Vector3 _newRotation;
-	private string _currentScene;
-	
 	public override void _Ready()
 	{
-		_saveSlotButton = GetNode<Button>("ColorRect/SaveSlotButton");
-		_saveSlotButton.Connect("pressed", Callable.From(OnSaveSlotButtonPressed));
+		Button button1 = GetNode<Button>("SlotButton1");
+		Button button2 = GetNode<Button>("SlotButton2");
+		Button button3 = GetNode<Button>("SlotButton3");
+		button1.Connect("pressed", Callable.From(OnSlotButton1Pressed));
+		button2.Connect("pressed", Callable.From(OnSlotButton2Pressed));
+		button3.Connect("pressed", Callable.From(OnSlotButton3Pressed));
 	}
-	
-	public void OnSaveSlotButtonPressed() {
-		GettingConfigData();
-		SetPastGameProgress();
+	public void OnSlotButton1Pressed() {
+		ChangeScene();
+	}
+	public void OnSlotButton2Pressed() {
+		ChangeScene();
+	}
+	public void OnSlotButton3Pressed() {
 		ChangeScene();
 	}
 	private void ChangeScene() {
-		string _scenePath = "res://scenes/"+ _currentScene +".tscn";
-		GD.Print(_scenePath);
-		GameManager.Instance.DownloadableScene = _scenePath;
-		PackedScene loadScene = (PackedScene)ResourceLoader.Load("res://scenes/loading_scene.tscn");
-		GetTree().ChangeSceneToPacked(loadScene);
-	}
-	private void GettingConfigData() {
-		var config = new ConfigFile();
-		
-		Error err = config.Load("user://configs/save.cfg");
-		
-		if (err != Error.Ok) {
-			GD.Print("Ошибка загрузки конфига");
-			return;
-		}
-		
-		_newPosition.X = (float)config.GetValue("Player", "player_position_x");
-		_newPosition.Y = (float)config.GetValue("Player", "player_position_y");
-		_newPosition.Z = (float)config.GetValue("Player", "player_position_z");
-		_newRotation.X = (float)config.GetValue("Player", "player_head_rotation_x");
-		_newRotation.Y = (float)config.GetValue("Player", "player_head_rotation_y");
-		_newRotation.Z = (float)config.GetValue("Player", "player_head_rotation_z");
-		_currentScene = (string)config.GetValue("Scene", "current_scene");
-		GameManager.Instance.IsBeginingCutSceneSeen = (bool)config.GetValue("CutSceneFlag", "is_begining_cut_scene_seen");
-	}
-	
-	private void SetPastGameProgress() {
-		GameManager.Instance.SavedSceneName = _currentScene;
-		GameManager.Instance.SavedPlayerPosition = _newPosition;
-		GameManager.Instance.SavedPlayerRotation = _newRotation;
-		GD.Print($"После импорта данных из save.cfg позиция игрока: {GameManager.Instance.SavedPlayerPosition}");
+		PackedScene _nextScene = (PackedScene)ResourceLoader.Load("res://scenes/ui/continue_or_new_game_choice.tscn");
+		GetTree().ChangeSceneToPacked(_nextScene);
 	}
 }

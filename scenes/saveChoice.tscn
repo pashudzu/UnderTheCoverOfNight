@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://de8bcvbp4ojiq"]
+[gd_scene load_steps=3 format=3 uid="uid://dg8km423c0qe4"]
 
 [ext_resource type="Script" path="res://scenes/SaveChoice.cs" id="1_rq51k"]
 [ext_resource type="FontFile" uid="uid://dqaavidfe0cpf" path="res://RubikDistressed-Regular.ttf" id="1_ywdby"]
@@ -12,69 +12,54 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rq51k")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -250.0
-offset_right = 300.0
-offset_bottom = 250.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.427451)
-
-[node name="SaveSlotButton" type="Button" parent="ColorRect"]
+[node name="SlotButton1" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -188.0
-offset_top = 150.0
+offset_top = 224.0
 offset_right = 188.0
-offset_bottom = 234.0
+offset_bottom = 308.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 25
 text = "Сохранение 1"
 
-[node name="SaveSlotButton2" type="Button" parent="ColorRect"]
+[node name="SlotButton2" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -188.0
-offset_top = 250.0
+offset_top = 324.0
 offset_right = 188.0
-offset_bottom = 334.0
+offset_bottom = 408.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 25
 text = "Сохранение 2"
 
-[node name="SaveSlotButton3" type="Button" parent="ColorRect"]
+[node name="SlotButton3" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -188.0
-offset_top = 350.0
+offset_top = 424.0
 offset_right = 188.0
-offset_bottom = 434.0
+offset_bottom = 508.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 25
 text = "Сохранение 3"
 
-[node name="Label" type="Label" parent="ColorRect"]
+[node name="Label" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -188.5
-offset_top = 19.865
-offset_right = 188.5
-offset_bottom = 113.865
+offset_left = -289.0
+offset_top = 93.865
+offset_right = 289.0
+offset_bottom = 187.865
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.906024, 0.130013, 0.206023, 1)
 theme_override_fonts/font = ExtResource("1_ywdby")

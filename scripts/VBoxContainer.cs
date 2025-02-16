@@ -38,7 +38,8 @@ public partial class VBoxContainer : Godot.VBoxContainer {
 		config.SetValue("Player", "player_head_rotation_y", _playerCharacterBody.GlobalRotation.Y);
 		config.SetValue("Player", "player_head_rotation_z", _playerCharacterBody.GlobalRotation.Z);
 		config.SetValue("Scene", "current_scene", GetTree().CurrentScene.Name);
-		config.SetValue("CutSceneFlag", "is_begining_cut_scene_seen", GameManager.Instance.IsBeginingCutSceneSeen);
+		config.SetValue("CutSceneSeen", "is_begining_cut_scene_seen", GameManager.Instance.IsBeginingCutSceneSeen);
+		config.SetValue("CutSceneSeen", "is_awakening_cut_scene_seen", GameManager.Instance.IsAwakeningCutSceneSeen);
 		
 		var dir = DirAccess.Open("user://");
 		if (!dir.DirExists("user://configs")) {

@@ -8,7 +8,9 @@ public partial class EventAnimationPlayer : AnimationPlayer
 	
 	public override void _Ready()
 	{
-		Play("Awakening");
+		if (!GameManager.Instance.IsAwakeningCutSceneSeen) {
+			Play("Awakening");
+		}
 		_awakeningCamera = GetNode<Camera3D>("Camera3D");
 		_mainCamera = GameManager.Instance.Player.GetNode<Camera3D>("CharacterBody/Head/Camera3D");
 	}
@@ -19,6 +21,8 @@ public partial class EventAnimationPlayer : AnimationPlayer
 		} else {
 			GameManager.Instance.IsEventAnimationIsOngoing = false;
 			_mainCamera.MakeCurrent();
+			GameManager.Instance.IsAwakeningCutSceneSeen = true;
+			QueueFree();
 		}
 	}
 }

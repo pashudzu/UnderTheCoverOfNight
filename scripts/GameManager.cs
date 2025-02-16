@@ -18,8 +18,9 @@ public partial class GameManager : Node
 	public string DownloadableScene;
 	public bool playerCaughtUp = false;
 	public bool IsEndHappy;
-	public bool IsBeginingCutSceneSeen = false;
 	public string SavedSceneName;
+	public bool IsBeginingCutSceneSeen = false;
+	public bool IsAwakeningCutSceneSeen = false;
 	
 	public override void _Ready()
 	{
