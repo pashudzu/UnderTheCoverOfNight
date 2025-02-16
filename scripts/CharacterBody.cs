@@ -55,9 +55,16 @@ public partial class CharacterBody : CharacterBody3D {
 		_pauseMenu = GetNodeOrNull<Control>("PauseMenu");
 		_inventory = GetNodeOrNull<Control>("Inventory");
 		_runBar = GetNodeOrNull<ProgressBar>("RunBar");
-		if (GameManager.Instance.SavedPlayerPosition != Vector3.Zero) {
-			GlobalPosition = GameManager.Instance.SavedPlayerPosition;
+		var _gameManager = GameManager.Instance;
+		var _currentScene = GetTree().CurrentScene.Name;
+		string _savedSceneName = _gameManager.SavedSceneName;
+		if (_gameManager.SavedPlayerPosition != Vector3.Zero && _savedSceneName == _currentScene) {
+			GlobalPosition = _gameManager.SavedPlayerPosition;
 			GD.Print($"Позиция игрока возобновлена: {GlobalPosition}.");
+		}
+		if (_gameManager.SavedPlayerRotation != Vector3.Zero && _savedSceneName == _currentScene) {
+			GlobalRotation = _gameManager.SavedPlayerRotation;
+			GD.Print($"Поворот игрока возобновлён: {_head.GlobalRotation}");
 		}
 		_checkSurfaceArea3D.Connect("body_entered", new Callable(this, nameof(OnCheckSurfaceAreaEntered)));
 	}

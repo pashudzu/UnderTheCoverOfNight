@@ -4,10 +4,8 @@ using System;
 public partial class SaveChoice : Control
 {
 	private Button _saveSlotButton;
-	private Godot.Collections.Dictionary _gameData = new Godot.Collections.Dictionary();
-	private float _playerPositionX;
-	private float _playerPositionY;
-	private float _playerPositionZ;
+	private Vector3 _newPosition;
+	private Vector3 _newRotation;
 	private string _currentScene;
 	
 	public override void _Ready()
@@ -22,9 +20,9 @@ public partial class SaveChoice : Control
 		ChangeScene();
 	}
 	private void ChangeScene() {
-		string scenePath = "res://scenes/"+ _currentScene +".tscn";
-		GD.Print(scenePath);
-		GameManager.Instance.DownloadableScene = scenePath;
+		string _scenePath = "res://scenes/"+ _currentScene +".tscn";
+		GD.Print(_scenePath);
+		GameManager.Instance.DownloadableScene = _scenePath;
 		PackedScene loadScene = (PackedScene)ResourceLoader.Load("res://scenes/loading_scene.tscn");
 		GetTree().ChangeSceneToPacked(loadScene);
 	}
@@ -38,19 +36,20 @@ public partial class SaveChoice : Control
 			return;
 		}
 		
-		_playerPositionX = (float)config.GetValue("Player", "player_position_x");
-		_playerPositionY = (float)config.GetValue("Player", "player_position_y");
-		_playerPositionZ = (float)config.GetValue("Player", "player_position_z");
+		_newPosition.X = (float)config.GetValue("Player", "player_position_x");
+		_newPosition.Y = (float)config.GetValue("Player", "player_position_y");
+		_newPosition.Z = (float)config.GetValue("Player", "player_position_z");
+		_newRotation.X = (float)config.GetValue("Player", "player_head_rotation_x");
+		_newRotation.Y = (float)config.GetValue("Player", "player_head_rotation_y");
+		_newRotation.Z = (float)config.GetValue("Player", "player_head_rotation_z");
 		_currentScene = (string)config.GetValue("Scene", "current_scene");
 		GameManager.Instance.IsBeginingCutSceneSeen = (bool)config.GetValue("CutSceneFlag", "is_begining_cut_scene_seen");
 	}
 	
 	private void SetPastGameProgress() {
-		Vector3 newPosition;
-		newPosition.X = _playerPositionX;
-		newPosition.Y = _playerPositionY;
-		newPosition.Z = _playerPositionZ;
-		GameManager.Instance.SavedPlayerPosition = newPosition;
+		GameManager.Instance.SavedSceneName = _currentScene;
+		GameManager.Instance.SavedPlayerPosition = _newPosition;
+		GameManager.Instance.SavedPlayerRotation = _newRotation;
 		GD.Print($"После импорта данных из save.cfg позиция игрока: {GameManager.Instance.SavedPlayerPosition}");
 	}
 }

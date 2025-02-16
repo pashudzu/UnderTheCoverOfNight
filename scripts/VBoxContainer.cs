@@ -28,11 +28,15 @@ public partial class VBoxContainer : Godot.VBoxContainer {
 	public void OnSaveAndQuitButtonPresssed() {
 		var config = new ConfigFile();
 		
-		Vector3 _playerCharacterBodyPos = GameManager.Instance.Player.GetNode<CharacterBody3D>("CharacterBody").GlobalPosition;
+		CharacterBody3D _playerCharacterBody = GameManager.Instance.Player.GetNode<CharacterBody3D>("CharacterBody");
+		MeshInstance3D _playerCamera = _playerCharacterBody.GetNode<MeshInstance3D>("Head");
 		
-		config.SetValue("Player", "player_position_x", _playerCharacterBodyPos.X);
-		config.SetValue("Player", "player_position_y", _playerCharacterBodyPos.Y);
-		config.SetValue("Player", "player_position_z", _playerCharacterBodyPos.Z);
+		config.SetValue("Player", "player_position_x", _playerCharacterBody.GlobalPosition.X);
+		config.SetValue("Player", "player_position_y", _playerCharacterBody.GlobalPosition.Y);
+		config.SetValue("Player", "player_position_z", _playerCharacterBody.GlobalPosition.Z);
+		config.SetValue("Player", "player_head_rotation_x", _playerCharacterBody.GlobalRotation.X);
+		config.SetValue("Player", "player_head_rotation_y", _playerCharacterBody.GlobalRotation.Y);
+		config.SetValue("Player", "player_head_rotation_z", _playerCharacterBody.GlobalRotation.Z);
 		config.SetValue("Scene", "current_scene", GetTree().CurrentScene.Name);
 		config.SetValue("CutSceneFlag", "is_begining_cut_scene_seen", GameManager.Instance.IsBeginingCutSceneSeen);
 		

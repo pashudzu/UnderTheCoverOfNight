@@ -861,7 +861,7 @@ fog_light_energy = 0.2
 fog_density = 0.08
 fog_sky_affect = 0.85
 
-[node name="World" type="Node3D"]
+[node name="home_scene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.43414, -57.5491, -80.4834)
 script = ExtResource("1_srwtq")
 
