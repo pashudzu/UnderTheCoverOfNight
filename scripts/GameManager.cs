@@ -16,7 +16,7 @@ public partial class GameManager : Node
 	public string RightHandChild;
 	public bool CarIsFueled;
 	public string DownloadableScene;
-	public bool playerCaughtUp = false;
+	public bool PlayerCaughtUp = false;
 	public bool IsEndHappy;
 	public string SavedSceneName;
 	public bool IsBeginingCutSceneSeen = false;

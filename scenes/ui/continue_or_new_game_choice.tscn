@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkhj7y0nwgtea"]
+[gd_scene load_steps=3 format=3 uid="uid://dkhj7y0nwgtea"]
 
 [ext_resource type="Script" path="res://scripts/ContinueGameButton.cs" id="1_4xh35"]
+[ext_resource type="Script" path="res://scenes/ui/NewGameButton.cs" id="2_0wao7"]
 
 [node name="ContinueOrNewGameChoice" type="Control"]
 layout_mode = 3
@@ -37,6 +38,7 @@ custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 theme_override_font_sizes/font_size = 35
 text = "новая игра"
+script = ExtResource("2_0wao7")
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 1
