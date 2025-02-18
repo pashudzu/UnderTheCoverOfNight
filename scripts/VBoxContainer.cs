@@ -30,6 +30,7 @@ public partial class VBoxContainer : Godot.VBoxContainer {
 		
 		CharacterBody3D _playerCharacterBody = GameManager.Instance.Player.GetNode<CharacterBody3D>("CharacterBody");
 		MeshInstance3D _playerCamera = _playerCharacterBody.GetNode<MeshInstance3D>("Head");
+		CharacterBody3D _enemy = GameManager.Instance.Enemy;
 		
 		config.SetValue("Player", "player_position_x", _playerCharacterBody.GlobalPosition.X);
 		config.SetValue("Player", "player_position_y", _playerCharacterBody.GlobalPosition.Y);
@@ -37,6 +38,10 @@ public partial class VBoxContainer : Godot.VBoxContainer {
 		config.SetValue("Player", "player_head_rotation_x", _playerCharacterBody.GlobalRotation.X);
 		config.SetValue("Player", "player_head_rotation_y", _playerCharacterBody.GlobalRotation.Y);
 		config.SetValue("Player", "player_head_rotation_z", _playerCharacterBody.GlobalRotation.Z);
+		config.SetValue("Enemy", "enemy_position_x", _enemy.GlobalPosition.X);
+		config.SetValue("Enemy", "enemy_position_y", _enemy.GlobalPosition.Y);
+		config.SetValue("Enemy", "enemy_position_z", _enemy.GlobalPosition.Z);
+		config.SetValue("Enemy", "enemy_states", GameManager.Instance.SaveEnemyState);
 		config.SetValue("Scene", "current_scene", GetTree().CurrentScene.Name);
 		config.SetValue("CutSceneSeen", "is_begining_cut_scene_seen", GameManager.Instance.IsBeginingCutSceneSeen);
 		config.SetValue("CutSceneSeen", "is_awakening_cut_scene_seen", GameManager.Instance.IsAwakeningCutSceneSeen);

@@ -29,7 +29,7 @@ public partial class Enemy : CharacterBody3D
 		IsAtPost =          0b_0010_0000, //стоит на посту
 		InPatrollingGuard = 0b_0100_0000  //патрулирует
 	}
-	public EnemyStates EnemyState;
+	EnemyStates EnemyState;
 	
 	public override void _Ready() {
 		_player = GameManager.Instance.Player;
@@ -51,13 +51,26 @@ public partial class Enemy : CharacterBody3D
 				GD.PrintErr($"patrolPoint {i} у Eminem равен null");
 			}
 		}
+		var _gameManager = GameManager.Instance;
+		var _currentScene = GetTree().CurrentScene.Name;
+		string _savedSceneName = _gameManager.SavedSceneName;
+		if (_gameManager.SavedEnemyPosition != Vector3.Zero && _currentScene == _savedSceneName) {
+			GlobalPosition = _gameManager.SavedEnemyPosition;
+		}
 		_enemyFOV.Connect("body_entered", new Callable(this, nameof(OnFOVBodyEntered)));
 		_enemyFOV.Connect("body_exited", new Callable(this, nameof(OnFOVBodyExited)));
 		_nearbyZone.Connect("body_entered", new Callable(this, nameof(OnNearbyZoneEntered)));
 		_nearbyZone.Connect("body_exited", new Callable(this, nameof(OnNearbyZoneExited)));
 		_screamerZone.Connect("body_entered", new Callable(this, nameof(OnScremerZoneEntered)));
 		GD.Print("Монстр готов.");
-		EnemyState = EnemyStates.IsEnemyWalking | EnemyStates.IsAtPost;
+		if (EnemyState == null) {
+			EnemyState = EnemyStates.IsEnemyWalking | EnemyStates.IsPursuit;
+		} else {
+			int.TryParse(GameManager.Instance.SaveEnemyState, out int _saveEnemyStateInt);
+			EnemyState = (EnemyStates)_saveEnemyStateInt;
+			GD.Print($"EnemyState = {EnemyState}");
+		}
+		GameManager.Instance.Enemy = this;
 	}
 	public override void _Process(double delta) {
 		if (!HasState(EnemyStates.IsPursuit) && !HasState(EnemyStates.InPatrollingGuard)) {
@@ -67,7 +80,7 @@ public partial class Enemy : CharacterBody3D
 			CheckAlertState(delta);
 		}
 		MoveAndSlide();
-		if (!HasState(EnemyStates.IsEnemyWalking)) {
+		if (HasState(EnemyStates.IsEnemyWalking)) {
 			_animation.Play("ArmatureAction_003");
 		}
 		if (HasState(EnemyStates.IsPlayerNearby) && !_ghostSound.Playing) {
@@ -76,11 +89,11 @@ public partial class Enemy : CharacterBody3D
 	}
 	private void CheckAlertState(double delta) {
 		switch (EnemyState) {
-			case var _ when GameManager.Instance.IsEventAnimationIsOngoing:
-				EventPlayerAwaking();
-				break;
 			case var _ when HasState(EnemyStates.IsEnemyHit):
 				GameManager.Instance.PlayerCaughtUp = true;
+				break;
+			case var _ when GameManager.Instance.IsEventAnimationIsOngoing:
+				EventPlayerAwaking();
 				break;
 			case var _ when HasState(EnemyStates.IsPursuit):
 				PursuitState(delta);
@@ -102,8 +115,16 @@ public partial class Enemy : CharacterBody3D
 		}
 		_navAgent.TargetPosition = _allPoints[_nextPoint];
 		Vector3 direction = (_navAgent.GetNextPathPosition() - GlobalPosition).Normalized();
-		
-		MoveAndLookAtPosition(direction, delta);
+		Vector3 targetPosition = GlobalPosition - direction;
+		Vector3 currentVelocity = Velocity;
+		Vector3 targetVelocity = direction * Speed * (float)delta;
+		Velocity = currentVelocity.Lerp(targetVelocity, 0.1f); 
+		targetPosition.Y = GlobalPosition.Y;
+		if (!GlobalTransform.Origin.IsEqualApprox(targetPosition)) {
+			LookAt(targetPosition);
+		} else {
+			GD.PrintErr($"Призрак не может смотреть в одиноковую позицию. Current Position: {GlobalTransform.Origin}, Target Position: {targetPosition}. Ошибка в функции патрулирования.");
+		}
 		
 		if (GlobalPosition.DistanceTo(_allPoints[_nextPoint]) < 2) {
 			if (_allPoints != null) {
@@ -123,27 +144,34 @@ public partial class Enemy : CharacterBody3D
 		
 		Vector3 directionToPlayer = new Vector3(dirX, 0, dirZ).Normalized();
 		
-		MoveAndLookAtPosition(directionToPlayer, delta);
+		Velocity = directionToPlayer  * Speed * (float)delta;
 		
+		Vector3 targetPosition = GlobalPosition - directionToPlayer;
+		if (enemyPosition.DistanceTo(playerPosition) < 0.1f) {
+			targetPosition = new Vector3(playerPosition.X, playerPosition.Y, playerPosition.Z);
+			if (!GlobalTransform.Origin.IsEqualApprox(targetPosition)) {
+				LookAt(targetPosition);
+			} else {
+				GD.PrintErr($"Призрак не может смотреть в одиноковую позицию. Current Position: {GlobalTransform.Origin}, Target Position: {targetPosition}. Ошибка в функции преследываения.");
+			}
+		}
 		RemoveState(EnemyStates.IsAtPost);
+		ChangeStateToGameManager();
 	}
 	private void BackToPost(double delta) {
 		if (!HasState(EnemyStates.IsAtPost)) {
 			_navAgent.TargetPosition = _allPoints[0];
 			Vector3 direction = (_navAgent.GetNextPathPosition() - GlobalPosition).Normalized();
-			MoveAndLookAtPosition(direction, delta);
-		}
-	}
-	private void MoveAndLookAtPosition(Vector3 direction, double delta) {
-		Vector3 currentVelocity = Velocity;
-		Vector3 targetVelocity = direction * Speed * (float)delta;
-		Velocity = currentVelocity.Lerp(targetVelocity, 0.1f);
-		direction.Y = 0;
-		Vector3 targetPosition = GlobalPosition - direction;
-		if (!GlobalTransform.Origin.IsEqualApprox(targetPosition)) {
-			LookAt(targetPosition);
-		} else {
-			GD.PrintErr($"Призрак не может смотреть в одиноковую позицию. Current Position: {GlobalTransform.Origin}, Target Position: {targetPosition}. Ошибка в функции преследываения.");
+			Vector3 targetPosition = GlobalPosition + direction;
+			Vector3 currentVelocity = Velocity;
+			Vector3 targetVelocity = direction * Speed * (float)delta;
+			Velocity = currentVelocity.Lerp(targetVelocity, 0.1f); 
+			direction.Y = 0;
+			if (!GlobalTransform.Origin.IsEqualApprox(targetPosition)) {
+				LookAt(targetPosition);
+			} else {
+				GD.PrintErr($"Призрак не может смотреть в одиноковую позицию. Current Position: {GlobalTransform.Origin}, Target Position: {targetPosition}. Ошибка в функции преследываения.");
+			}
 		}
 	}
 	private void OnFOVBodyEntered(Node body) {
@@ -152,6 +180,7 @@ public partial class Enemy : CharacterBody3D
 			SetState(EnemyStates.IsSeenPlayer);
 			RemoveState(EnemyStates.IsAtPost);
 			RemoveState(EnemyStates.InPatrollingGuard);
+			ChangeStateToGameManager();
 		}
 	}
 	private void OnFOVBodyExited(Node body) {
@@ -159,16 +188,19 @@ public partial class Enemy : CharacterBody3D
 			RemoveState(EnemyStates.IsSeenPlayer);
 			RemoveState(EnemyStates.IsPursuit);
 			SetState(EnemyStates.InPatrollingGuard);
+			ChangeStateToGameManager();
 		}
 	}
 	private void OnNearbyZoneEntered(Node body) {
 		if (body.IsInGroup("Player")) {
 			SetState(EnemyStates.IsPlayerNearby);
+			ChangeStateToGameManager();
 		}
 	}
 	private void OnNearbyZoneExited(Node body) {
 		if(body.IsInGroup("Player")) {
 			RemoveState(EnemyStates.IsPlayerNearby);
+			ChangeStateToGameManager();
 		}
 	}
 	private void OnScremerZoneEntered(Node body) {
@@ -176,12 +208,13 @@ public partial class Enemy : CharacterBody3D
 			Screamer();
 		}
 	}
-	private void Screamer() {
+	private async void Screamer() {
 		RemoveState(EnemyStates.IsEnemyWalking);
 		SetState(EnemyStates.IsEnemyHit);
+		ChangeStateToGameManager();
 		_animation.Play("ArmatureAction_002");
 		GD.Print("Игрок видит скример");
-		Thread.Sleep(1000);
+		await ToSignal(GetTree().CreateTimer(1.0), "timeout");
 		string DownloadableScene = GameManager.Instance.DownloadableScene = "res://scenes/cutScene.tscn";
 		PackedScene loadScene = (PackedScene)ResourceLoader.Load("res://scenes/loading_scene.tscn");
 		CollisionsQueueFree();
@@ -194,6 +227,9 @@ public partial class Enemy : CharacterBody3D
 		_enemyFOV.CallDeferred("queue_free");
 		_nearbyZone.CallDeferred("queue_free");
 		_screamerZone.CallDeferred("queue_free");
+	}
+	public void ChangeStateToGameManager() {
+		GameManager.Instance.SaveEnemyState = Convert.ToString((int)EnemyState, 2);
 	}
 	private void RemoveState (EnemyStates state) {
 		EnemyState &= ~state;
