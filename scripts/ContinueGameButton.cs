@@ -56,6 +56,7 @@ public partial class ContinueGameButton : Button
 		GameManager.Instance.SavedSceneName = _currentScene;
 		GameManager.Instance.SavedPlayerPosition = _newPlayerPosition;
 		GameManager.Instance.SavedPlayerRotation = _newPlayerRotation;
+		GameManager.Instance.SavedEnemyPosition = _newEnemyPosition;
 		GameManager.Instance.SaveEnemyState = _enemyState;
 		GD.Print($"После импорта данных из save.cfg позиция игрока: {GameManager.Instance.SavedPlayerPosition}");
 	}

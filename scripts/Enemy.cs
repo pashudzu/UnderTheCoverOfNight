@@ -56,6 +56,9 @@ public partial class Enemy : CharacterBody3D
 		string _savedSceneName = _gameManager.SavedSceneName;
 		if (_gameManager.SavedEnemyPosition != Vector3.Zero && _currentScene == _savedSceneName) {
 			GlobalPosition = _gameManager.SavedEnemyPosition;
+			GD.Print($"Позиция монстра: {GlobalPosition}");
+		} else {
+			GD.Print($"_gameManager.SavedEnemyPosition{_gameManager.SavedEnemyPosition} == Vector3.Zero, или _currentScene({_currentScene}) == _savedSceneName({_savedSceneName})");
 		}
 		_enemyFOV.Connect("body_entered", new Callable(this, nameof(OnFOVBodyEntered)));
 		_enemyFOV.Connect("body_exited", new Callable(this, nameof(OnFOVBodyExited)));
