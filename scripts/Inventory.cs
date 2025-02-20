@@ -1,11 +1,13 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 public partial class Inventory : Control
 {
+	public static Inventory Instance { get; private set; }
 	private List<TextureButton> _buttons = new List<TextureButton>();//в _buttons входят руки + инвентарь
-	private List<TextureButton> _slots = new List<TextureButton>();//слоты это инвентарь
+	private List<TextureButton> _slots = new List<TextureButton>();  //слоты инвентаря
 	private Dictionary<int, Item> _items = new Dictionary<int, Item>();
 	private Vector2 _mousePosition;
 	private Texture2D _draggingSprite = null;
@@ -14,7 +16,6 @@ public partial class Inventory : Control
 	private bool _isDragging = false;
 	private int _buttonIndex;
 	public Sprite2D draggingSpriteInstance; 
-	public static Inventory Instance { get; private set; }
 	public bool isInventoryVisible = false;
 	public Node3D itemSceneInstance;
 	
@@ -34,12 +35,36 @@ public partial class Inventory : Control
 		_buttons.Add(GetNodeOrNull<TextureButton>("ColorRect/LeftHandButton"));
 		_buttons.Add(GetNodeOrNull<TextureButton>("ColorRect/RightHandButton"));
 		
-		_buttons[0].Connect("pressed", new Callable(this, nameof(OnButton1Pressed)));
-		_buttons[1].Connect("pressed", new Callable(this, nameof(OnButton2Pressed)));
-		_buttons[2].Connect("pressed", new Callable(this, nameof(OnButton3Pressed)));
-		_buttons[3].Connect("pressed", new Callable(this, nameof(OnButton4Pressed)));
-		_buttons[4].Connect("pressed", new Callable(this, nameof(OnButton5Pressed)));
-		_buttons[5].Connect("pressed", new Callable(this, nameof(OnButton6Pressed)));
+		if (_buttons[0] != null) {
+			_buttons[0].Connect("pressed", new Callable(this, nameof(OnButton1Pressed)));
+		} else {
+			GD.PrintErr("_buttons[0] == null");
+		}
+		if (_buttons[1] != null) {
+			_buttons[2].Connect("pressed", new Callable(this, nameof(OnButton2Pressed)));
+		} else {
+			GD.PrintErr("_buttons[2] == null");
+		}
+		if (_buttons[2] != null) {
+			_buttons[2].Connect("pressed", new Callable(this, nameof(OnButton3Pressed)));
+		} else {
+			GD.PrintErr("_buttons[2] == null");
+		}
+		if (_buttons[3] != null) {
+			_buttons[3].Connect("pressed", new Callable(this, nameof(OnButton4Pressed)));
+		} else {
+			GD.PrintErr("_buttons[3] == null");
+		}
+		if (_buttons[4] != null) {
+			_buttons[4].Connect("pressed", new Callable(this, nameof(OnButton5Pressed)));
+		} else {
+			GD.PrintErr("_buttons[4] == null");
+		}
+		if (_buttons[5] != null) {
+			_buttons[5].Connect("pressed", new Callable(this, nameof(OnButton6Pressed)));
+		} else {
+			GD.PrintErr("_buttons[5] == null");
+		}
 		
 		for (int i = 0; i < 6; i++) {
 			_items.TryAdd(i, null);
@@ -156,6 +181,8 @@ public partial class Inventory : Control
 				_items[i] = item;
 				_slots[i].TextureNormal = item.itemTextureInSlot;
 				GD.Print("Item добавлен в инвентарь");
+				
+				GameManager.Instance.SavedSlots = _slots.Select(_slots => _slots.TextureNormal.ResourcePath).ToList();
 				return;
 			}
 		}

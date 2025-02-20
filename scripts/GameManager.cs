@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class GameManager : Node
 {
@@ -8,6 +9,9 @@ public partial class GameManager : Node
 	public Node3D Player { get; set; }
 	public CharacterBody3D PlayerCharacterBody { get; set; }
 	public CharacterBody3D Enemy;
+	public string SavedSceneName;
+	public string SaveEnemyState;
+	public List<string> SavedSlots { get; set; } = new List<string>();
 	public Vector3 SavedPlayerPosition { get; set; } = Vector3.Zero;
 	public Vector3 SavedPlayerRotation { get; set; } = Vector3.Zero;
 	public Vector3 SavedEnemyPosition { get; set; } = Vector3.Zero;
@@ -22,8 +26,6 @@ public partial class GameManager : Node
 	public string LeftHandChild;
 	public string RightHandChild;
 	public string DownloadableScene;
-	public string SavedSceneName;
-	public string SaveEnemyState;
 	
 	public override void _Ready()
 	{
