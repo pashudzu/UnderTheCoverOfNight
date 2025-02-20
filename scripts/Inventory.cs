@@ -21,9 +21,10 @@ public partial class Inventory : Control
 	
 	public override void _Ready() {
 		Instance = this;
-		initializeButtonsAndSlots();
+		InitializeButtonsAndSlots();
+		ResumeInventoryData();
 	}
-	private void initializeButtonsAndSlots() {
+	private void InitializeButtonsAndSlots() {
 		_slots.Add(GetNodeOrNull<TextureButton>("ColorRect/GridContainer/TextureButton1"));
 		_slots.Add(GetNodeOrNull<TextureButton>("ColorRect/GridContainer/TextureButton2"));
 		_slots.Add(GetNodeOrNull<TextureButton>("ColorRect/GridContainer/TextureButton3"));
@@ -69,6 +70,18 @@ public partial class Inventory : Control
 		for (int i = 0; i < 6; i++) {
 			_items.TryAdd(i, null);
 			GD.Print($"new item in slot {i}");
+		}
+	}
+	private void ResumeInventoryData(){
+		if (GameManager.Instance.SavedSlots != null) {
+			string texturePath;
+			for (int i = 0; i < GameManager.Instance.SavedSlots.Count; i++) {
+				texturePath = GameManager.Instance.SavedSlots[i];
+				Texture2D texture = ResourceLoader.Load<Texture2D>(texturePath);
+				if (texture != null) {
+					_slots[i].TextureNormal = texture;
+				}
+			}
 		}
 	}
 	private void OnButton1Pressed() {

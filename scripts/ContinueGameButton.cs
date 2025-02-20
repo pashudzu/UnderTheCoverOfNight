@@ -1,13 +1,16 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class ContinueGameButton : Button
 {
 	private Vector3 _newPlayerPosition;
 	private Vector3 _newPlayerRotation;
 	private Vector3 _newEnemyPosition;
+	private List<string> _savedSlots = new List<string>();
 	private string _enemyState;
 	private string _currentScene;
+	private const int _countOfSlots = 4;
 	
 	public override void _Ready() 
 	{
@@ -47,7 +50,9 @@ public partial class ContinueGameButton : Button
 		_newEnemyPosition.Z = (float)config.GetValue("Enemy", "enemy_position_z");
 		_enemyState = (string)config.GetValue("Enemy", "enemy_states");
 		_currentScene = (string)config.GetValue("Scene", "current_scene");
-		
+		for (int i = 0; i < _countOfSlots; i++) {
+			_savedSlots.Add((string)config.GetValue("Inventory", $"inventory_slot_texture_path_{i}"));
+		}
 		GameManager.Instance.IsBeginingCutSceneSeen = (bool)config.GetValue("CutSceneSeen", "is_begining_cut_scene_seen");
 		GameManager.Instance.IsAwakeningCutSceneSeen = (bool)config.GetValue("CutSceneSeen","is_awakening_cut_scene_seen");
 	}
@@ -58,6 +63,7 @@ public partial class ContinueGameButton : Button
 		GameManager.Instance.SavedPlayerRotation = _newPlayerRotation;
 		GameManager.Instance.SavedEnemyPosition = _newEnemyPosition;
 		GameManager.Instance.SaveEnemyState = _enemyState;
+		GameManager.Instance.SavedSlots = _savedSlots;
 		GD.Print($"После импорта данных из save.cfg позиция игрока: {GameManager.Instance.SavedPlayerPosition}");
 	}
 }
