@@ -20,7 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://1gsxyebfh6it" path="res://sounds/snow step speedup.wav" id="14_er4qu"]
 [ext_resource type="AudioStream" uid="uid://nvhbsq2ilopi" path="res://sounds/MonsterIsNearby.wav" id="14_xlpfy"]
 [ext_resource type="AudioStream" uid="uid://dc03inv6nbrlo" path="res://sounds/wind.ogg" id="15_fy630"]
-[ext_resource type="PackedScene" uid="uid://uwi8bvjma7nc" path="res://scripts/dialogue.tscn" id="19_cgvyw"]
+[ext_resource type="PackedScene" uid="uid://uwi8bvjma7nc" path="res://scenes/ui/dialogue.tscn" id="19_cgvyw"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_vn04q"]
 

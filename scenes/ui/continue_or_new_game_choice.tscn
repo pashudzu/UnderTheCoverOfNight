@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkhj7y0nwgtea"]
 
 [ext_resource type="Script" path="res://scripts/ContinueGameButton.cs" id="1_4xh35"]
-[ext_resource type="Script" path="res://scenes/ui/NewGameButton.cs" id="2_0wao7"]
+[ext_resource type="Script" path="res://scripts/NewGameButton.cs" id="2_0wao7"]
 
 [node name="ContinueOrNewGameChoice" type="Control"]
 layout_mode = 3

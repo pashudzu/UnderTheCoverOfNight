@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dg8km423c0qe4"]
 
-[ext_resource type="Script" path="res://scenes/SaveChoice.cs" id="1_rq51k"]
+[ext_resource type="Script" path="res://scripts/SaveChoice.cs" id="1_rq51k"]
 [ext_resource type="FontFile" uid="uid://dqaavidfe0cpf" path="res://RubikDistressed-Regular.ttf" id="1_ywdby"]
 
 [node name="ChoiceOfSaves" type="Control"]
