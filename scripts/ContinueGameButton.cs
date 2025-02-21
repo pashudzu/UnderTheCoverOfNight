@@ -8,9 +8,11 @@ public partial class ContinueGameButton : Button
 	private Vector3 _newPlayerRotation;
 	private Vector3 _newEnemyPosition;
 	private List<string> _savedSlots = new List<string>();
+	private Dictionary<int, string> _savedItems = new Dictionary<int, string>();
 	private string _enemyState;
 	private string _currentScene;
 	private const int _countOfSlots = 4;
+	private const int _countOfItems = 6;
 	
 	public override void _Ready() 
 	{
@@ -53,17 +55,21 @@ public partial class ContinueGameButton : Button
 		for (int i = 0; i < _countOfSlots; i++) {
 			_savedSlots.Add((string)config.GetValue("Inventory", $"inventory_slot_texture_path_{i}"));
 		}
+		for(int i = 0; i < _countOfItems; i++) {
+			_savedItems[i] = (string)config.GetValue("Inventory", $"inventory_item_{i}");
+		}
 		GameManager.Instance.IsBeginingCutSceneSeen = (bool)config.GetValue("CutSceneSeen", "is_begining_cut_scene_seen");
 		GameManager.Instance.IsAwakeningCutSceneSeen = (bool)config.GetValue("CutSceneSeen","is_awakening_cut_scene_seen");
 	}
 	
 	private void SetPastGameProgress() {
+		GameManager.Instance.WasGameSaved = true;
 		GameManager.Instance.SavedSceneName = _currentScene;
 		GameManager.Instance.SavedPlayerPosition = _newPlayerPosition;
 		GameManager.Instance.SavedPlayerRotation = _newPlayerRotation;
 		GameManager.Instance.SavedEnemyPosition = _newEnemyPosition;
 		GameManager.Instance.SaveEnemyState = _enemyState;
 		GameManager.Instance.SavedSlots = _savedSlots;
-		GD.Print($"После импорта данных из save.cfg позиция игрока: {GameManager.Instance.SavedPlayerPosition}");
+		GameManager.Instance.SavedItems = _savedItems;
 	}
 }

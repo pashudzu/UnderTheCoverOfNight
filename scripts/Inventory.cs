@@ -57,6 +57,12 @@ public partial class Inventory : Control
 		}
 	}
 	private void ResumeInventoryData(){
+		if (GameManager.Instance.WasGameSaved) {
+			ResumeSlotsData();
+			ResumeItemData();
+		}
+	}
+	private void ResumeSlotsData() {
 		if (GameManager.Instance.SavedSlots != null) {
 			string texturePath;
 			for (int i = 0; i < GameManager.Instance.SavedSlots.Count; i++) {
@@ -67,6 +73,11 @@ public partial class Inventory : Control
 				}
 			}
 		}
+	}
+	private void ResumeItemData() {
+		//foreach(var pair in GameManager.Instance.SavedItems) {
+			//
+		//}
 	}
 	private void OnButton1Pressed() {
 		_buttonIndex = 0;

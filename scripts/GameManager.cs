@@ -24,6 +24,7 @@ public partial class GameManager : Node
 	public bool IsEndHappy;
 	public bool CarIsFueled;
 	public bool PlayerCaughtUp { get; set; } = false;
+	public bool WasGameSaved = false;
 	public string LeftHandChild;
 	public string RightHandChild;
 	public string DownloadableScene;
