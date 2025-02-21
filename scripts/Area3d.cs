@@ -55,13 +55,13 @@ public partial class Area3d : Area3D
 			_textAnimation.Play("show_text");
 			GameManager.Instance.IsDialogueGoing = true;
 			_IsDialogueOngoing = true;
-			ChangePressESpriteVisibility();
+			_pressESprite.Visible = false;
 		}
 	}
 	private void StopDialogue() {
 		Input.SetMouseMode(Input.MouseModeEnum.Captured);
 		GameManager.Instance.IsDialogueGoing = false;
-		ChangePressESpriteVisibility();
+		_pressESprite.Visible = false;
 		_petrol.Visible = true;
 		_petrol.Monitoring = true;
 		GD.Print($"Petrol having {_petrol.Visible} visible and {_petrol.Monitoring} monitoring");
@@ -70,17 +70,14 @@ public partial class Area3d : Area3D
 	}
 	private void OnBodyEntered(Node body) {
 		if (body.IsInGroup("Player")) {
-			ChangePressESpriteVisibility();
+			_pressESprite.Visible = true;
 			_bodyInRange = true;
 		}
 	}
 	private void OnBodyExited(Node body) {
 		if(body.IsInGroup("Player")) {
-			ChangePressESpriteVisibility();
+			_pressESprite.Visible = false;
 			_bodyInRange = false;
 		}
-	}
-	private void ChangePressESpriteVisibility() {
-		_pressESprite.Visible = !_pressESprite.Visible;
 	}
 }

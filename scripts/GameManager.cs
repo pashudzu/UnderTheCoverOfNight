@@ -11,6 +11,7 @@ public partial class GameManager : Node
 	public CharacterBody3D Enemy;
 	public string SavedSceneName;
 	public string SaveEnemyState;
+	public Dictionary<int, string> SavedItems = new Dictionary<int, string>();
 	public List<string> SavedSlots { get; set; } = new List<string>();
 	public Vector3 SavedPlayerPosition { get; set; } = Vector3.Zero;
 	public Vector3 SavedPlayerRotation { get; set; } = Vector3.Zero;

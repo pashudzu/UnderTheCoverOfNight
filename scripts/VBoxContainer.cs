@@ -56,6 +56,14 @@ public partial class VBoxContainer : Godot.VBoxContainer {
 		} else {
 			GD.PrintErr($"Не достаточно данных в листе _gameManager.SavedSlots. Необходимо 4+ значений, но их {_gameManager.SavedSlots.Count}");
 		}
+		if (_gameManager.SavedItems.Count >= 6) {
+			for (int i = 0; i < _gameManager.SavedItems.Count; i++) {
+				config.SetValue("Inventory", $"inventory_item_{i}", _gameManager.SavedItems[i]);
+				GD.Print($"В конфиг добавлен inventory_item_{i} со значением: {_gameManager.SavedItems[i]}");
+			}
+		} else {
+			GD.PrintErr($"Не достаточно данных в листе _gameManager.SavedItems. Необходимо 6+ значений, но их {_gameManager.SavedItems.Count}");
+		}
 		var dir = DirAccess.Open("user://");
 		if (!dir.DirExists("user://configs")) {
 			dir.MakeDir("user://configs");
