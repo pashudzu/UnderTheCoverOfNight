@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class Item : Area3D
 {
@@ -17,6 +18,7 @@ public partial class Item : Area3D
 	public Texture2D itemTextureInSlot;
 	public Texture2D itemTexture;
 	public PackedScene itemScene;
+	public static Dictionary<string, Item> itemContains = new Dictionary<string, Item>();
 	private Node3D _player;
 	private Sprite2D _pressESprite;
 	
@@ -37,7 +39,6 @@ public partial class Item : Area3D
 	}
 
 	private void OnBodyEntered(Node body) {
-		
 		GD.Print("Some body entered in range");
 		if (body.IsInGroup("Player")) {
 			ChangePressESpriteVisibility();

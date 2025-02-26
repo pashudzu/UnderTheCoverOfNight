@@ -56,9 +56,10 @@ public partial class Inventory : Control
 			GD.Print($"new item in slot {i}");
 		}
 	}
-	private void ResumeInventoryData(){
+	private async void ResumeInventoryData(){
 		if (GameManager.Instance.WasGameSaved) {
 			ResumeSlotsData();
+			await ToSignal(GetTree(), "process_frame");
 			ResumeItemData();
 		}
 	}
@@ -75,9 +76,19 @@ public partial class Inventory : Control
 		}
 	}
 	private void ResumeItemData() {
-		//foreach(var pair in GameManager.Instance.SavedItems) {
-			//
-		//}
+		foreach(var pair in GameManager.Instance.SavedItems) {
+			if (pair.Value != "") {
+				GD.Print($"📦 Размер itemContains перед foreach: {Item.itemContains.Count}");
+				if (Item.itemContains.TryGetValue(pair.Value, out Item _foundItem)) {
+					_items[pair.Key] = _foundItem;
+					GD.Print($"В словарь _items в значение, у которого ключ = {pair.Key} установлен предвмет");
+				} else {
+					GD.PrintErr($"Не найден item для возобновление Item(а) в игру. Искомый Item имеет имя {pair.Value} и ключ {pair.Key}");
+				}
+			} else {
+				GD.Print($"В сохранённом словарре в значении при ключе {pair.Key} значение = null");
+			}
+		}
 	}
 	private void OnButton1Pressed() {
 		_buttonIndex = 0;

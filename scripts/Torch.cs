@@ -16,6 +16,7 @@ public partial class Torch : Item
 		itemTextureInSlot = (Texture2D)ResourceLoader.Load(inSlotTexturePath);
 		itemTexture = (Texture2D)ResourceLoader.Load(texturePath);
 		itemScene = (PackedScene)ResourceLoader.Load(ScenePath);
+		itemContains.Add(itemName, this);
 		GD.Print("Torch is ready");
 	}
 	public override void _Process(double delta)

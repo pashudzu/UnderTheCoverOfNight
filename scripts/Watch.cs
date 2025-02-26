@@ -18,6 +18,7 @@ public partial class Watch : Item
 		itemTextureInSlot = (Texture2D)ResourceLoader.Load(inSlotTexturePath);
 		itemTexture = (Texture2D)ResourceLoader.Load(texturePath);
 		itemScene = (PackedScene)ResourceLoader.Load(ScenePath);
+		itemContains.Add(itemName, this);
 		GD.Print("Watch is ready");
 	}
 
