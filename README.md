@@ -1,4 +1,7 @@
 # under-the-cover-of-night
+
+![photo_2025-02-28_22-39-22](https://github.com/user-attachments/assets/44d00acb-dde0-473a-bf31-7c540f10a85e)
+
 👹 **Genre:** Horror<br>
 ⚙️ **Engine:** Godot Mono<br>
 ❄️ **Setting:** A snowy Russian village<br>
