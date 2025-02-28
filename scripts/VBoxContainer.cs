@@ -41,10 +41,12 @@ public partial class VBoxContainer : Godot.VBoxContainer {
 		config.SetValue("Player", "player_head_rotation_x", _playerCharacterBody.GlobalRotation.X);
 		config.SetValue("Player", "player_head_rotation_y", _playerCharacterBody.GlobalRotation.Y);
 		config.SetValue("Player", "player_head_rotation_z", _playerCharacterBody.GlobalRotation.Z);
-		config.SetValue("Enemy", "enemy_position_x", _enemy.GlobalPosition.X);
-		config.SetValue("Enemy", "enemy_position_y", _enemy.GlobalPosition.Y);
-		config.SetValue("Enemy", "enemy_position_z", _enemy.GlobalPosition.Z);
-		config.SetValue("Enemy", "enemy_states", _gameManager.SaveEnemyState);
+		if (_gameManager.Enemy != null) {
+			config.SetValue("Enemy", "enemy_position_x", _enemy.GlobalPosition.X);
+			config.SetValue("Enemy", "enemy_position_y", _enemy.GlobalPosition.Y);
+			config.SetValue("Enemy", "enemy_position_z", _enemy.GlobalPosition.Z);
+			config.SetValue("Enemy", "enemy_states", _gameManager.SaveEnemyState);
+		}
 		config.SetValue("Scene", "current_scene", GetTree().CurrentScene.Name);
 		config.SetValue("CutSceneSeen", "is_begining_cut_scene_seen", _gameManager.IsBeginingCutSceneSeen);
 		config.SetValue("CutSceneSeen", "is_awakening_cut_scene_seen", _gameManager.IsAwakeningCutSceneSeen);

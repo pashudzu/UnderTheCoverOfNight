@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.IO;
 
 public partial class NewGameButton : Button
 {
@@ -10,8 +11,19 @@ public partial class NewGameButton : Button
 	}
 	
 	public void OnNewGameButtonPressed() {
+		DeleteExistConfig();
 		GameManager.Instance.DownloadableScene = "res://scenes/begining.tscn";
 		PackedScene _laodScene = (PackedScene)ResourceLoader.Load("res://scenes/loading_scene.tscn");
 		GetTree().ChangeSceneToPacked(_laodScene);
+	}
+	public void DeleteExistConfig() {
+		string _cofigFilePath = ProjectSettings.GlobalizePath($"user://configs/save{GameManager.Instance.SlotNoumber}.cfg");
+		
+		if (File.Exists(_cofigFilePath)) {
+			File.Delete(_cofigFilePath);
+			GD.Print($"Конфиг {GameManager.Instance.SlotNoumber} был успешно удалён.");
+		} else {
+			GD.PrintErr($"По указанному пути: {_cofigFilePath} не было найденно файла для удаления конфига.");
+		}
 	}
 }

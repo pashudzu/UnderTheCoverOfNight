@@ -25,6 +25,15 @@ public partial class ContinueGameButton : Button
 		ChangeSceneToSaved();
 	}
 	private void ChangeSceneToSaved() {
+		var config = new ConfigFile();
+		
+		Error err = config.Load($"user://configs/save{GameManager.Instance.SlotNoumber}.cfg");
+		
+		if (err != Error.Ok) {
+			GD.Print("Ошибка загрузки конфига");
+			return;
+		}
+		
 		string _scenePath = "res://scenes/"+ _currentScene +".tscn";
 		GD.Print(_scenePath);
 		GameManager.Instance.DownloadableScene = _scenePath;
@@ -63,6 +72,15 @@ public partial class ContinueGameButton : Button
 	}
 	
 	private void SetPastGameProgress() {
+		var config = new ConfigFile();
+		
+		Error err = config.Load($"user://configs/save{GameManager.Instance.SlotNoumber}.cfg");
+		
+		if (err != Error.Ok) {
+			GD.Print("Ошибка загрузки конфига");
+			return;
+		}
+		
 		GameManager.Instance.WasGameSaved = true;
 		GameManager.Instance.SavedSceneName = _currentScene;
 		GameManager.Instance.SavedPlayerPosition = _newPlayerPosition;
