@@ -46,6 +46,9 @@ public partial class Inventory : Control
 			if (_buttons[i] != null) {
 				_buttons[i].Connect("pressed", new Callable(this, _buttonMethods[i]));
 			}
+			if (GameManager.Instance.SavedButtons.Count < _buttons.Count) {
+				GameManager.Instance.SavedButtons.TryAdd(i, null);
+			}
 			else {
 				GD.PrintErr($"_button{i} == null");
 			}
@@ -81,7 +84,13 @@ public partial class Inventory : Control
 				GD.Print($"📦 Размер itemContains перед foreach: {Item.itemContains.Count}");
 				if (Item.itemContains.TryGetValue(pair.Value, out Item _foundItem)) {
 					_items[pair.Key] = _foundItem;
-					GD.Print($"В словарь _items в значение, у которого ключ = {pair.Key} установлен предвмет");
+					if (pair.Key == 4) {
+						ItemEquippedToHand(_foundItem, true);
+					}
+					if (pair.Key == 5) {
+						ItemEquippedToHand(_foundItem, false);
+					}
+					GD.Print($"В словарь _items в значение, у которого ключ = {pair.Key} установлен предмет");
 				} else {
 					GD.PrintErr($"Не найден item для возобновление Item(а) в игру. Искомый Item имеет имя {pair.Value} и ключ {pair.Key}");
 				}
@@ -129,8 +138,11 @@ public partial class Inventory : Control
 			GameManager.Instance.SavedItems[draggedButton] = _items[_originalButton].itemName;
 			_items[draggedButton] = _items[_originalButton];
 			button.TextureNormal = _items[_originalButton].itemTextureInSlot;
+			GameManager.Instance.SavedButtons[draggedButton] = button.TextureNormal.ResourcePath;
+			GD.Print($"В GameManager сохранён путь к текстуре у кнопки {draggedButton}, путь {button.TextureNormal.ResourcePath}.");
 			_items[_originalButton] = null;
 			GameManager.Instance.SavedItems[_originalButton] = null;
+			GameManager.Instance.SavedButtons[_originalButton] = null;
 			GD.Print("из _items удалён один item");
 		} else {
 			GD.Print("_originalButton < 0, или item == null!");
