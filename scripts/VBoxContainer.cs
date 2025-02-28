@@ -73,7 +73,7 @@ public partial class VBoxContainer : Godot.VBoxContainer {
 		if (!dir.DirExists("user://configs")) {
 			dir.MakeDir("user://configs");
 		}
-		config.Save("user://configs/save.cfg");
+		config.Save($"user://configs/save{GameManager.Instance.SlotNoumber}.cfg");
 		GD.Print("Игра сохранена");
 		
 		GetTree().Quit();

@@ -34,7 +34,7 @@ public partial class ContinueGameButton : Button
 	private void GettingConfigData() {
 		var config = new ConfigFile();
 		
-		Error err = config.Load("user://configs/save.cfg");
+		Error err = config.Load($"user://configs/save{GameManager.Instance.SlotNoumber}.cfg");
 		
 		if (err != Error.Ok) {
 			GD.Print("Ошибка загрузки конфига");

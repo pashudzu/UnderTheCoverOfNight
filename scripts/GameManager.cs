@@ -29,6 +29,7 @@ public partial class GameManager : Node
 	public string LeftHandChild;
 	public string RightHandChild;
 	public string DownloadableScene;
+	public int SlotNoumber;
 	
 	public override void _Ready()
 	{

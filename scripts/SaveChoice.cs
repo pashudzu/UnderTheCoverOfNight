@@ -13,15 +13,16 @@ public partial class SaveChoice : Control
 		button3.Connect("pressed", Callable.From(OnSlotButton3Pressed));
 	}
 	public void OnSlotButton1Pressed() {
-		ChangeScene();
+		ChangeScene(1);
 	}
 	public void OnSlotButton2Pressed() {
-		ChangeScene();
+		ChangeScene(2);
 	}
 	public void OnSlotButton3Pressed() {
-		ChangeScene();
+		ChangeScene(3);
 	}
-	private void ChangeScene() {
+	private void ChangeScene(int _slotNoumber) {
+		GameManager.Instance.SlotNoumber = _slotNoumber;
 		PackedScene _nextScene = (PackedScene)ResourceLoader.Load("res://scenes/ui/continue_or_new_game_choice.tscn");
 		GetTree().ChangeSceneToPacked(_nextScene);
 	}
