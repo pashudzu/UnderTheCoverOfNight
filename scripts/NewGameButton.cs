@@ -22,8 +22,6 @@ public partial class NewGameButton : Button
 		if (File.Exists(_cofigFilePath)) {
 			File.Delete(_cofigFilePath);
 			GD.Print($"Конфиг {GameManager.Instance.SlotNoumber} был успешно удалён.");
-		} else {
-			GD.PrintErr($"По указанному пути: {_cofigFilePath} не было найденно файла для удаления конфига.");
 		}
 	}
 }

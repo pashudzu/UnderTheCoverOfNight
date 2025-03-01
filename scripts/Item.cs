@@ -21,6 +21,7 @@ public partial class Item : Area3D
 	public static Dictionary<string, Item> itemContains = new Dictionary<string, Item>();
 	private Node3D _player;
 	private Sprite2D _pressESprite;
+	public string ItemInWorldPath;
 	
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()

@@ -84,6 +84,8 @@ public partial class Inventory : Control
 				GD.Print($"📦 Размер itemContains перед foreach: {Item.itemContains.Count}");
 				if (Item.itemContains.TryGetValue(pair.Value, out Item _foundItem)) {
 					_items[pair.Key] = _foundItem;
+					Area3D itemNode = GetNode<Area3D>(_foundItem.ItemInWorldPath);
+					itemNode.QueueFree();
 					if (pair.Key == 4) {
 						ItemEquippedToHand(_foundItem, true);
 					}
