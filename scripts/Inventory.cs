@@ -159,6 +159,7 @@ public partial class Inventory : Control
 		if (draggedButton == 5) {
 			ItemEquippedToHand(item, false);
 		}
+		GameManager.Instance.SavedSlots = _slots.Select(_slots => _slots.TextureNormal.ResourcePath).ToList();
 	}
 	private void StartDragging(TextureButton button, Item item, int draggedButton) {
 		if (_items[draggedButton] == null) {

@@ -26,13 +26,7 @@ public partial class ContinueGameButton : Button
 	}
 	private void ChangeSceneToSaved() {
 		var config = new ConfigFile();
-		
-		Error err = config.Load($"user://configs/save{GameManager.Instance.SlotNoumber}.cfg");
-		
-		if (err != Error.Ok) {
-			GD.Print("Ошибка загрузки конфига");
-			return;
-		}
+		GetConfig(config);
 		
 		string _scenePath = "res://scenes/"+ _currentScene +".tscn";
 		GD.Print(_scenePath);
@@ -42,13 +36,7 @@ public partial class ContinueGameButton : Button
 	}
 	private void GettingConfigData() {
 		var config = new ConfigFile();
-		
-		Error err = config.Load($"user://configs/save{GameManager.Instance.SlotNoumber}.cfg");
-		
-		if (err != Error.Ok) {
-			GD.Print("Ошибка загрузки конфига");
-			return;
-		}
+		GetConfig(config);
 		
 		_newPlayerPosition.X = (float)config.GetValue("Player", "player_position_x");
 		_newPlayerPosition.Y = (float)config.GetValue("Player", "player_position_y");
@@ -73,13 +61,7 @@ public partial class ContinueGameButton : Button
 	
 	private void SetPastGameProgress() {
 		var config = new ConfigFile();
-		
-		Error err = config.Load($"user://configs/save{GameManager.Instance.SlotNoumber}.cfg");
-		
-		if (err != Error.Ok) {
-			GD.Print("Ошибка загрузки конфига");
-			return;
-		}
+		GetConfig(config);
 		
 		GameManager.Instance.WasGameSaved = true;
 		GameManager.Instance.SavedSceneName = _currentScene;
@@ -89,5 +71,13 @@ public partial class ContinueGameButton : Button
 		GameManager.Instance.SaveEnemyState = _enemyState;
 		GameManager.Instance.SavedSlots = _savedSlots;
 		GameManager.Instance.SavedItems = _savedItems;
+	}
+	private void GetConfig(ConfigFile config) {
+		Error err = config.Load($"user://configs/save{GameManager.Instance.SlotNoumber}.cfg");
+		
+		if (err != Error.Ok) {
+			GD.Print("Ошибка загрузки конфига");
+			return;
+		}
 	}
 }
