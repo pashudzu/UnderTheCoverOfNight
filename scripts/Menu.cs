@@ -5,9 +5,9 @@ public partial class Menu : CanvasLayer
 {
 	public override void _Ready()
 	{
-		Button play = GetNodeOrNull<Button>("VBoxContainer/Play");
-		Button settingButton = GetNodeOrNull<Button>("VBoxContainer/Settings");
-		Button exitButton = GetNodeOrNull<Button>("VBoxContainer/Exit");
+		TextureButton play = GetNodeOrNull<TextureButton>("VBoxContainer/Play");
+		TextureButton settingButton = GetNodeOrNull<TextureButton>("VBoxContainer/Settings");
+		TextureButton exitButton = GetNodeOrNull<TextureButton>("VBoxContainer/Exit");
 		
 		play.Connect("pressed", Callable.From(OnPlayButtonPressed));
 		settingButton.Connect("pressed", Callable.From(OnSettingButtonPressed));

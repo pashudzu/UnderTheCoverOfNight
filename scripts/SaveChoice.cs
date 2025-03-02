@@ -5,9 +5,9 @@ public partial class SaveChoice : Control
 {
 	public override void _Ready()
 	{
-		Button button1 = GetNode<Button>("SlotButton1");
-		Button button2 = GetNode<Button>("SlotButton2");
-		Button button3 = GetNode<Button>("SlotButton3");
+		TextureButton button1 = GetNode<TextureButton>("VBoxContainer/SlotButton1");
+		TextureButton button2 = GetNode<TextureButton>("VBoxContainer/SlotButton2");
+		TextureButton button3 = GetNode<TextureButton>("VBoxContainer/SlotButton3");
 		button1.Connect("pressed", Callable.From(OnSlotButton1Pressed));
 		button2.Connect("pressed", Callable.From(OnSlotButton2Pressed));
 		button3.Connect("pressed", Callable.From(OnSlotButton3Pressed));

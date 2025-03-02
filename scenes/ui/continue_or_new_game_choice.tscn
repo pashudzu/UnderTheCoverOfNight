@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkhj7y0nwgtea"]
+[gd_scene load_steps=7 format=3 uid="uid://dkhj7y0nwgtea"]
 
 [ext_resource type="Script" path="res://scripts/ContinueGameButton.cs" id="1_4xh35"]
+[ext_resource type="Texture2D" uid="uid://cqqcuhi66bwyb" path="res://textures/buttonTexture.png" id="1_xvmay"]
+[ext_resource type="Texture2D" uid="uid://bu6cjv4c4ra3e" path="res://textures/buttonTexturePressed.png" id="2_0sja0"]
 [ext_resource type="Script" path="res://scripts/NewGameButton.cs" id="2_0wao7"]
+[ext_resource type="Script" path="res://scenes/ui/BackToMenyFromChoiceButton.cs" id="3_18jj1"]
+[ext_resource type="FontFile" uid="uid://d1wnbtljy0c3e" path="res://fonts/Nervousfont-Regular.ttf" id="4_xoikx"]
 
 [node name="ContinueOrNewGameChoice" type="Control"]
 layout_mode = 3
@@ -19,28 +23,53 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -194.5
-offset_top = -88.0
-offset_right = 194.5
-offset_bottom = 88.0
+offset_top = -179.0
+offset_right = 93.24
+offset_bottom = 179.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 26
 
-[node name="ContinueGameButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 75)
+[node name="ContinueGameButton" type="TextureButton" parent="VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
-theme_override_font_sizes/font_size = 35
-text = "продолжить"
+texture_normal = ExtResource("1_xvmay")
+texture_hover = ExtResource("2_0sja0")
 script = ExtResource("1_4xh35")
 
-[node name="NewGameButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+[node name="Label" type="Label" parent="VBoxContainer/ContinueGameButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_xoikx")
 theme_override_font_sizes/font_size = 35
-text = "ноавя игра"
+text = "продолжить"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewGameButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_xvmay")
+texture_hover = ExtResource("2_0sja0")
 script = ExtResource("2_0wao7")
 
-[node name="BackButton" type="Button" parent="."]
+[node name="Label" type="Label" parent="VBoxContainer/NewGameButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_xoikx")
+theme_override_font_sizes/font_size = 35
+text = "новая игра"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackToMenyFromChoiceButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -55,3 +84,65 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 30
 text = "назад"
+script = ExtResource("3_18jj1")
+
+[node name="WarningMessage" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -393.5
+offset_top = -210.5
+offset_right = 393.5
+offset_bottom = 210.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15, 0.15, 0.15, 0.827451)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WarningMessage"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -242.0
+offset_top = 27.65
+offset_right = 242.0
+offset_bottom = 127.65
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 81
+
+[node name="SureButton" type="Button" parent="WarningMessage/HBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "да"
+
+[node name="UnsureButton" type="Button" parent="WarningMessage/HBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "нет"
+
+[node name="Label" type="Label" parent="WarningMessage"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -273.0
+offset_top = 36.67
+offset_right = 273.0
+offset_bottom = 171.67
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "Если вы начнёте новую игру прошлый
+игровой пргресс безвозратно исчезнет
+
+Вы уверены, что хотите новую игру в данном слоте?"
+horizontal_alignment = 1
+vertical_alignment = 1

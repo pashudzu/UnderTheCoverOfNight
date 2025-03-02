@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class ContinueGameButton : Button
+public partial class ContinueGameButton : TextureButton
 {
 	private Vector3 _newPlayerPosition;
 	private Vector3 _newPlayerRotation;

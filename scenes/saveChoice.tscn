@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dg8km423c0qe4"]
+[gd_scene load_steps=5 format=3 uid="uid://dg8km423c0qe4"]
 
 [ext_resource type="Script" path="res://scripts/SaveChoice.cs" id="1_rq51k"]
-[ext_resource type="FontFile" uid="uid://dqaavidfe0cpf" path="res://RubikDistressed-Regular.ttf" id="1_ywdby"]
+[ext_resource type="FontFile" uid="uid://d1wnbtljy0c3e" path="res://fonts/Nervousfont-Regular.ttf" id="2_ephf1"]
+[ext_resource type="Texture2D" uid="uid://cqqcuhi66bwyb" path="res://textures/buttonTexture.png" id="3_doeaj"]
+[ext_resource type="Texture2D" uid="uid://bu6cjv4c4ra3e" path="res://textures/buttonTexturePressed.png" id="4_la8r0"]
 
 [node name="ChoiceOfSaves" type="Control"]
 layout_mode = 3
@@ -11,45 +13,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rq51k")
-
-[node name="SlotButton1" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -188.0
-offset_top = 224.0
-offset_right = 188.0
-offset_bottom = 308.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 25
-text = "Сохранение 1"
-
-[node name="SlotButton2" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -188.0
-offset_top = 324.0
-offset_right = 188.0
-offset_bottom = 408.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 25
-text = "Сохранение 2"
-
-[node name="SlotButton3" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -188.0
-offset_top = 424.0
-offset_right = 188.0
-offset_bottom = 508.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 25
-text = "Сохранение 3"
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -61,7 +24,75 @@ offset_top = 93.865
 offset_right = 289.0
 offset_bottom = 187.865
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.906024, 0.130013, 0.206023, 1)
-theme_override_fonts/font = ExtResource("1_ywdby")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_ephf1")
 theme_override_font_sizes/font_size = 41
 text = "Выбери сохранение игры!"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.5
+offset_top = -101.5
+offset_right = 141.5
+offset_bottom = 101.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SlotButton1" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_doeaj")
+texture_hover = ExtResource("4_la8r0")
+
+[node name="Label" type="Label" parent="VBoxContainer/SlotButton1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ephf1")
+theme_override_font_sizes/font_size = 35
+text = "сохранение 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SlotButton2" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_doeaj")
+texture_hover = ExtResource("4_la8r0")
+
+[node name="Label" type="Label" parent="VBoxContainer/SlotButton2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ephf1")
+theme_override_font_sizes/font_size = 35
+text = "сохранение 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SlotButton3" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_doeaj")
+texture_hover = ExtResource("4_la8r0")
+
+[node name="Label" type="Label" parent="VBoxContainer/SlotButton3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_ephf1")
+theme_override_font_sizes/font_size = 35
+text = "сохранение 3"
+horizontal_alignment = 1
+vertical_alignment = 1
