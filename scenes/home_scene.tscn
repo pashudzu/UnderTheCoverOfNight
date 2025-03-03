@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=4 uid="uid://dqak8ec1eq5ii"]
+[gd_scene load_steps=59 format=4 uid="uid://dqak8ec1eq5ii"]
 
 [ext_resource type="Script" path="res://scripts/HomeScene.cs" id="1_srwtq"]
 [ext_resource type="PackedScene" uid="uid://b3fctgxoddghu" path="res://scenes/player.tscn" id="2_piolw"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dmfhcfffli5py" path="res://textures/sky.png" id="24_rq51h"]
 [ext_resource type="Script" path="res://scripts/RefuelingArea.cs" id="24_veulq"]
 [ext_resource type="Script" path="res://scripts/CarEnterArea.cs" id="25_qjxjy"]
+[ext_resource type="PackedScene" uid="uid://w4phjbb8kiol" path="res://scenes/map.tscn" id="25_we53v"]
 [ext_resource type="PackedScene" uid="uid://kodcdqb2o35h" path="res://scenes/watch.tscn" id="26_4qyll"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3qjf8"]
@@ -863,6 +864,20 @@ fog_sky_affect = 0.85
 
 [sub_resource type="Environment" id="Environment_0r683"]
 
+[sub_resource type="Shader" id="Shader_t2pc0"]
+code = "shader_type canvas_item;
+
+uniform float lod : hint_range(0.0, 5.0) = 0.0;
+
+void fragment() {
+    vec4 color = textureLod(SCREEN_TEXTURE, SCREEN_UV, lod);
+    COLOR = color;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hmvx0"]
+shader = SubResource("Shader_t2pc0")
+
 [node name="home_scene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.43414, -57.5491, -80.4834)
 script = ExtResource("1_srwtq")
@@ -871,7 +886,7 @@ script = ExtResource("1_srwtq")
 transform = Transform3D(-4.37114e-08, 0, -0.999999, 0, 1, 0, 1, 0, -4.37114e-08, 336.946, 1.62383, 402.585)
 
 [node name="Enemy" parent="." instance=ExtResource("5_6fydp")]
-transform = Transform3D(-0.521667, 0, 0.853149, 0, 1, 0, -0.853149, 0, -0.521667, 335.434, 4.42478, 389.683)
+transform = Transform3D(-0.472109, 0, 0.7721, 0, 0.905, 0, -0.7721, 0, -0.472109, 335.434, 4.42478, 389.683)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0459595, -0.063746, 0.139648)
@@ -1141,20 +1156,53 @@ shadow_enabled = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="UI"]
+[node name="SubViewportContainer1" type="SubViewportContainer" parent="UI"]
+visible = false
 offset_left = 1347.0
 offset_top = -3.0
 offset_right = 1603.0
 offset_bottom = 253.0
 size_flags_vertical = 3
 
-[node name="MapViewport" type="SubViewport" parent="UI/SubViewportContainer"]
+[node name="MapViewport" type="SubViewport" parent="UI/SubViewportContainer1"]
 handle_input_locally = false
 size = Vector2i(256, 256)
 size_2d_override_stretch = true
-render_target_update_mode = 1
+render_target_update_mode = 0
 
-[node name="Camera3D" type="Camera3D" parent="UI/SubViewportContainer/MapViewport"]
+[node name="Camera3D" type="Camera3D" parent="UI/SubViewportContainer1/MapViewport"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 250, 250, 164.74)
 environment = SubResource("Environment_0r683")
 fov = 78.75
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="UI"]
+visible = false
+offset_left = 426.0
+offset_top = 55.0
+offset_right = 1506.0
+offset_bottom = 1135.0
+size_flags_vertical = 3
+
+[node name="MapViewport" type="SubViewport" parent="UI/SubViewportContainer2"]
+handle_input_locally = false
+size = Vector2i(800, 800)
+size_2d_override_stretch = true
+render_target_update_mode = 0
+
+[node name="Camera3D" type="Camera3D" parent="UI/SubViewportContainer2/MapViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 250, 250, 164.74)
+environment = SubResource("Environment_0r683")
+fov = 78.75
+
+[node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+
+[node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer"]
+material = SubResource("ShaderMaterial_hmvx0")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="map" parent="." instance=ExtResource("25_we53v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 323.979, 0.277954, 392.061)
