@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://4hm2cyr1dpm7"]
+[gd_scene load_steps=7 format=3 uid="uid://4hm2cyr1dpm7"]
 
 [ext_resource type="Script" path="res://scripts/Inventory.cs" id="1_koubk"]
+[ext_resource type="Texture2D" uid="uid://dittc0d6w7721" path="res://textures/inventory.png" id="2_enf60"]
 [ext_resource type="Texture2D" uid="uid://03ujvhly2ncr" path="res://textures/slot.png" id="2_hln3r"]
 [ext_resource type="Texture2D" uid="uid://b4kpih0k8xwwb" path="res://textures/Без имени.png" id="3_6kuda"]
 [ext_resource type="Texture2D" uid="uid://bpmlsx3scfcdy" path="res://textures/person.png" id="4_qqdwg"]
@@ -21,16 +22,13 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_koubk")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0901961, 0.0901961, 0.0901961, 0.588235)
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 500.0
+texture = ExtResource("2_enf60")
 
-[node name="GridContainer" type="GridContainer" parent="ColorRect"]
+[node name="GridContainer" type="GridContainer" parent="TextureRect"]
 layout_mode = 0
 offset_left = 45.0
 offset_top = 150.0
@@ -38,7 +36,7 @@ offset_right = 249.0
 offset_bottom = 354.0
 columns = 2
 
-[node name="TextureButton1" type="TextureButton" parent="ColorRect/GridContainer"]
+[node name="TextureButton1" type="TextureButton" parent="TextureRect/GridContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
@@ -46,25 +44,25 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource("2_hln3r")
 
-[node name="TextureButton2" type="TextureButton" parent="ColorRect/GridContainer"]
+[node name="TextureButton2" type="TextureButton" parent="TextureRect/GridContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture_normal = ExtResource("2_hln3r")
 
-[node name="TextureButton3" type="TextureButton" parent="ColorRect/GridContainer"]
+[node name="TextureButton3" type="TextureButton" parent="TextureRect/GridContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture_normal = ExtResource("2_hln3r")
 
-[node name="TextureButton4" type="TextureButton" parent="ColorRect/GridContainer"]
+[node name="TextureButton4" type="TextureButton" parent="TextureRect/GridContainer"]
 texture_filter = 1
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture_normal = ExtResource("2_hln3r")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ColorRect"]
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -78,7 +76,7 @@ theme_override_font_sizes/bold_font_size = 40
 bbcode_enabled = true
 text = "[b]Инвенарь[/b]"
 
-[node name="NinePatchRect" type="NinePatchRect" parent="ColorRect"]
+[node name="NinePatchRect" type="NinePatchRect" parent="TextureRect"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -90,7 +88,7 @@ offset_bottom = 93.0
 grow_horizontal = 2
 texture = ExtResource("3_6kuda")
 
-[node name="NinePatchRect2" type="NinePatchRect" parent="ColorRect"]
+[node name="NinePatchRect2" type="NinePatchRect" parent="TextureRect"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -103,7 +101,7 @@ grow_horizontal = 2
 scale = Vector2(0.619282, 0.644029)
 texture = ExtResource("4_qqdwg")
 
-[node name="LeftHandButton" type="TextureButton" parent="ColorRect"]
+[node name="LeftHandButton" type="TextureButton" parent="TextureRect"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 0
@@ -113,7 +111,7 @@ offset_right = 352.0
 offset_bottom = 434.0
 texture_normal = ExtResource("2_hln3r")
 
-[node name="RightHandButton" type="TextureButton" parent="ColorRect"]
+[node name="RightHandButton" type="TextureButton" parent="TextureRect"]
 texture_filter = 1
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 0
@@ -123,14 +121,14 @@ offset_right = 587.0
 offset_bottom = 432.0
 texture_normal = ExtResource("2_hln3r")
 
-[node name="PanelContainer" type="PanelContainer" parent="ColorRect"]
+[node name="PanelContainer" type="PanelContainer" parent="TextureRect"]
 layout_mode = 0
 offset_left = 620.0
 offset_top = 80.0
 offset_right = 770.0
 offset_bottom = 380.0
 
-[node name="NinePatchRect3" type="NinePatchRect" parent="ColorRect"]
+[node name="NinePatchRect3" type="NinePatchRect" parent="TextureRect"]
 layout_mode = 0
 offset_left = 668.0
 offset_top = 92.0
