@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 public partial class ContinueGameButton : TextureButton
 {
@@ -20,9 +21,15 @@ public partial class ContinueGameButton : TextureButton
 	}
 	
 	public void OnContinueGameButtonPressed() {
-		GettingConfigData();
-		SetPastGameProgress();
-		ChangeSceneToSaved();
+		string _cofigFilePath = ProjectSettings.GlobalizePath($"user://configs/save{GameManager.Instance.SlotNoumber}.cfg");
+		
+		if (File.Exists(_cofigFilePath)) {
+			GettingConfigData();
+			SetPastGameProgress();
+			ChangeSceneToSaved();
+		} else {
+			StartNewGame();
+		}
 	}
 	private void ChangeSceneToSaved() {
 		var config = new ConfigFile();
@@ -79,5 +86,10 @@ public partial class ContinueGameButton : TextureButton
 			GD.Print("Ошибка загрузки конфига");
 			return;
 		}
+	}
+	private void StartNewGame() {
+		GameManager.Instance.DownloadableScene = "res://scenes/begining.tscn";
+		PackedScene _laodScene = (PackedScene)ResourceLoader.Load("res://scenes/loading_scene.tscn");
+		GetTree().ChangeSceneToPacked(_laodScene);
 	}
 }

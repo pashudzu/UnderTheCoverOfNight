@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://m6mficmce4ok"]
+[gd_scene load_steps=6 format=3 uid="uid://m6mficmce4ok"]
 
 [ext_resource type="Script" path="res://scripts/VBoxContainer.cs" id="1_bvhlo"]
+[ext_resource type="Texture2D" uid="uid://d1vu4wq0i8f64" path="res://textures/pauseBackground.png" id="1_lbvbn"]
+[ext_resource type="Texture2D" uid="uid://cqqcuhi66bwyb" path="res://textures/buttonTexture.png" id="2_suxbd"]
+[ext_resource type="Texture2D" uid="uid://bu6cjv4c4ra3e" path="res://textures/buttonTexturePressed.png" id="3_0jbqt"]
+[ext_resource type="FontFile" uid="uid://d1wnbtljy0c3e" path="res://fonts/Nervousfont-Regular.ttf" id="4_cdbb2"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -10,35 +14,103 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 900.0
+offset_right = 1650.0
+offset_bottom = 1000.0
+texture = ExtResource("1_lbvbn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -185.0
-offset_top = -91.5
-offset_right = 185.0
-offset_bottom = 91.5
+offset_left = -220.0
+offset_top = 57.0
+offset_right = 180.0
+offset_bottom = 302.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
 script = ExtResource("1_bvhlo")
 
-[node name="Resume" type="Button" parent="VBoxContainer"]
+[node name="Resume" type="TextureButton" parent="TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(400, 75)
 layout_mode = 2
-size_flags_vertical = 4
-theme_override_font_sizes/font_size = 30
-text = "Вернуться"
+texture_normal = ExtResource("2_suxbd")
+texture_hover = ExtResource("3_0jbqt")
+stretch_mode = 0
 
-[node name="Settings" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Настройки"
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/Resume"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_cdbb2")
+theme_override_font_sizes/font_size = 35
+text = "вернуться"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Save&Quit" type="Button" parent="VBoxContainer"]
+[node name="Settings" type="TextureButton" parent="TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(400, 75)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
-text = "Сохранить и выйти"
+texture_normal = ExtResource("2_suxbd")
+texture_hover = ExtResource("3_0jbqt")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_cdbb2")
+theme_override_font_sizes/font_size = 35
+text = "настройки"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Save&Quit" type="TextureButton" parent="TextureRect/VBoxContainer"]
+custom_minimum_size = Vector2(400, 75)
+layout_mode = 2
+texture_normal = ExtResource("2_suxbd")
+texture_hover = ExtResource("3_0jbqt")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/Save&Quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_cdbb2")
+theme_override_font_sizes/font_size = 35
+text = "сохранить и выйти"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MissionLabel" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_top = 48.0
+offset_right = 250.0
+offset_bottom = 368.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_cdbb2")
+theme_override_font_sizes/font_size = 71
+text = "Миссия:
+бла бла
+бла бла
+бла бла"

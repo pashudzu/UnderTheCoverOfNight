@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=4 uid="uid://dqak8ec1eq5ii"]
+[gd_scene load_steps=56 format=4 uid="uid://dqak8ec1eq5ii"]
 
 [ext_resource type="Script" path="res://scripts/HomeScene.cs" id="1_srwtq"]
 [ext_resource type="PackedScene" uid="uid://b3fctgxoddghu" path="res://scenes/player.tscn" id="2_piolw"]
@@ -861,12 +861,14 @@ fog_light_energy = 0.2
 fog_density = 0.08
 fog_sky_affect = 0.85
 
+[sub_resource type="Environment" id="Environment_0r683"]
+
 [node name="home_scene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.43414, -57.5491, -80.4834)
 script = ExtResource("1_srwtq")
 
 [node name="Player" parent="." instance=ExtResource("2_piolw")]
-transform = Transform3D(-4.37114e-08, 0, -0.999999, 0, 1, 0, 1, 0, -4.37114e-08, 341.529, 0.807442, 394.532)
+transform = Transform3D(-4.37114e-08, 0, -0.999999, 0, 1, 0, 1, 0, -4.37114e-08, 336.946, 1.62383, 402.585)
 
 [node name="Enemy" parent="." instance=ExtResource("5_6fydp")]
 transform = Transform3D(-0.521667, 0, 0.853149, 0, 1, 0, -0.853149, 0, -0.521667, 335.434, 4.42478, 389.683)
@@ -1136,3 +1138,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 335.985, 4.52228, 389.084)
 light_color = Color(0.72, 0.1008, 0.1008, 1)
 light_energy = 0.07
 shadow_enabled = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="UI"]
+offset_left = 1347.0
+offset_top = -3.0
+offset_right = 1603.0
+offset_bottom = 253.0
+size_flags_vertical = 3
+
+[node name="MapViewport" type="SubViewport" parent="UI/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(256, 256)
+size_2d_override_stretch = true
+render_target_update_mode = 1
+
+[node name="Camera3D" type="Camera3D" parent="UI/SubViewportContainer/MapViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 250, 250, 164.74)
+environment = SubResource("Environment_0r683")
+fov = 78.75

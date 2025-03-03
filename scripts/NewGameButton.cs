@@ -20,7 +20,13 @@ public partial class NewGameButton : TextureButton
 	}
 	
 	public void OnNewGameButtonPressed() {
-		ShowWarning();
+		string _cofigFilePath = ProjectSettings.GlobalizePath($"user://configs/save{GameManager.Instance.SlotNoumber}.cfg");
+		
+		if (File.Exists(_cofigFilePath)) {
+			ShowWarning();
+		} else {
+			StartGame();
+		}
 	}
 	public void ShowWarning() {
 		GetParent<Control>().Visible = false;

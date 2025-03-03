@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 public partial class VBoxContainer : Godot.VBoxContainer {
 	public override void _Ready() {
-		Button resume = GetNodeOrNull<Button>("Resume");
-		Button settings = GetNodeOrNull<Button>("Settings");
-		Button saveAndQuit = GetNodeOrNull<Button>("Save&Quit");
+		TextureButton resume = GetNodeOrNull<TextureButton>("Resume");
+		TextureButton settings = GetNodeOrNull<TextureButton>("Settings");
+		TextureButton saveAndQuit = GetNodeOrNull<TextureButton>("Save&Quit");
 		
 		resume.Connect("pressed", Callable.From(OnRusumeButtonPressed));
 		settings.Connect("pressed", Callable.From(OnsettingsButtonPressed));
