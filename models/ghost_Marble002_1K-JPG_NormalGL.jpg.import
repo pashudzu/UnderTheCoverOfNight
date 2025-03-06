@@ -2,11 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxrx7bq3t3byk"
+uid="uid://cc5gxp84c6w6d"
 path.s3tc="res://.godot/imported/ghost_Marble002_1K-JPG_NormalGL.jpg-2f8fea57950d1dc12a2be610a9387e21.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
+}
+generator_parameters={
+"md5": "154ed22cdb344003aa3f53944b25cb47"
 }
 
 [deps]

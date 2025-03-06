@@ -1,6 +1,6 @@
 [gd_scene load_steps=39 format=3 uid="uid://b3fctgxoddghu"]
 
-[ext_resource type="Script" path="res://scripts/CharacterBody.cs" id="1_31f3j"]
+[ext_resource type="Script" uid="uid://bdk3wacre4jan" path="res://scripts/CharacterBody.cs" id="1_31f3j"]
 [ext_resource type="PackedScene" uid="uid://ybjrto1uhpox" path="res://scenes/snowParticles.tscn" id="1_s3vnn"]
 [ext_resource type="PackedScene" uid="uid://cljfi6uu0vgj4" path="res://scenes/ui/glitch_effect.tscn" id="2_2mq1p"]
 [ext_resource type="PackedScene" uid="uid://m6mficmce4ok" path="res://scenes/ui/pause_menu.tscn" id="2_teuc2"]
@@ -278,12 +278,12 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_teal0"]
 _data = {
-"RESET": SubResource("Animation_mj8pp"),
-"idle": SubResource("Animation_66xeu"),
-"jump": SubResource("Animation_ar8ia"),
-"new_animation": SubResource("Animation_4wv80"),
-"run": SubResource("Animation_3and2"),
-"walk": SubResource("Animation_xmdrl")
+&"RESET": SubResource("Animation_mj8pp"),
+&"idle": SubResource("Animation_66xeu"),
+&"jump": SubResource("Animation_ar8ia"),
+&"new_animation": SubResource("Animation_4wv80"),
+&"run": SubResource("Animation_3and2"),
+&"walk": SubResource("Animation_xmdrl")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nvgk1"]
@@ -326,9 +326,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3maqg"]
 _data = {
-"I-need-petrol": SubResource("Animation_7yok7"),
-"RESET": SubResource("Animation_mjo6j"),
-"show_text": SubResource("Animation_00w8q")
+&"I-need-petrol": SubResource("Animation_7yok7"),
+&"RESET": SubResource("Animation_mjo6j"),
+&"show_text": SubResource("Animation_00w8q")
 }
 
 [node name="player" type="Node3D"]

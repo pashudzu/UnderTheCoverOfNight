@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dg8km423c0qe4"]
 
-[ext_resource type="Script" path="res://scripts/SaveChoice.cs" id="1_rq51k"]
+[ext_resource type="Script" uid="uid://cyx7q82vv2r2k" path="res://scripts/SaveChoice.cs" id="1_rq51k"]
 [ext_resource type="FontFile" uid="uid://d1wnbtljy0c3e" path="res://fonts/Nervousfont-Regular.ttf" id="2_ephf1"]
 [ext_resource type="Texture2D" uid="uid://cqqcuhi66bwyb" path="res://textures/buttonTexture.png" id="3_doeaj"]
 [ext_resource type="Texture2D" uid="uid://bu6cjv4c4ra3e" path="res://textures/buttonTexturePressed.png" id="4_la8r0"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cdo0wyxyjt55e"]
 
-[ext_resource type="Script" path="res://scripts/Torch.cs" id="1_x4urv"]
-[ext_resource type="PackedScene" uid="uid://e4eclhdoam02" path="res://textures/Torch.glb" id="2_y6bcv"]
+[ext_resource type="Script" uid="uid://cvw4hw7c5x6nc" path="res://scripts/Torch.cs" id="1_x4urv"]
+[ext_resource type="PackedScene" uid="uid://e4eclhdoam02" path="res://models/Torch.glb" id="2_y6bcv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xtoca"]
 size = Vector3(5, 5, 5)

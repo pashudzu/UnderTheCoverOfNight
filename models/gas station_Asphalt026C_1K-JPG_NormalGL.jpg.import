@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k5e5j5cuhuty"
+uid="uid://d867d5u2qrvd"
 path.s3tc="res://.godot/imported/gas station_Asphalt026C_1K-JPG_NormalGL.jpg-c8ecabb05a526091ebe9bedbf0ba399f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://gas station_Asphalt026C_1K-JPG_NormalGL.jpg"
+roughness/src_normal="res://models/gas station_Asphalt026C_1K-JPG_NormalGL.jpg"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

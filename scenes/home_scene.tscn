@@ -1,28 +1,28 @@
 [gd_scene load_steps=59 format=4 uid="uid://dqak8ec1eq5ii"]
 
-[ext_resource type="Script" path="res://scripts/HomeScene.cs" id="1_srwtq"]
+[ext_resource type="Script" uid="uid://c2dsbbhkskojs" path="res://scripts/HomeScene.cs" id="1_srwtq"]
 [ext_resource type="PackedScene" uid="uid://b3fctgxoddghu" path="res://scenes/player.tscn" id="2_piolw"]
 [ext_resource type="PackedScene" uid="uid://cdo0wyxyjt55e" path="res://scenes/torch.tscn" id="3_kcyw4"]
 [ext_resource type="PackedScene" uid="uid://cdqao72vmih20" path="res://scenes/enemy.tscn" id="5_6fydp"]
-[ext_resource type="PackedScene" uid="uid://caqmxnyuosjrs" path="res://models/basement.glb" id="8_qiabd"]
+[ext_resource type="PackedScene" uid="uid://c5spsmoo3s6ud" path="res://models/basement.glb" id="8_qiabd"]
 [ext_resource type="PackedScene" uid="uid://b4pllrglk3jrt" path="res://scenes/main_home.tscn" id="9_cew1j"]
 [ext_resource type="PackedScene" uid="uid://bbmxue7401opm" path="res://scenes/house.tscn" id="9_jq7vk"]
 [ext_resource type="PackedScene" uid="uid://db6vcqiy0ev4e" path="res://scenes/watch_on_floor.tscn" id="12_kpl4a"]
-[ext_resource type="PackedScene" uid="uid://bla6te0bu0vq7" path="res://models/Old_Russian_izba.glb" id="15_a5d36"]
-[ext_resource type="PackedScene" uid="uid://couglev7g2lof" path="res://models/An_old_village_well_i_1214114109_texture.glb" id="16_rm5nu"]
-[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="20_67xkg"]
-[ext_resource type="Resource" path="res://terrain/data.hterrain" id="21_k8va8"]
-[ext_resource type="PackedScene" uid="uid://k328flhedtg0" path="res://models/rusty_water.glb" id="22_3miif"]
-[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="22_ek1sp"]
+[ext_resource type="PackedScene" uid="uid://c51mv267jo8wl" path="res://models/Old_Russian_izba.glb" id="15_a5d36"]
+[ext_resource type="PackedScene" uid="uid://qhwklbhutay6" path="res://models/An_old_village_well_i_1214114109_texture.glb" id="16_rm5nu"]
+[ext_resource type="Script" uid="uid://5t0jd35s0ypr" path="res://addons/zylann.hterrain/hterrain.gd" id="20_67xkg"]
+[ext_resource type="Resource" uid="uid://dwms1mcarapc8" path="res://terrain/data.hterrain" id="21_k8va8"]
+[ext_resource type="PackedScene" uid="uid://bj1le3c0hn8ud" path="res://models/rusty_water.glb" id="22_3miif"]
+[ext_resource type="Script" uid="uid://cr4s367asrl7c" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="22_ek1sp"]
 [ext_resource type="PackedScene" uid="uid://nck85qgetc16" path="res://scenes/gas_station.tscn" id="22_rrsus"]
-[ext_resource type="PackedScene" uid="uid://bgy7n7ricitkt" path="res://models/VaroninoTable.glb" id="22_swfv8"]
+[ext_resource type="PackedScene" uid="uid://34wi0nul44bp" path="res://models/VaroninoTable.glb" id="22_swfv8"]
 [ext_resource type="PackedScene" uid="uid://nkybchmfdigh" path="res://scenes/car.tscn" id="23_nexo6"]
-[ext_resource type="Script" path="res://scripts/Area3d.cs" id="23_ufa52"]
+[ext_resource type="Script" uid="uid://cw0fld0atabub" path="res://scripts/Area3d.cs" id="23_ufa52"]
 [ext_resource type="PackedScene" uid="uid://b7oju2cfomnm5" path="res://scenes/petrol.tscn" id="24_esy8v"]
-[ext_resource type="Script" path="res://scripts/EventAnimationPlayer.cs" id="24_pedrn"]
+[ext_resource type="Script" uid="uid://b75j5d6o7b03v" path="res://scripts/EventAnimationPlayer.cs" id="24_pedrn"]
 [ext_resource type="Texture2D" uid="uid://dmfhcfffli5py" path="res://textures/sky.png" id="24_rq51h"]
-[ext_resource type="Script" path="res://scripts/RefuelingArea.cs" id="24_veulq"]
-[ext_resource type="Script" path="res://scripts/CarEnterArea.cs" id="25_qjxjy"]
+[ext_resource type="Script" uid="uid://bcdl6o3w4mfi" path="res://scripts/RefuelingArea.cs" id="24_veulq"]
+[ext_resource type="Script" uid="uid://kxtb5lyy3ndp" path="res://scripts/CarEnterArea.cs" id="25_qjxjy"]
 [ext_resource type="PackedScene" uid="uid://w4phjbb8kiol" path="res://scenes/map.tscn" id="25_we53v"]
 [ext_resource type="PackedScene" uid="uid://kodcdqb2o35h" path="res://scenes/watch.tscn" id="26_4qyll"]
 
@@ -462,9 +462,9 @@ tracks/19/keys = PackedFloat32Array(0, 1, 0.00491528, 0.00235424, 0.683836, 0.72
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v85lk"]
 _data = {
-"ArmatureAction": SubResource("Animation_o8uht"),
-"ArmatureAction_002": SubResource("Animation_ttkl3"),
-"ArmatureAction_003": SubResource("Animation_3ex4w")
+&"ArmatureAction": SubResource("Animation_o8uht"),
+&"ArmatureAction_002": SubResource("Animation_ttkl3"),
+&"ArmatureAction_003": SubResource("Animation_3ex4w")
 }
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ipjfr"]
@@ -756,9 +756,9 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jn2y2"]
 _data = {
-"Awakening": SubResource("Animation_ixumr"),
-"BadEnd": SubResource("Animation_5joq4"),
-"RESET": SubResource("Animation_r18ib")
+&"Awakening": SubResource("Animation_ixumr"),
+&"BadEnd": SubResource("Animation_5joq4"),
+&"RESET": SubResource("Animation_r18ib")
 }
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_uc32j"]
@@ -894,7 +894,7 @@ shape = SubResource("BoxShape3D_3qjf8")
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Enemy"]
 libraries = {
-"": SubResource("AnimationLibrary_v85lk")
+&"": SubResource("AnimationLibrary_v85lk")
 }
 
 [node name="Torch" parent="." instance=ExtResource("3_kcyw4")]
@@ -1118,7 +1118,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 345.392, 0, 383.714)
 [node name="EventAnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../NavigationRegion3D/HTerrain")
 libraries = {
-"": SubResource("AnimationLibrary_jn2y2")
+&"": SubResource("AnimationLibrary_jn2y2")
 }
 script = ExtResource("24_pedrn")
 

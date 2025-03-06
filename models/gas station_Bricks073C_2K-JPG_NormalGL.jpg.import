@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jcsgj7c7q40v"
+uid="uid://mjggev6j00l2"
 path.s3tc="res://.godot/imported/gas station_Bricks073C_2K-JPG_NormalGL.jpg-78978aae26232c0e4473234fa032acbf.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://gas station_Bricks073C_2K-JPG_NormalGL.jpg"
+roughness/src_normal="res://models/gas station_Bricks073C_2K-JPG_NormalGL.jpg"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

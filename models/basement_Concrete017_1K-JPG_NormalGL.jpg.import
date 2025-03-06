@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chakuly3xo8ym"
+uid="uid://n4frcrngdy0k"
 path.s3tc="res://.godot/imported/basement_Concrete017_1K-JPG_NormalGL.jpg-4c56d55b71630e78648b5af88d89ac2e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://sounds/basement_Concrete017_1K-JPG_NormalGL.jpg"
+roughness/src_normal="res://models/basement_Concrete017_1K-JPG_NormalGL.jpg"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

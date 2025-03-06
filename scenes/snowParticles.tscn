@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://ybjrto1uhpox"]
 
-[ext_resource type="Texture2D" uid="uid://dlws7k3iycmqh" path="res://textures/snow.png" id="1_t17h0"]
+[ext_resource type="Texture2D" uid="uid://cyctgtnyjtogb" path="res://textures/snow.png" id="1_kvdik"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b300v"]
-transparency = 4
-albedo_texture = ExtResource("1_t17h0")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y65ms"]
+transparency = 1
+albedo_texture = ExtResource("1_kvdik")
 billboard_mode = 1
 billboard_keep_scale = true
-grow_amount = -16.0
+grow = true
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_x0odf"]
 emission_shape_offset = Vector3(0, 4, 0)
@@ -34,7 +34,7 @@ lightmap_size_hint = Vector2i(7, 7)
 material = SubResource("StandardMaterial3D_e6wbh")
 
 [node name="GPUParticles3D" type="GPUParticles3D"]
-material_override = SubResource("StandardMaterial3D_b300v")
+material_override = SubResource("StandardMaterial3D_y65ms")
 cast_shadow = 0
 amount = 500
 lifetime = 4.0

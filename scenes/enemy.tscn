@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=4 uid="uid://cdqao72vmih20"]
 
-[ext_resource type="Script" path="res://scripts/Enemy.cs" id="1_d2see"]
+[ext_resource type="Script" uid="uid://dvtei7g3vas2r" path="res://scripts/Enemy.cs" id="1_d2see"]
 [ext_resource type="Texture2D" uid="uid://da1y4v4atigx" path="res://models/ghost_Marble002_1K-JPG_Color.jpg" id="2_4hk2c"]
 [ext_resource type="Texture2D" uid="uid://cxrx7bq3t3byk" path="res://models/ghost_Marble002_1K-JPG_NormalGL.jpg" id="3_sses2"]
 
@@ -448,9 +448,9 @@ tracks/19/keys = PackedFloat32Array(0, 1, 0.00491528, 0.00235424, 0.683836, 0.72
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v85lk"]
 _data = {
-"ArmatureAction": SubResource("Animation_o8uht"),
-"ArmatureAction_002": SubResource("Animation_ttkl3"),
-"ArmatureAction_003": SubResource("Animation_3ex4w")
+&"ArmatureAction": SubResource("Animation_o8uht"),
+&"ArmatureAction_002": SubResource("Animation_ttkl3"),
+&"ArmatureAction_003": SubResource("Animation_3ex4w")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qo2ds"]

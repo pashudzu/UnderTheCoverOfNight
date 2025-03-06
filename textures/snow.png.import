@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlws7k3iycmqh"
-path.s3tc="res://.godot/imported/snow.png-7cb34aeefc52ebe8fd74433831fe4133.s3tc.ctex"
+uid="uid://cyctgtnyjtogb"
+path="res://.godot/imported/snow.png-7cb34aeefc52ebe8fd74433831fe4133.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/snow.png"
-dest_files=["res://.godot/imported/snow.png-7cb34aeefc52ebe8fd74433831fe4133.s3tc.ctex"]
+dest_files=["res://.godot/imported/snow.png-7cb34aeefc52ebe8fd74433831fe4133.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=4
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
@@ -26,7 +25,7 @@ mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=true
+process/fix_alpha_border=false
 process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false

@@ -1,6 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bbmxue7401opm"]
+[gd_scene load_steps=12 format=3 uid="uid://bbmxue7401opm"]
 
 [ext_resource type="PackedScene" uid="uid://cbgrvdl53g5e1" path="res://scenes/house.glb" id="1_iej5q"]
+[ext_resource type="Texture2D" uid="uid://co6yvseg7v6p2" path="res://models/house_Planks013_1K-JPG_Color.jpg" id="2_qtlar"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rk7hg"]
+albedo_texture = ExtResource("2_qtlar")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_345gf"]
 size = Vector3(15.0273, 12.0761, 0.591797)
@@ -30,6 +34,7 @@ size = Vector3(11.2109, 1, 9.3103)
 
 [node name="Cube" parent="." index="0"]
 transform = Transform3D(0.107547, 0, 0.00130274, 0, 0.107555, 0, -0.00130274, 0, 0.107547, 3.72354, -1.39417, -1.034)
+material_override = SubResource("StandardMaterial3D_rk7hg")
 lod_bias = 0.4
 
 [node name="dresser" parent="." index="1"]

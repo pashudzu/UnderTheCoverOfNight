@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://dkhj7y0nwgtea"]
 
-[ext_resource type="Script" path="res://scripts/ContinueGameButton.cs" id="1_4xh35"]
+[ext_resource type="Script" uid="uid://cwophakmoxywd" path="res://scripts/ContinueGameButton.cs" id="1_4xh35"]
 [ext_resource type="Texture2D" uid="uid://cqqcuhi66bwyb" path="res://textures/buttonTexture.png" id="1_xvmay"]
 [ext_resource type="Texture2D" uid="uid://bu6cjv4c4ra3e" path="res://textures/buttonTexturePressed.png" id="2_0sja0"]
-[ext_resource type="Script" path="res://scripts/NewGameButton.cs" id="2_0wao7"]
-[ext_resource type="Script" path="res://scenes/ui/BackToMenyFromChoiceButton.cs" id="3_18jj1"]
+[ext_resource type="Script" uid="uid://cddwctp263j84" path="res://scripts/NewGameButton.cs" id="2_0wao7"]
+[ext_resource type="Script" uid="uid://cml1bp52howdn" path="res://scenes/ui/BackToMenyFromChoiceButton.cs" id="3_18jj1"]
 [ext_resource type="FontFile" uid="uid://d1wnbtljy0c3e" path="res://fonts/Nervousfont-Regular.ttf" id="4_xoikx"]
 
 [node name="ContinueOrNewGameChoice" type="Control"]
