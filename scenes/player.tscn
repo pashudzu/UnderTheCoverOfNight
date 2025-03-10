@@ -1,6 +1,7 @@
-[gd_scene load_steps=39 format=3 uid="uid://b3fctgxoddghu"]
+[gd_scene load_steps=40 format=3 uid="uid://b3fctgxoddghu"]
 
 [ext_resource type="Script" uid="uid://bdk3wacre4jan" path="res://scripts/CharacterBody.cs" id="1_31f3j"]
+[ext_resource type="Script" uid="uid://4wgaaahir7b5" path="res://scenes/Player.cs" id="1_a38lo"]
 [ext_resource type="PackedScene" uid="uid://ybjrto1uhpox" path="res://scenes/snowParticles.tscn" id="1_s3vnn"]
 [ext_resource type="PackedScene" uid="uid://cljfi6uu0vgj4" path="res://scenes/ui/glitch_effect.tscn" id="2_2mq1p"]
 [ext_resource type="PackedScene" uid="uid://m6mficmce4ok" path="res://scenes/ui/pause_menu.tscn" id="2_teuc2"]
@@ -332,6 +333,7 @@ _data = {
 }
 
 [node name="player" type="Node3D"]
+script = ExtResource("1_a38lo")
 
 [node name="GPUParticles3D" parent="." instance=ExtResource("1_s3vnn")]
 
@@ -388,12 +390,6 @@ stream = ExtResource("15_fy630")
 max_db = -5.0
 autoplay = true
 
-[node name="PauseMenu" parent="CharacterBody" instance=ExtResource("2_teuc2")]
-visible = false
-
-[node name="Inventory" parent="CharacterBody" instance=ExtResource("3_mphs2")]
-visible = false
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody"]
 shape = SubResource("CapsuleShape3D_mtcuj")
 
@@ -420,7 +416,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Animations" type="AnimationPlayer" parent="CharacterBody"]
 libraries = {
-"": SubResource("AnimationLibrary_teal0")
+&"": SubResource("AnimationLibrary_teal0")
 }
 
 [node name="CheckSurfaceArea3D" type="Area3D" parent="CharacterBody"]
@@ -450,5 +446,17 @@ visible_ratio = 0.0
 
 [node name="TextAnimation" type="AnimationPlayer" parent="CharacterBody/Dialogue/Label"]
 libraries = {
-"": SubResource("AnimationLibrary_3maqg")
+&"": SubResource("AnimationLibrary_3maqg")
 }
+
+[node name="InventoryLayer" type="CanvasLayer" parent="CharacterBody"]
+
+[node name="Inventory" parent="CharacterBody/InventoryLayer" instance=ExtResource("3_mphs2")]
+visible = false
+
+[node name="PauseMenuLayer" type="CanvasLayer" parent="CharacterBody"]
+layer = 2
+
+[node name="PauseMenu" parent="CharacterBody/PauseMenuLayer" instance=ExtResource("2_teuc2")]
+visible = false
+z_index = 1

@@ -23,7 +23,6 @@ public partial class Item : Area3D
 	private Sprite2D _pressESprite;
 	public string ItemInWorldPath;
 	
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		if (GameManager.Instance.Player == null) {
@@ -62,9 +61,14 @@ public partial class Item : Area3D
 		}
 	}
 	private void AddToInventory() {
-		GD.Print($"Освобождение объекта {itemName}");
-		QueueFree();
+		GD.Print($"Пытаюсь добавить item {itemName} в инвентарь.");
+		if (Inventory.Instance == null) {
+			GD.PrintErr("Ошибка: Inventory.Instance == null!");
+			return;
+		}
 		Inventory.Instance.addItem(this);
+		GD.Print($"Добавлен item {itemName}, теперь освобождаю.");
+		QueueFree();
 	}
 	private void ChangePressESpriteVisibility() {
 		_pressESprite.Visible = !_pressESprite.Visible;

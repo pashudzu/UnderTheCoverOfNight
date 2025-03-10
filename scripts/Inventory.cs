@@ -27,30 +27,26 @@ public partial class Inventory : Control
 	}
 	private void InitializeButtonsAndSlots() {
 		for (int i = 1; i < CountOfSlots + 1; i++) {
-			_slots.Add(GetNodeOrNull<TextureButton>($"ColorRect/GridContainer/TextureButton{i}"));
+			_slots.Add(GetNode<TextureButton>($"TextureRect/GridContainer/TextureButton{i}"));
 			GD.Print($"slot {i} ready");
 		}
 		
-		for (int i = 1; i < 5; i++) {
-			_buttons.Add(GetNodeOrNull<TextureButton>($"ColorRect/GridContainer/TextureButton{i}"));
+		for (int i = 1; i < 4; i++) {
+			_buttons.Add(GetNode<TextureButton>($"TextureRect/GridContainer/TextureButton{i}"));
 			GD.Print($"button {i} ready");
 		}
-		_buttons.Add(GetNodeOrNull<TextureButton>("ColorRect/LeftHandButton"));
-		_buttons.Add(GetNodeOrNull<TextureButton>("ColorRect/RightHandButton"));
+		_buttons.Add(GetNode<TextureButton>("TextureRect/LeftHandButton"));
+		_buttons.Add(GetNode<TextureButton>("TextureRect/RightHandButton"));
 		
-		string[] _buttonMethods = { "OnButton1Pressed", 
-		"OnButton2Pressed", "OnButton3Pressed", "OnButton4Pressed", 
-		"OnButton5Pressed", "OnButton6Pressed", };
-		
+		Action[] _buttonMethods = { OnButton1Pressed, 
+			OnButton2Pressed, OnButton3Pressed, OnButton4Pressed, 
+			OnButton5Pressed, OnButton6Pressed 
+		};
 		for (int i = 0; i < _buttons.Count; i++) {
 			if (_buttons[i] != null) {
-				_buttons[i].Connect("pressed", new Callable(this, _buttonMethods[i]));
-			}
-			if (GameManager.Instance.SavedButtons.Count < _buttons.Count) {
-				GameManager.Instance.SavedButtons.TryAdd(i, null);
-			}
-			else {
-				GD.PrintErr($"_button{i} == null");
+				_buttons[i].Pressed += _buttonMethods[i];
+			} else {
+				GD.PrintErr($"Кнопка с интендификкатором {i} имеет значение null.");
 			}
 		}
 		for (int i = 0; i < 6; i++) {
@@ -61,9 +57,22 @@ public partial class Inventory : Control
 	}
 	private async void ResumeInventoryData(){
 		if (GameManager.Instance.WasGameSaved) {
+			if (GameManager.Instance.SavedButtons != null) {
+				ResumeButtonsData();
+			}
 			ResumeSlotsData();
 			await ToSignal(GetTree(), "process_frame");
 			ResumeItemData();
+		}
+	}
+	private void ResumeButtonsData() {
+		for (int i = 0; i < GameManager.Instance.SavedButtons.Count; i++) {
+			if (GameManager.Instance.SavedButtons.Count < _buttons.Count) {
+				GameManager.Instance.SavedButtons.TryAdd(i, null);
+			}
+			else {
+				GD.PrintErr($"_button{i} == null");
+			}
 		}
 	}
 	private void ResumeSlotsData() {
@@ -79,6 +88,9 @@ public partial class Inventory : Control
 		}
 	}
 	private void ResumeItemData() {
+		if (GameManager.Instance.SavedItems == null) {
+			return;
+		}
 		foreach(var pair in GameManager.Instance.SavedItems) {
 			if (pair.Value != "") {
 				GD.Print($"📦 Размер itemContains перед foreach: {Item.itemContains.Count}");
@@ -97,37 +109,45 @@ public partial class Inventory : Control
 					GD.PrintErr($"Не найден item для возобновление Item(а) в игру. Искомый Item имеет имя {pair.Value} и ключ {pair.Key}");
 				}
 			} else {
-				GD.Print($"В сохранённом словарре в значении при ключе {pair.Key} значение = null");
+				GD.Print($"В сохранённом словаре в значении при ключе {pair.Key} значение = null");
+				continue;
 			}
 		}
 	}
 	private void OnButton1Pressed() {
 		_buttonIndex = 0;
+		GD.Print($"Нажата кнопка {_buttonIndex} в инвентаре.");
 		IsItemContains(_buttonIndex);
 	}
 	private void OnButton2Pressed() {
 		_buttonIndex = 1;
+		GD.Print($"Нажата кнопка {_buttonIndex} в инвентаре.");
 		IsItemContains(_buttonIndex);
 	}
 	private void OnButton3Pressed() {
 		_buttonIndex = 2;
+		GD.Print($"Нажата кнопка {_buttonIndex} в инвентаре.");
 		IsItemContains(_buttonIndex);
 	}
 	private void OnButton4Pressed() {
 		_buttonIndex = 3;
+		GD.Print($"Нажата кнопка {_buttonIndex} в инвентаре.");
 		IsItemContains(_buttonIndex);
 	}
 	private void OnButton5Pressed() {
 		_buttonIndex = 4;
+		GD.Print($"Нажата кнопка {_buttonIndex} в инвентаре.");
 		IsItemContains(_buttonIndex);
 	}
 	private void OnButton6Pressed() {
 		_buttonIndex = 5;
+		GD.Print($"Нажата кнопка {_buttonIndex} в инвентаре.");
 		IsItemContains(_buttonIndex);
 	}
 	private void IsItemContains(int _buttonIndex) {
 		GD.Print($"В инвентаре нажата кнопка номер {_buttonIndex}");
 		if (!_isDragging) {
+			GD.Print($"_isDragging = {_isDragging}");
 			StartDragging(_buttons[_buttonIndex], _items[_buttonIndex], _buttonIndex);
 		}
 		else {
@@ -162,6 +182,12 @@ public partial class Inventory : Control
 		GameManager.Instance.SavedSlots = _slots.Select(_slots => _slots.TextureNormal.ResourcePath).ToList();
 	}
 	private void StartDragging(TextureButton button, Item item, int draggedButton) {
+		GD.Print("StartDragging вызван.");
+		if (item == null) {
+			GD.PrintErr("Попытка переместить в инвентаре не существующий объект.");
+			return;
+		}
+		GD.Print($"В инвентаре перетаскивается предмет с именем {_items[draggedButton].itemName}");
 		if (_items[draggedButton] == null) {
 			return;
 		}
@@ -172,7 +198,7 @@ public partial class Inventory : Control
 			ItemDeleteFromHand(item, false);
 		}
 		GD.Print($"Ключ {_buttonIndex} найден в словаре. Начинаем перетаскивание.");
-		button.TextureNormal = (Texture2D)GD.Load("res://textures/slot.png");
+		button.TextureNormal = (Texture2D)GD.Load(ProjectSettings.GlobalizePath("res://textures/slot.png"));
 		_draggingSprite = item.itemTexture;
 		_mousePosition = GetLocalMousePosition();
 		draggingSpriteInstance = new Godot.Sprite2D();
@@ -184,6 +210,9 @@ public partial class Inventory : Control
 	}
 	public override void _Input(InputEvent @event)
 	{
+		ChangeInventoryVisible();
+	}
+	private void ChangeInventoryVisible() {
 		if (Input.IsActionJustPressed("inventory") && Engine.TimeScale == 1) {
 			if (isInventoryVisible) {
 				Hide();
@@ -210,26 +239,31 @@ public partial class Inventory : Control
 			GD.Print($"Item с key {item.itemId} уже есть в инвентаре.");
 			return;
 		}
-		Texture2D slotTexture = (Texture2D)GD.Load("res://textures/slot.png");
+		Texture2D slotTexture = (Texture2D)GD.Load(ProjectSettings.GlobalizePath("res://textures/slot.png"));
 		for (int i = 0; i < _slots.Count; i++) {
+			if (_slots[i] == null) {
+				GD.PrintErr($"Слот с индексом {i} не проинициализирован");
+				continue;
+			}
 			if (_slots[i].TextureNormal == slotTexture) {
 				_items[i] = item;
 				GameManager.Instance.SavedItems[i] = item.itemName;
 				_slots[i].TextureNormal = item.itemTextureInSlot;
-				GD.Print("Item добавлен в инвентарь");
+				GD.Print($"Item с именем {item.itemName} добавлен в инвентарь");
 				
 				GameManager.Instance.SavedSlots = _slots.Select(_slots => _slots.TextureNormal.ResourcePath).ToList();
 				return;
 			}
 		}
 		foreach (var pair in _items) {
+			GD.Print($"В инвентаре в слоте {pair.Key} есть предмет {pair.Value.itemName}.");
 			GameManager.Instance.SavedItems[pair.Key] = pair.Value.itemName;
 		}
 	}
 	public void ItemEquippedToHand(Item item, bool handIsLeft) {
 		Node3D player = GameManager.Instance.Player;
-		Node3D leftHand = player.GetNodeOrNull<Node3D>("CharacterBody/LeftHand");
-		Node3D rightHand = player.GetNodeOrNull<Node3D>("CharacterBody/RightHand");
+		Node3D leftHand = player.GetNode<Node3D>("CharacterBody/LeftHand");
+		Node3D rightHand = player.GetNode<Node3D>("CharacterBody/RightHand");
 		if (handIsLeft) {
 			if (leftHand == null){
 				GD.PrintErr("leftHand == null");

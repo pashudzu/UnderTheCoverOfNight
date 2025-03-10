@@ -10,6 +10,6 @@ public partial class BackToMenuButton : Button
 	}
 
 	private void OnPressed() {
-		GetTree().ChangeSceneToFile("res://scenes/ui/menu.tscn");
+		GetTree().ChangeSceneToFile(ProjectSettings.GlobalizePath("res://scenes/ui/menu.tscn"));
 	}
 }

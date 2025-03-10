@@ -8,10 +8,10 @@ public partial class Torch : Item
 		itemName = "Фонарик";
 		itemId = 1;
 		itemDescription = "Освети себе дорогу фонариком, но помни, энергия не бесконечна.";
-		inSlotTexturePath = "res://textures/torchInSlot.png";
-		texturePath = "res://textures/torch.png";
-		ScenePath = "res://scenes/torch.tscn";
-		itemInHandScenePath = "res://scenes/torch_in_hand.tscn";
+		inSlotTexturePath = ProjectSettings.GlobalizePath("res://textures/torchInSlot.png");
+		texturePath = ProjectSettings.GlobalizePath("res://textures/torch.png");
+		ScenePath = ProjectSettings.GlobalizePath("res://scenes/torch.tscn");
+		itemInHandScenePath = ProjectSettings.GlobalizePath("res://scenes/torch_in_hand.tscn");
 		itemInHandScene = (PackedScene)ResourceLoader.Load(itemInHandScenePath);
 		itemTextureInSlot = (Texture2D)ResourceLoader.Load(inSlotTexturePath);
 		itemTexture = (Texture2D)ResourceLoader.Load(texturePath);

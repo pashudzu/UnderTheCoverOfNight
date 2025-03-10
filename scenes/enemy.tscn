@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=4 uid="uid://cdqao72vmih20"]
 
 [ext_resource type="Script" uid="uid://dvtei7g3vas2r" path="res://scripts/Enemy.cs" id="1_d2see"]
-[ext_resource type="Texture2D" uid="uid://da1y4v4atigx" path="res://models/ghost_Marble002_1K-JPG_Color.jpg" id="2_4hk2c"]
-[ext_resource type="Texture2D" uid="uid://cxrx7bq3t3byk" path="res://models/ghost_Marble002_1K-JPG_NormalGL.jpg" id="3_sses2"]
+[ext_resource type="Texture2D" uid="uid://b2pkvms0u2c78" path="res://models/ghost_Marble002_1K-JPG_Color.jpg" id="2_4hk2c"]
+[ext_resource type="Texture2D" uid="uid://cc5gxp84c6w6d" path="res://models/ghost_Marble002_1K-JPG_NormalGL.jpg" id="3_sses2"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5n5th"]
 data = PackedVector3Array(1, 1, -1, -3.0248, 1, 1, -1.0001, 1, -1, 1, 1, -1, 3.0248, 1, 1, -3.0248, 1, 1, 3.0248, -1, 1, -3.0248, 1, 1, 3.0248, 1, 1, 3.0248, -1, 1, -3.0248, -1, 1, -3.0248, 1, 1, -3.0248, -1, 1, -1.0001, 1, -1, -3.0248, 1, 1, -3.0248, -1, 1, -1.0001, -1, -1, -1.0001, 1, -1, -1.0001, -1, -1, 3.0248, -1, 1, 1, -1, -1, -1.0001, -1, -1, -3.0248, -1, 1, 3.0248, -1, 1, 1, -1, -1, 3.0248, 1, 1, 1, 1, -1, 1, -1, -1, 3.0248, -1, 1, 3.0248, 1, 1, -1.0001, -1, -1, 1, 1, -1, -1.0001, 1, -1, -1.0001, -1, -1, 1, -1, -1, 1, 1, -1)
@@ -601,7 +601,7 @@ shape = SubResource("CylinderShape3D_nlwa2")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_v85lk")
+&"": SubResource("AnimationLibrary_v85lk")
 }
 
 [node name="Armature" type="Node3D" parent="."]

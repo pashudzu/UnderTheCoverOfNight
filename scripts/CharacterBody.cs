@@ -52,8 +52,8 @@ public partial class CharacterBody : CharacterBody3D {
 		GameManager.Instance.PlayerCharacterBody = this;
 		Input.SetMouseMode(Input.MouseModeEnum.Captured);
 		_head = GetNodeOrNull<MeshInstance3D>("Head");
-		_pauseMenu = GetNodeOrNull<Control>("PauseMenu");
-		_inventory = GetNodeOrNull<Control>("Inventory");
+		_pauseMenu = GetNodeOrNull<Control>("PauseMenuLayer/PauseMenu");
+		_inventory = GetNodeOrNull<Control>("InventoryLayer/Inventory");
 		_runBar = GetNodeOrNull<ProgressBar>("RunBar");
 		var _gameManager = GameManager.Instance;
 		var _currentScene = GetTree().CurrentScene.Name;

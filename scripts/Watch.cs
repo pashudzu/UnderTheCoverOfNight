@@ -10,10 +10,10 @@ public partial class Watch : Item
 		itemName = "Часы";
 		itemId = 2;
 		itemDescription = "Смотри за временем, остерегайся кровавой луны";
-		inSlotTexturePath = "res://textures/watchSlot.png";
-		texturePath = "res://textures/watch.png";
-		string ScenePath = "res://scenes/watch.tscn";
-		string watchInHandScenePath = "res://scenes/wath_in_hand.tscn";
+		inSlotTexturePath = ProjectSettings.GlobalizePath("res://textures/watchSlot.png");
+		texturePath = ProjectSettings.GlobalizePath("res://textures/watch.png");
+		string ScenePath = ProjectSettings.GlobalizePath("res://scenes/watch.tscn");
+		string watchInHandScenePath = ProjectSettings.GlobalizePath("res://scenes/wath_in_hand.tscn");
 		itemInHandScene = (PackedScene)ResourceLoader.Load(watchInHandScenePath);
 		itemTextureInSlot = (Texture2D)ResourceLoader.Load(inSlotTexturePath);
 		itemTexture = (Texture2D)ResourceLoader.Load(texturePath);

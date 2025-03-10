@@ -23,7 +23,7 @@ public partial class VBoxContainer : Godot.VBoxContainer {
 		Resume();
 	}
 	public void OnsettingsButtonPressed() {
-		GetTree().ChangeSceneToFile("res://scenes/ui/menu.tscn");
+		GetTree().ChangeSceneToFile(ProjectSettings.GlobalizePath("res://scenes/ui/menu.tscn"));
 		Input.SetMouseMode(Input.MouseModeEnum.Visible);
 	}
 	public void OnSaveAndQuitButtonPresssed() {

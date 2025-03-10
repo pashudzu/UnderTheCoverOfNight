@@ -6,12 +6,12 @@ public partial class Map : Item
 	public override void _Ready() {
 		base._Ready();
 		itemName = "Карта";
-		itemId = 1;
-		itemDescription = "Ищи с помощью карты";
-		inSlotTexturePath = "res://textures/MapSlot.png";
-		texturePath = "res://textures/mapObject.png";
-		ScenePath = "res://scenes/map.tscn";
-		itemInHandScenePath = "res://scenes/map_in_hand.tscn";
+		itemId = 4;
+		itemDescription = ProjectSettings.GlobalizePath("Ищи нужные места с помощью карты");
+		inSlotTexturePath = ProjectSettings.GlobalizePath("res://textures/MapSlot.png");
+		texturePath = ProjectSettings.GlobalizePath("res://textures/mapObject.png");
+		ScenePath = ProjectSettings.GlobalizePath("res://scenes/map.tscn");
+		itemInHandScenePath = ProjectSettings.GlobalizePath("res://scenes/map_in_hand.tscn");
 		itemInHandScene = (PackedScene)ResourceLoader.Load(itemInHandScenePath);
 		itemTextureInSlot = (Texture2D)ResourceLoader.Load(inSlotTexturePath);
 		itemTexture = (Texture2D)ResourceLoader.Load(texturePath);

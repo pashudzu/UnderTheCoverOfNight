@@ -23,7 +23,7 @@ public partial class SaveChoice : Control
 	}
 	private void ChangeScene(int _slotNoumber) {
 		GameManager.Instance.SlotNoumber = _slotNoumber;
-		PackedScene _nextScene = (PackedScene)ResourceLoader.Load("res://scenes/ui/continue_or_new_game_choice.tscn");
+		PackedScene _nextScene = (PackedScene)ResourceLoader.Load(ProjectSettings.GlobalizePath("res://scenes/ui/continue_or_new_game_choice.tscn"));
 		GetTree().ChangeSceneToPacked(_nextScene);
 	}
 }

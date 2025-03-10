@@ -21,84 +21,23 @@ offset_right = 1650.0
 offset_bottom = 1000.0
 texture = ExtResource("1_lbvbn")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -220.0
-offset_top = 57.0
-offset_right = 180.0
-offset_bottom = 302.0
+offset_left = 248.0
+offset_top = -409.0
+offset_right = 839.0
+offset_bottom = 409.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 10
-script = ExtResource("1_bvhlo")
+mouse_filter = 1
+color = Color(1, 1, 1, 0)
 
-[node name="Resume" type="TextureButton" parent="TextureRect/VBoxContainer"]
-custom_minimum_size = Vector2(400, 75)
-layout_mode = 2
-texture_normal = ExtResource("2_suxbd")
-texture_hover = ExtResource("3_0jbqt")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="TextureRect/VBoxContainer/Resume"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_cdbb2")
-theme_override_font_sizes/font_size = 35
-text = "вернуться"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Settings" type="TextureButton" parent="TextureRect/VBoxContainer"]
-custom_minimum_size = Vector2(400, 75)
-layout_mode = 2
-texture_normal = ExtResource("2_suxbd")
-texture_hover = ExtResource("3_0jbqt")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="TextureRect/VBoxContainer/Settings"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_cdbb2")
-theme_override_font_sizes/font_size = 35
-text = "настройки"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Save&Quit" type="TextureButton" parent="TextureRect/VBoxContainer"]
-custom_minimum_size = Vector2(400, 75)
-layout_mode = 2
-texture_normal = ExtResource("2_suxbd")
-texture_hover = ExtResource("3_0jbqt")
-stretch_mode = 0
-
-[node name="Label" type="Label" parent="TextureRect/VBoxContainer/Save&Quit"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("4_cdbb2")
-theme_override_font_sizes/font_size = 35
-text = "сохранить и выйти"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="MissionLabel" type="Label" parent="TextureRect"]
+[node name="MissionLabel" type="Label" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -114,3 +53,83 @@ text = "Миссия:
 бла бла
 бла бла
 бла бла"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -265.5
+offset_top = 91.0
+offset_right = 134.5
+offset_bottom = 336.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+script = ExtResource("1_bvhlo")
+
+[node name="Resume" type="TextureButton" parent="ColorRect/VBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(400, 75)
+layout_mode = 2
+texture_normal = ExtResource("2_suxbd")
+texture_hover = ExtResource("3_0jbqt")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/Resume"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_cdbb2")
+theme_override_font_sizes/font_size = 35
+text = "вернуться"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings" type="TextureButton" parent="ColorRect/VBoxContainer"]
+z_index = 1
+custom_minimum_size = Vector2(400, 75)
+layout_mode = 2
+texture_normal = ExtResource("2_suxbd")
+texture_hover = ExtResource("3_0jbqt")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_cdbb2")
+theme_override_font_sizes/font_size = 35
+text = "настройки"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Save&Quit" type="TextureButton" parent="ColorRect/VBoxContainer"]
+custom_minimum_size = Vector2(400, 75)
+layout_mode = 2
+texture_normal = ExtResource("2_suxbd")
+texture_hover = ExtResource("3_0jbqt")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="ColorRect/VBoxContainer/Save&Quit"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_cdbb2")
+theme_override_font_sizes/font_size = 35
+text = "сохранить и выйти"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -80,7 +80,7 @@ public partial class ContinueGameButton : TextureButton
 		GameManager.Instance.SavedItems = _savedItems;
 	}
 	private void GetConfig(ConfigFile config) {
-		Error err = config.Load($"user://configs/save{GameManager.Instance.SlotNoumber}.cfg");
+		Error err = config.Load(ProjectSettings.GlobalizePath($"user://configs/save{GameManager.Instance.SlotNoumber}.cfg"));
 		
 		if (err != Error.Ok) {
 			GD.Print("Ошибка загрузки конфига");
@@ -88,8 +88,8 @@ public partial class ContinueGameButton : TextureButton
 		}
 	}
 	private void StartNewGame() {
-		GameManager.Instance.DownloadableScene = "res://scenes/begining.tscn";
-		PackedScene _laodScene = (PackedScene)ResourceLoader.Load("res://scenes/loading_scene.tscn");
+		GameManager.Instance.DownloadableScene = ProjectSettings.GlobalizePath("res://scenes/begining.tscn");
+		PackedScene _laodScene = (PackedScene)ResourceLoader.Load(ProjectSettings.GlobalizePath("res://scenes/loading_scene.tscn"));
 		GetTree().ChangeSceneToPacked(_laodScene);
 	}
 }

@@ -218,8 +218,8 @@ public partial class Enemy : CharacterBody3D
 		_animation.Play("ArmatureAction_002");
 		GD.Print("Игрок видит скример");
 		await ToSignal(GetTree().CreateTimer(1.0), "timeout");
-		string DownloadableScene = GameManager.Instance.DownloadableScene = "res://scenes/cutScene.tscn";
-		PackedScene loadScene = (PackedScene)ResourceLoader.Load("res://scenes/loading_scene.tscn");
+		string DownloadableScene = GameManager.Instance.DownloadableScene = ProjectSettings.GlobalizePath("res://scenes/cutScene.tscn");
+		PackedScene loadScene = (PackedScene)ResourceLoader.Load(ProjectSettings.GlobalizePath("res://scenes/loading_scene.tscn"));
 		CollisionsQueueFree();
 		GetTree().ChangeSceneToPacked(loadScene);
 	}

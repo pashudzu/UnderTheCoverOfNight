@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://dqak8ec1eq5ii"]
+[gd_scene load_steps=57 format=4 uid="uid://dqak8ec1eq5ii"]
 
 [ext_resource type="Script" uid="uid://c2dsbbhkskojs" path="res://scripts/HomeScene.cs" id="1_srwtq"]
 [ext_resource type="PackedScene" uid="uid://b3fctgxoddghu" path="res://scenes/player.tscn" id="2_piolw"]
@@ -864,22 +864,7 @@ fog_sky_affect = 0.85
 
 [sub_resource type="Environment" id="Environment_0r683"]
 
-[sub_resource type="Shader" id="Shader_t2pc0"]
-code = "shader_type canvas_item;
-
-uniform float lod : hint_range(0.0, 5.0) = 0.0;
-
-void fragment() {
-    vec4 color = textureLod(SCREEN_TEXTURE, SCREEN_UV, lod);
-    COLOR = color;
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hmvx0"]
-shader = SubResource("Shader_t2pc0")
-
 [node name="home_scene" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.43414, -57.5491, -80.4834)
 script = ExtResource("1_srwtq")
 
 [node name="Player" parent="." instance=ExtResource("2_piolw")]
@@ -1155,6 +1140,7 @@ light_energy = 0.07
 shadow_enabled = true
 
 [node name="UI" type="CanvasLayer" parent="."]
+layer = -1
 
 [node name="SubViewportContainer1" type="SubViewportContainer" parent="UI"]
 visible = false
@@ -1195,9 +1181,9 @@ environment = SubResource("Environment_0r683")
 fov = 78.75
 
 [node name="CanvasLayer" type="CanvasLayer" parent="UI"]
+layer = -1
 
 [node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer"]
-material = SubResource("ShaderMaterial_hmvx0")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -10,7 +10,7 @@ public partial class BackToMenyFromChoiceButton : Button
 	}
 
 	private void OnButtonPressed() {
-		PackedScene _menuScene = (PackedScene)ResourceLoader.Load("res://scenes/ui/menu.tscn");
+		PackedScene _menuScene = (PackedScene)ResourceLoader.Load(ProjectSettings.GlobalizePath("res://scenes/ui/menu.tscn"));
 		GetTree().ChangeSceneToPacked(_menuScene);
 	}
 }

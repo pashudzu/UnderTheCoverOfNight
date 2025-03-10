@@ -26,6 +26,7 @@ script = ExtResource("1_koubk")
 layout_mode = 0
 offset_right = 800.0
 offset_bottom = 500.0
+mouse_filter = 2
 texture = ExtResource("2_enf60")
 
 [node name="GridContainer" type="GridContainer" parent="TextureRect"]
