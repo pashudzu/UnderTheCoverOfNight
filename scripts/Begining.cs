@@ -42,6 +42,7 @@ public partial class Begining : Node3D
 		}
 		if (_playerInArea) {
 			ShowFire();
+			GameManager.Instance.IsStoveLighted = true;
 		}
 		if (_animation.IsPlaying() && Input.IsActionPressed("skip")) {
 			_animation.Stop();

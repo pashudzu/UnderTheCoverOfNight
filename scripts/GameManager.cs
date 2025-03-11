@@ -30,6 +30,8 @@ public partial class GameManager : Node
 	public string RightHandChild;
 	public string DownloadableScene;
 	public int SlotNoumber;
+	public Label MissionLabel;
+	public bool IsStoveLighted;
 	
 	public override void _Ready()
 	{
