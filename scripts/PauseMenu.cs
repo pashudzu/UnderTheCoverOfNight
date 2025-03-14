@@ -2,7 +2,6 @@ using Godot;
 using System;
 
 public partial class PauseMenu : Control {
-	
 	public override void _Ready() {
 		Button resume = GetNodeOrNull<Button>("VBoxContainer/Resume");
 		Button backToMenu = GetNodeOrNull<Button>("VBoxContainer/BackToMenu");

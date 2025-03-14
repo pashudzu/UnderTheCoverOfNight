@@ -6,7 +6,7 @@ public partial class LightStoveMission : Mission
 	public override void _Ready() {
 		base._Ready();
 		Name = "Растопи печь";
-		Description = "Дома очень холодно. Растопи печь, чтобы дома стало теплее.";
+		Description = "Дома очень холодно, растопи печь.";
 		MissionContains.Add(Name, this);
 	}
 	public override void StartMission() {
@@ -17,7 +17,7 @@ public partial class LightStoveMission : Mission
 			IsCompleted = true;
 		}
 	}
-	public override void _Process() {
+	public override void _Process(double delta) {
 		CompleteMission();
 	}
 }
