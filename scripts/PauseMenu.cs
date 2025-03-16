@@ -10,6 +10,8 @@ public partial class PauseMenu : Control {
 		resume.Connect("pressed", Callable.From(OnRusumeButtonPressed));
 		backToMenu.Connect("pressed", Callable.From(OnBackToMenuPressed));
 		quit.Connect("pressed", Callable.From(OnQuitPresssed));
+		
+		GameManager.Instance.MissionLabel = GetParent().GetNode<Label>("MissionLabel");
 	}
 	
 	public override void _Process(double delta) {

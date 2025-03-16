@@ -4,16 +4,24 @@ using System.Linq;
 
 public partial class MissionManager : Node
 {
-	private Label missionLabel;
+	private Label _missionName;
+	private Label _missionDescription;
+	private const string EmptyMissionText = "";
 	public override void _Ready() {
-		missionLabel = GameManager.Instance.MissionLabel;
+		_missionName = GameManager.Instance.MissionNameLabel;
+		_missionDescription = GameManager.Instance.MissionDescriptionLabel;
 	}
 	public override void _Process(double delta) {
-		if (GameManager.Instance.MissionLabel == null) {
-			GameManager.Instance.MissionLabel.Text = Mission.MissionContains.First().Key;
+		if (_missionName.Text == EmptyMissionText || _missionDescription.Text == EmptyMissionText) {
+			SetMissionText(0);
 		}
 	}
-	private void ChangeMissionLabel() {
-		missionLabel = GameManager.Instance.MissionLabel;
+	private void SetMissionText(int _key) {
+		if (!Mission.MissionContains.Any()) {
+			GD.PrintErr("MissionContains не имеет значенией.");
+		} else {
+			_missionName.Text = Mission.MissionContains[_key].Name;
+			_missionDescription.Text = Mission.MissionContains[_key].Description;
+		}
 	}
 }

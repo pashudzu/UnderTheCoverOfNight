@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dop60unc1twfx"]
+
+[ext_resource type="Script" uid="uid://rvhwoyci0hcr" path="res://scripts/MissionManager.cs" id="1_2r4n0"]
+[ext_resource type="Script" uid="uid://drwydypycs6tv" path="res://scripts/LightStoveMission.cs" id="2_bd482"]
+
+[node name="MissionManager" type="Node"]
+script = ExtResource("1_2r4n0")
+
+[node name="LightStoveMission" type="Node" parent="."]
+script = ExtResource("2_bd482")

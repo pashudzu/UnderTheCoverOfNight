@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=4 uid="uid://dqak8ec1eq5ii"]
+[gd_scene load_steps=58 format=4 uid="uid://dqak8ec1eq5ii"]
 
 [ext_resource type="Script" uid="uid://c2dsbbhkskojs" path="res://scripts/HomeScene.cs" id="1_srwtq"]
 [ext_resource type="PackedScene" uid="uid://b3fctgxoddghu" path="res://scenes/player.tscn" id="2_piolw"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://kxtb5lyy3ndp" path="res://scripts/CarEnterArea.cs" id="25_qjxjy"]
 [ext_resource type="PackedScene" uid="uid://w4phjbb8kiol" path="res://scenes/map.tscn" id="25_we53v"]
 [ext_resource type="PackedScene" uid="uid://kodcdqb2o35h" path="res://scenes/watch.tscn" id="26_4qyll"]
+[ext_resource type="PackedScene" uid="uid://dop60unc1twfx" path="res://scenes/mission_manager.tscn" id="26_y5vvj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3qjf8"]
 size = Vector3(0.865055, 2.0217, 1.04883)
@@ -1192,3 +1193,5 @@ grow_vertical = 2
 
 [node name="map" parent="." instance=ExtResource("25_we53v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 323.979, 0.277954, 392.061)
+
+[node name="MissionManager" parent="." instance=ExtResource("26_y5vvj")]
