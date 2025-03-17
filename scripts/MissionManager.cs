@@ -13,7 +13,14 @@ public partial class MissionManager : Node
 	}
 	public override void _Process(double delta) {
 		if (_missionName.Text == EmptyMissionText || _missionDescription.Text == EmptyMissionText) {
-			SetMissionText(0);
+			Mission.CurrentMission = 0;
+			SetMissionText(Mission.CurrentMission);
+			GD.Print("Была поставленна первая миссия.");
+		}
+		if (Mission.MissionContains[Mission.CurrentMission].IsCompleted && Mission.MissionContains.Count >= Mission.CurrentMission) {
+			GD.Print($"Миссия {Mission.MissionContains[Mission.CurrentMission].Name} была посставлена игроку.");
+			Mission.CurrentMission++;
+			SetMissionText(Mission.CurrentMission);
 		}
 	}
 	private void SetMissionText(int _key) {

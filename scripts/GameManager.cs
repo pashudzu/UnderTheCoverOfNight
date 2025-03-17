@@ -34,6 +34,8 @@ public partial class GameManager : Node
 	public Label MissionNameLabel;
 	public Label MissionDescriptionLabel;
 	public bool IsStoveLighted;
+	public bool IsWentSleep;
+	public string MainActionSceneName = "home_scene";
 	
 	public override void _Ready()
 	{

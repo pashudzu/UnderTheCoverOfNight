@@ -37,7 +37,7 @@ public partial class Area3d : Area3D
 		if (GameManager.Instance.Player == null) {
 			return;
 		}
-		if (Input.IsActionJustPressed("next")) {
+		if (Input.IsActionJustPressed("next") && GetTree().Root.GetChild(0).Name == GameManager.Instance.MainActionSceneName) {
 			_openPage++;
 			if (_openPage < 4) {
 				_label.SetText(_pages[_openPage]);
