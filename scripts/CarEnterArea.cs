@@ -16,6 +16,7 @@ public partial class CarEnterArea : Area3D
 	{
 		if (_playerInArea && Input.IsActionJustPressed("take_item")) {
 			if (GameManager.Instance.CarIsFueled) {
+				GameManager.Instance.IsEndHappy = true;
 				GameManager.Instance.DownloadableScene = "res://scenes/cutScene.tscn";
 				PackedScene loadScene = (PackedScene)ResourceLoader.Load("res://scenes/loading_scene.tscn");
 				GetTree().ChangeSceneToPacked(loadScene);
