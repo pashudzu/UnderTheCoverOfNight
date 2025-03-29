@@ -36,6 +36,7 @@ public partial class GameManager : Node
 	public bool IsStoveLighted;
 	public bool IsWentSleep;
 	public string MainActionSceneName = "home_scene";
+	public bool IsPlayerNearMonster;
 	
 	public override void _Ready()
 	{

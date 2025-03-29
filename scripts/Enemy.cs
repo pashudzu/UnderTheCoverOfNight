@@ -196,12 +196,14 @@ public partial class Enemy : CharacterBody3D
 	}
 	private void OnNearbyZoneEntered(Node body) {
 		if (body.IsInGroup("Player")) {
+			GameManager.Instance.IsPlayerNearMonster = true;
 			SetState(EnemyStates.IsPlayerNearby);
 			ChangeStateToGameManager();
 		}
 	}
 	private void OnNearbyZoneExited(Node body) {
 		if(body.IsInGroup("Player")) {
+			GameManager.Instance.IsPlayerNearMonster = false;
 			RemoveState(EnemyStates.IsPlayerNearby);
 			ChangeStateToGameManager();
 		}
