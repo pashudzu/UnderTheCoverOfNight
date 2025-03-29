@@ -54,7 +54,7 @@ public partial class Item : Area3D
 			GD.Print("Player is exited range");
 		}
 	}
-	public void HandleInteraction() {
+	public virtual void HandleInteraction() {
 		if (Input.IsActionJustPressed("take_item") && isPlayerInRange) {
 			AddToInventory();
 			GD.Print("Item is free");

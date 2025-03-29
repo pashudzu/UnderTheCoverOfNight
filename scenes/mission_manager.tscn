@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dop60unc1twfx"]
+[gd_scene load_steps=6 format=3 uid="uid://dop60unc1twfx"]
 
 [ext_resource type="Script" uid="uid://rvhwoyci0hcr" path="res://scripts/missions/MissionManager.cs" id="1_2r4n0"]
 [ext_resource type="Script" uid="uid://drwydypycs6tv" path="res://scripts/missions/LightStoveMission.cs" id="2_bd482"]
 [ext_resource type="Script" uid="uid://dy5k4tarr3m6f" path="res://scripts/missions/GoSleepMission.cs" id="3_bd482"]
 [ext_resource type="Script" uid="uid://d3aryu3bqor3j" path="res://scripts/missions/RunAwayMission.cs" id="4_jqeuj"]
+[ext_resource type="Script" uid="uid://dv31y5b82k5j8" path="res://scripts/missions/BuyPetrolMission.cs" id="5_6nf8e"]
 
 [node name="MissionManager" type="Node"]
 script = ExtResource("1_2r4n0")
@@ -16,3 +17,6 @@ script = ExtResource("3_bd482")
 
 [node name="RunAwayFromMonster" type="Node" parent="."]
 script = ExtResource("4_jqeuj")
+
+[node name="BuyPetrolMission" type="Node" parent="."]
+script = ExtResource("5_6nf8e")

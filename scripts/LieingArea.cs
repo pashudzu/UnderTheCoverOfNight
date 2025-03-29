@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 public partial class LieingArea : Area3D
 {
 	private AnimationPlayer _animationPlayer;
-	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		Connect("body_entered", new Callable(this, nameof(OnAreaEntered)));
@@ -14,6 +13,7 @@ public partial class LieingArea : Area3D
 	
 	private async void OnAreaEntered(Node body) {
 		if (body.IsInGroup("Player")) {
+			GameManager.Instance.IsWentSleep = true;
 			_animationPlayer.Play("LieingDown");
 			await Task.Delay(5000);
 			GameManager.Instance.DownloadableScene = "res://scenes/cutScene.tscn";

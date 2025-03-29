@@ -24,4 +24,8 @@ public partial class Petrol : Item
 	{
 		HandleInteraction();
 	}
+	public override void HandleInteraction() {
+		base.HandleInteraction();
+		GameManager.Instance.IsPetrolGotten = true;
+	}
 }

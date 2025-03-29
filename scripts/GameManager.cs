@@ -35,6 +35,7 @@ public partial class GameManager : Node
 	public Label MissionDescriptionLabel;
 	public bool IsStoveLighted;
 	public bool IsWentSleep;
+	public bool IsPetrolGotten;
 	public string MainActionSceneName = "home_scene";
 	public bool IsPlayerNearMonster;
 	
