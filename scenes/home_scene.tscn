@@ -603,7 +603,7 @@ size = Vector3(550, 80, 1)
 
 [sub_resource type="Animation" id="Animation_ixumr"]
 resource_name = "Awakening"
-length = 12.752
+length = 12.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -611,7 +611,7 @@ tracks/0/path = NodePath("../../Enemy:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 5.53333, 6.9, 7.63333, 9.66667, 12.6667),
+"times": PackedFloat32Array(0, 2, 5.53333, 6.9, 7.63333, 9.66667, 12),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(335.434, 4.42478, 389.683), Vector3(335.434, 4.42478, 389.683), Vector3(338.167, 4.36415, 387.98), Vector3(338.167, 4.36415, 387.98), Vector3(339.377, 4.36415, 388.319), Vector3(339.363, 3.22501, 389.984), Vector3(335.41, 1.06133, 394.189)]
@@ -623,7 +623,7 @@ tracks/1/path = NodePath("../../Enemy:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3.63333, 7.63333, 9.66667, 12.6667),
+"times": PackedFloat32Array(0, 3.63333, 7.63333, 9.66667, 12),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 2.1196, 0), Vector3(0, 2.00573, 0), Vector3(0, 1.36988, 0), Vector3(0, -1.50992, 0), Vector3(0, 1.36988, 0)]
@@ -647,22 +647,22 @@ tracks/3/path = NodePath("../../EventAnimationPlayer/Camera3D:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 2.73333, 3.96667, 5, 6.3, 7.63333, 7.93333, 8.33333, 9.43333, 10.6333, 11.9667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1, 1.33333, 1.77, 2.23333, 3, 3.4928, 4, 4.49535, 5, 5.3925, 5.70826, 6.01238, 7.00238, 8.00238, 9.01023, 9.52024, 10.0002, 10.0078, 11.014),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 1.72617, 0), Vector3(0, 1.72617, 0), Vector3(0, 3.03099, 0), Vector3(0, 3.03099, 0), Vector3(-0.523599, 1.5708, 0), Vector3(-0.523599, 1.5708, 0), Vector3(-0.0872665, 1.5708, 0), Vector3(-0.0872665, 2.96881, 0), Vector3(-0.0872665, 2.96881, 0), Vector3(-0.0872665, 3.54476, 0), Vector3(-0.0872665, 4.6705, 0)]
+"values": [Vector3(0.862345, 1.81093, 0.183841), Vector3(0.862345, 1.81093, 0.183841), Vector3(0.323611, 1.91407, 0.0525601), Vector3(0.323611, 1.91407, 0.0525601), Vector3(0.27159, 1.84906, 0.0454847), Vector3(0.20946, 2.45476, 0.0370344), Vector3(0.0719458, 2.47985, 0.15233), Vector3(0.111877, 2.15831, 0.0725533), Vector3(0.0286721, 1.64356, -0.00879848), Vector3(-0.0628319, 1.43117, 0), Vector3(-0.226045, 1.32973, 0.0550196), Vector3(-0.352025, 1.4856, 0.14635), Vector3(-0.500967, 1.48513, 0.0692672), Vector3(-0.500967, 1.48513, 0.0692672), Vector3(-0.500967, 1.89165, 0.0692672), Vector3(-0.187133, 3.00174, 0.0196698), Vector3(-0.187133, 3.00174, 0.0196698), Vector3(-0.187133, 3.00174, 0.0196698), Vector3(-0.187133, 3.12451, 0.0196698), Vector3(-0.187133, 3.12451, 0.0196698)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/path = NodePath("../../EventAnimationPlayer/Camera3D:position")
-tracks/4/interp = 2
+tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 2.73333, 3.96667, 4.46667, 5, 5.6, 6.3, 6.53333, 7.03333, 7.63333, 7.93333, 8.33333, 8.86667, 10, 10.9667, 11.9667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1, 1.33333, 1.77, 2.23333, 3, 5, 5.21093, 5.3846, 5.50301, 5.68458, 5.84246, 6.01238, 6.18191, 6.35558, 6.50556, 6.71081, 6.8529, 7.00238, 7.1454, 7.30328, 7.4138, 7.53221, 7.66641, 8.00238, 9.01023, 9.52024, 9.62925, 9.81279, 10.0002, 11.014, 11.5627, 12),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(346.524, -53.1927, 306.691), Vector3(346.524, -53.1927, 306.691), Vector3(346.524, -52.6534, 306.691), Vector3(346.714, -52.916, 307.159), Vector3(346.524, -53.0406, 307.658), Vector3(347.034, -53.0686, 308.478), Vector3(347.339, -53.0406, 309.436), Vector3(346.63, -53.0406, 309.436), Vector3(345.251, -54.0508, 309.239), Vector3(343.596, -54.9629, 309.436), Vector3(342.812, -55.6559, 309.436), Vector3(341.546, -55.6559, 309.627), Vector3(341.783, -55.9107, 310.499), Vector3(341.546, -56.2514, 313.079), Vector3(344.565, -56.5726, 313.69), Vector3(347.264, -56.2514, 314.038)]
+"values": [Vector3(341.815, 4.17718, 387.006), Vector3(341.815, 4.17718, 387.006), Vector3(341.815, 4.17717, 387.006), Vector3(341.815, 4.17717, 387.006), Vector3(341.815, 4.83148, 387.164), Vector3(341.815, 4.813, 388.263), Vector3(341.815, 4.76207, 389.837), Vector3(341.493, 4.58378, 389.837), Vector3(341.228, 4.51649, 389.837), Vector3(341.048, 4.50602, 389.837), Vector3(340.771, 4.21683, 389.837), Vector3(340.53, 4.29443, 389.837), Vector3(340.271, 4.18214, 389.837), Vector3(340.016, 3.83903, 389.837), Vector3(339.756, 3.78609, 389.837), Vector3(339.531, 3.51118, 389.837), Vector3(339.223, 3.48504, 389.837), Vector3(339.009, 3.03709, 389.837), Vector3(338.785, 3.15519, 389.837), Vector3(338.583, 2.80635, 389.837), Vector3(338.36, 2.91051, 389.837), Vector3(338.204, 2.60044, 389.837), Vector3(338.037, 2.74125, 389.837), Vector3(337.847, 2.45732, 389.837), Vector3(337.372, 2.63193, 389.837), Vector3(336.386, 2.63193, 389.837), Vector3(336.386, 2.63193, 391.059), Vector3(336.386, 2.51741, 391.496), Vector3(336.386, 1.8778, 392.232), Vector3(336.386, 1.87938, 392.984), Vector3(336.386, 1.87938, 394.875), Vector3(336.386, 1.87938, 397.556), Vector3(336.386, 1.87938, 399.304)]
 }
 
 [sub_resource type="Animation" id="Animation_5joq4"]
@@ -869,7 +869,7 @@ fog_sky_affect = 0.85
 script = ExtResource("1_srwtq")
 
 [node name="Player" parent="." instance=ExtResource("2_piolw")]
-transform = Transform3D(-4.37114e-08, 0, -0.999999, 0, 1, 0, 1, 0, -4.37114e-08, 336.946, 1.62383, 402.585)
+transform = Transform3D(-4.37114e-08, 0, -0.999999, 0, 1, 0, 1, 0, -4.37114e-08, 336.407, 1.62383, 399.297)
 
 [node name="Enemy" parent="." instance=ExtResource("5_6fydp")]
 transform = Transform3D(-0.472109, 0, 0.7721, 0, 0.905, 0, -0.7721, 0, -0.472109, 335.434, 4.42478, 389.683)
@@ -1095,9 +1095,6 @@ shape = SubResource("BoxShape3D_fghxd")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 39.7215, 38, 281)
 shape = SubResource("BoxShape3D_fghxd")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 304.136, 1.93311, 71.4071)
-
 [node name="watch" parent="." instance=ExtResource("26_4qyll")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 345.392, 0, 383.714)
 
@@ -1109,7 +1106,8 @@ libraries = {
 script = ExtResource("24_pedrn")
 
 [node name="Camera3D" type="Camera3D" parent="EventAnimationPlayer"]
-transform = Transform3D(-0.154749, 0, 0.987953, 0, 1, 0, -0.987953, 0, -0.154749, 346.524, -53.1927, 306.691)
+transform = Transform3D(-0.154749, 0, 0.987954, 0, 1, 0, -0.987954, 0, -0.154749, 346.524, -53.1927, 306.691)
+far = 50.0
 
 [node name="Land" type="MeshInstance3D" parent="."]
 transform = Transform3D(500, 0, 0, 0, 0.239, 0, 0, 0, 500, 258.527, 6.27576, 252.96)
@@ -1158,7 +1156,7 @@ size_2d_override_stretch = true
 render_target_update_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="UI/SubViewportContainer1/MapViewport"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 250, 250, 164.74)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 258.382, 308.609, 258.989)
 environment = SubResource("Environment_0r683")
 fov = 78.75
 
