@@ -10,6 +10,7 @@ public partial class EventAnimationPlayer : AnimationPlayer
 	{
 		if (!GameManager.Instance.IsAwakeningCutSceneSeen) {
 			Play("Awakening");
+			GameManager.Instance.IsEventAnimationIsOngoing = true;
 		}
 		_awakeningCamera = GetNode<Camera3D>("Camera3D");
 		_mainCamera = GameManager.Instance.Player.GetNode<Camera3D>("CharacterBody/Head/Camera3D");
@@ -22,6 +23,7 @@ public partial class EventAnimationPlayer : AnimationPlayer
 			GameManager.Instance.IsEventAnimationIsOngoing = false;
 			_mainCamera.MakeCurrent();
 			GameManager.Instance.IsAwakeningCutSceneSeen = true;
+			GameManager.Instance.IsEventAnimationIsOngoing = false;
 			QueueFree();
 		}
 	}

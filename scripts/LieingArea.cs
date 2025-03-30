@@ -14,6 +14,7 @@ public partial class LieingArea : Area3D
 	private async void OnAreaEntered(Node body) {
 		if (body.IsInGroup("Player") && Mission.MissionContains[Mission.CurrentMission].Name == "Пора спать") {
 			GameManager.Instance.IsWentSleep = true;
+			GameManager.Instance.IsEventAnimationIsOngoing = true;
 			_animationPlayer.Play("LieingDown");
 			await Task.Delay(5000);
 			GameManager.Instance.DownloadableScene = "res://scenes/cutScene.tscn";

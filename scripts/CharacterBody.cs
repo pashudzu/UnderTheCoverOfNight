@@ -136,8 +136,7 @@ public partial class CharacterBody : CharacterBody3D {
 		if (GameManager.Instance.IsEventAnimationIsOngoing) {
 			_characterBodyShape.Disabled = true;
 			return;
-		}
-		else {
+		} else {
 			_characterBodyShape.Disabled = false;
 		}
 		Vector3 velocity = Velocity;

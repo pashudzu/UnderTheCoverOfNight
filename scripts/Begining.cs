@@ -24,6 +24,8 @@ public partial class Begining : Node3D
 		_cutSceneCamera = GetNode<Camera3D>("Car/CutSceneCamera");
 		_cutSceneCamera.MakeCurrent();
 		
+		GameManager.Instance.IsEventAnimationIsOngoing = true;
+		
 		_basicCamera = GameManager.Instance.Player.GetNode<Camera3D>("CharacterBody/Head/Camera3D");
 		_bakeArea = GetNode<Area3D>("MainHome/BakeArea");
 		_pressESprite = GetNode<Sprite2D>("Player/CharacterBody/PressESprite");
@@ -39,6 +41,7 @@ public partial class Begining : Node3D
 		if (!_animation.IsPlaying()) {
 			_basicCamera.MakeCurrent();
 			GameManager.Instance.IsBeginingCutSceneSeen = true;
+			GameManager.Instance.IsEventAnimationIsOngoing = false;
 		}
 		if (_playerInArea) {
 			ShowFire();
