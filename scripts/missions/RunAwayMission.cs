@@ -14,7 +14,7 @@ public partial class RunAwayMission : Mission
 		IsStarted = true;
 	}
 	public void CompleteMission() {
-		if (!GameManager.Instance.IsPlayerNearMonster) {
+		if (!GameManager.Instance.IsPlayerNearMonster && GetTree().CurrentScene.Name == "home_scene") {
 			IsCompleted = true;
 		}
 	}

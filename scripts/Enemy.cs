@@ -76,6 +76,9 @@ public partial class Enemy : CharacterBody3D
 		GameManager.Instance.Enemy = this;
 	}
 	public override void _Process(double delta) {
+		if (HasState(EnemyStates.IsEnemyWalking)) {
+			_animation.Play("ArmatureAction_003");
+		}
 		if (!HasState(EnemyStates.IsPursuit) && !HasState(EnemyStates.InPatrollingGuard)) {
 			BackToPost(delta);
 		}
@@ -83,9 +86,6 @@ public partial class Enemy : CharacterBody3D
 			CheckAlertState(delta);
 		}
 		MoveAndSlide();
-		if (HasState(EnemyStates.IsEnemyWalking)) {
-			_animation.Play("ArmatureAction_003");
-		}
 		if (HasState(EnemyStates.IsPlayerNearby) && !_ghostSound.Playing) {
 			_ghostSound.Play();
 		}

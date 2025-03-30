@@ -12,7 +12,7 @@ public partial class LieingArea : Area3D
 	}
 	
 	private async void OnAreaEntered(Node body) {
-		if (body.IsInGroup("Player")) {
+		if (body.IsInGroup("Player") && Mission.MissionContains[Mission.CurrentMission].Name == "Пора спать") {
 			GameManager.Instance.IsWentSleep = true;
 			_animationPlayer.Play("LieingDown");
 			await Task.Delay(5000);
