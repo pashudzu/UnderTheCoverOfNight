@@ -31,7 +31,7 @@ public partial class Inventory : Control
 			GD.Print($"slot {i} ready");
 		}
 		
-		for (int i = 1; i < 4; i++) {
+		for (int i = 1; i < 5; i++) {
 			_buttons.Add(GetNode<TextureButton>($"TextureRect/GridContainer/TextureButton{i}"));
 			GD.Print($"button {i} ready");
 		}
@@ -276,7 +276,7 @@ public partial class Inventory : Control
 				GD.PrintErr("rightHand == null");
 				return;
 			}
-			GD.Print($"правая рука - {leftHand}");
+			GD.Print($"правая рука - {rightHand}");
 		}
 		if (item == null) {
 			GD.PrintErr("item == null");
