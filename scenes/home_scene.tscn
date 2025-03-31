@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=4 uid="uid://dqak8ec1eq5ii"]
+[gd_scene load_steps=59 format=4 uid="uid://dqak8ec1eq5ii"]
 
 [ext_resource type="Script" uid="uid://c2dsbbhkskojs" path="res://scripts/HomeScene.cs" id="1_srwtq"]
 [ext_resource type="PackedScene" uid="uid://b3fctgxoddghu" path="res://scenes/player.tscn" id="2_piolw"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b4pllrglk3jrt" path="res://scenes/main_home.tscn" id="9_cew1j"]
 [ext_resource type="PackedScene" uid="uid://bbmxue7401opm" path="res://scenes/house.tscn" id="9_jq7vk"]
 [ext_resource type="PackedScene" uid="uid://db6vcqiy0ev4e" path="res://scenes/watch_on_floor.tscn" id="12_kpl4a"]
+[ext_resource type="PackedScene" uid="uid://dv1p40lox41ei" path="res://scenes/casher.tscn" id="13_u6qir"]
 [ext_resource type="PackedScene" uid="uid://c51mv267jo8wl" path="res://models/Old_Russian_izba.glb" id="15_a5d36"]
 [ext_resource type="PackedScene" uid="uid://qhwklbhutay6" path="res://models/An_old_village_well_i_1214114109_texture.glb" id="16_rm5nu"]
 [ext_resource type="Script" uid="uid://5t0jd35s0ypr" path="res://addons/zylann.hterrain/hterrain.gd" id="20_67xkg"]
@@ -921,6 +922,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.625, 0, -179.926)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/gas station"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15906, 1.04765, -4.42229)
+visible = false
 mesh = SubResource("CapsuleMesh_qsl1u")
 
 [node name="Area3D" type="Area3D" parent="NavigationRegion3D/gas station/MeshInstance3D"]
@@ -946,6 +948,9 @@ spot_angle = 49.25
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.12747, 1.2253, -3.26497)
 visible = false
 monitoring = false
+
+[node name="Casher" parent="NavigationRegion3D/gas station" instance=ExtResource("13_u6qir")]
+transform = Transform3D(0.914969, 0, -0.00758555, 0, 0.915, 0, 0.00758555, 0, 0.914969, 2.74533, 0.4948, -3.78595)
 
 [node name="car" parent="NavigationRegion3D" instance=ExtResource("23_nexo6")]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -129.225, 0.839308, -101.816)
