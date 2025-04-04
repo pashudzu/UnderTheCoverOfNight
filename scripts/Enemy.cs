@@ -121,9 +121,8 @@ public partial class Enemy : CharacterBody3D
 		_navAgent.TargetPosition = _allPoints[_nextPoint];
 		Vector3 direction = (_navAgent.GetNextPathPosition() - GlobalPosition).Normalized();
 		Vector3 targetPosition = GlobalPosition - direction;
-		Vector3 currentVelocity = Velocity;
 		Vector3 targetVelocity = direction * Speed * (float)delta;
-		Velocity = currentVelocity.Lerp(targetVelocity, 0.1f); 
+		Velocity = Velocity.Lerp(targetVelocity, 0.1f); 
 		targetPosition.Y = GlobalPosition.Y;
 		if (!GlobalTransform.Origin.IsEqualApprox(targetPosition)) {
 			LookAt(targetPosition);
@@ -143,15 +142,17 @@ public partial class Enemy : CharacterBody3D
 	private void PursuitState(double delta) {
 		Vector3 playerPosition = _playerCharacterBody.GlobalPosition; 
 		Vector3 enemyPosition = GlobalPosition;
+		Vector3 targetDirection = (playerPosition - enemyPosition).Normalized();
 		
 		float dirX = (playerPosition.X - enemyPosition.X);
 		float dirZ = (playerPosition.Z - enemyPosition.Z);
 		
 		Vector3 directionToPlayer = new Vector3(dirX, 0, dirZ).Normalized();
-		
-		Velocity = directionToPlayer  * Speed * (float)delta;
-		
 		Vector3 targetPosition = GlobalPosition - directionToPlayer;
+		Vector3 currentDirection = Basis.X.Normalized();
+		
+		Velocity = directionToPlayer * Speed * (float)delta;
+		
 		if (enemyPosition.DistanceTo(playerPosition) < 0.1f) {
 			targetPosition = new Vector3(playerPosition.X, playerPosition.Y, playerPosition.Z);
 			if (!GlobalTransform.Origin.IsEqualApprox(targetPosition)) {
@@ -168,9 +169,8 @@ public partial class Enemy : CharacterBody3D
 			_navAgent.TargetPosition = _allPoints[0];
 			Vector3 direction = (_navAgent.GetNextPathPosition() - GlobalPosition).Normalized();
 			Vector3 targetPosition = GlobalPosition + direction;
-			Vector3 currentVelocity = Velocity;
 			Vector3 targetVelocity = direction * Speed * (float)delta;
-			Velocity = currentVelocity.Lerp(targetVelocity, 0.1f); 
+			Velocity = Velocity.Lerp(targetVelocity, 0.1f); 
 			direction.Y = 0;
 			if (!GlobalTransform.Origin.IsEqualApprox(targetPosition)) {
 				LookAt(targetPosition);
