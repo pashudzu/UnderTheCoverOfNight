@@ -920,6 +920,9 @@ transform = Transform3D(0.860991, 0, -0.508621, 0, 1, 0, 0.508621, 0, 0.860991, 
 [node name="gas station" parent="NavigationRegion3D" instance=ExtResource("22_rrsus")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.625, 0, -179.926)
 
+[node name="Casher" parent="NavigationRegion3D/gas station" instance=ExtResource("13_u6qir")]
+transform = Transform3D(0.914969, 0, -0.00758555, 0, 0.915, 0, 0.00758555, 0, 0.914969, 2.74533, 0.4948, -3.78595)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/gas station"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15906, 1.04765, -4.42229)
 visible = false
@@ -936,21 +939,18 @@ shape = SubResource("BoxShape3D_lkpp4")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.02652, 3.46134, -2.95255)
 light_energy = 2.0
 spot_range = 18.527
-spot_angle = 49.25
+spot_angle = 90.0
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="NavigationRegion3D/gas station"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.01813, 3.46134, -2.95255)
 light_energy = 2.0
 spot_range = 18.527
-spot_angle = 49.25
+spot_angle = 90.0
 
 [node name="Petrol" parent="NavigationRegion3D/gas station" instance=ExtResource("24_esy8v")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.12747, 1.2253, -3.26497)
 visible = false
 monitoring = false
-
-[node name="Casher" parent="NavigationRegion3D/gas station" instance=ExtResource("13_u6qir")]
-transform = Transform3D(0.914969, 0, -0.00758555, 0, 0.915, 0, 0.00758555, 0, 0.914969, 2.74533, 0.4948, -3.78595)
 
 [node name="car" parent="NavigationRegion3D" instance=ExtResource("23_nexo6")]
 transform = Transform3D(0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, 0.965926, -129.225, 0.839308, -101.816)

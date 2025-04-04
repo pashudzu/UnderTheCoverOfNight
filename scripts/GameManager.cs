@@ -38,6 +38,7 @@ public partial class GameManager : Node
 	public bool IsPetrolGotten;
 	public string MainActionSceneName = "home_scene";
 	public bool IsPlayerNearMonster;
+	public AnimationPlayer CasherAnimationPlayer;
 	
 	public override void _Ready()
 	{
