@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://m6mficmce4ok"]
+[gd_scene load_steps=9 format=3 uid="uid://m6mficmce4ok"]
 
 [ext_resource type="Script" uid="uid://dq570oqajvghi" path="res://scripts/VBoxContainer.cs" id="1_bvhlo"]
 [ext_resource type="Texture2D" uid="uid://d1vu4wq0i8f64" path="res://textures/pauseBackground.png" id="1_lbvbn"]
@@ -9,18 +9,6 @@
 [ext_resource type="FontFile" uid="uid://d1wnbtljy0c3e" path="res://fonts/Nervousfont-Regular.ttf" id="4_cdbb2"]
 [ext_resource type="Script" uid="uid://87j8vijqtajc" path="res://scenes/ui/MissionDescription.cs" id="5_coo1x"]
 
-[sub_resource type="CSharpScript" id="CSharpScript_0bnpd"]
-script/source = "using Godot;
-using System;
-
-public partial class PauseMenu : Control
-{
-	public override void _Ready() {
-		GameManager.Instance.MissionLabel = GetNode(\"ColorRect/MissionLabel\");
-	}
-}
-"
-
 [node name="pause_menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -28,7 +16,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("CSharpScript_0bnpd")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
