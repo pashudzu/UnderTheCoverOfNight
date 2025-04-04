@@ -135,6 +135,7 @@ public partial class CharacterBody : CharacterBody3D {
 	private void MovePlayer(double delta) {
 		if (GameManager.Instance.IsEventAnimationIsOngoing) {
 			_characterBodyShape.Disabled = true;
+			_animations.Stop();
 			return;
 		} else {
 			_characterBodyShape.Disabled = false;

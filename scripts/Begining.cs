@@ -29,7 +29,7 @@ public partial class Begining : Node3D
 		_basicCamera = GameManager.Instance.Player.GetNode<Camera3D>("CharacterBody/Head/Camera3D");
 		_bakeArea = GetNode<Area3D>("MainHome/BakeArea");
 		_pressESprite = GetNode<Sprite2D>("Player/CharacterBody/PressESprite");
-		_fireParticles = GetNode<Node3D>("house/FireParticles");
+		_fireParticles = GetNode<Node3D>("MainHome/FireParticles");
 		_dialogue = GetNode<Polygon2D>("Car/Dialogue");
 		
 		_bakeArea.Connect("body_entered", new Callable(this, nameof(OnBakeAreaEntered)));

@@ -1,9 +1,10 @@
-[gd_scene load_steps=59 format=4 uid="uid://dqak8ec1eq5ii"]
+[gd_scene load_steps=60 format=4 uid="uid://dqak8ec1eq5ii"]
 
 [ext_resource type="Script" uid="uid://c2dsbbhkskojs" path="res://scripts/HomeScene.cs" id="1_srwtq"]
 [ext_resource type="PackedScene" uid="uid://b3fctgxoddghu" path="res://scenes/player.tscn" id="2_piolw"]
 [ext_resource type="PackedScene" uid="uid://cdo0wyxyjt55e" path="res://scenes/torch.tscn" id="3_kcyw4"]
 [ext_resource type="PackedScene" uid="uid://cdqao72vmih20" path="res://scenes/enemy.tscn" id="5_6fydp"]
+[ext_resource type="PackedScene" uid="uid://dm6x1mfyqj7k0" path="res://scenes/fire_particles.tscn" id="6_ve0nc"]
 [ext_resource type="PackedScene" uid="uid://c5spsmoo3s6ud" path="res://models/basement.glb" id="8_qiabd"]
 [ext_resource type="PackedScene" uid="uid://b4pllrglk3jrt" path="res://scenes/main_home.tscn" id="9_cew1j"]
 [ext_resource type="PackedScene" uid="uid://bbmxue7401opm" path="res://scenes/house.tscn" id="9_jq7vk"]
@@ -908,6 +909,19 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 80.222
 transform = Transform3D(1, 0, 0, 0, 0.766762, 0.641932, 0, -0.641932, 0.766762, -1.77157, 1.45845, 0.770393)
 shape = SubResource("BoxShape3D_rlsyq")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="NavigationRegion3D/MainHome"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.43833, 1.23923, -0.33417)
+light_color = Color(0.818379, 0.271164, 0, 1)
+light_energy = 0.1
+light_specular = 1.0
+shadow_enabled = true
+shadow_normal_bias = 2.0
+omni_range = 1.234
+omni_attenuation = 2.415
+
+[node name="FireParticles" parent="NavigationRegion3D/MainHome" instance=ExtResource("6_ve0nc")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.43298, 0.930914, -0.361786)
+
 [node name="house" parent="NavigationRegion3D" instance=ExtResource("9_jq7vk")]
 transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 65.7824, 1.19522, 136.055)
 
@@ -922,6 +936,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.625, 0, -179.926)
 
 [node name="Casher" parent="NavigationRegion3D/gas station" instance=ExtResource("13_u6qir")]
 transform = Transform3D(0.914969, 0, -0.00758555, 0, 0.915, 0, 0.00758555, 0, 0.914969, 2.74533, 0.4948, -3.78595)
+bones/47/position = Vector3(0.0908894, -0.0592473, 0.00838207)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/gas station"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.15906, 1.04765, -4.42229)

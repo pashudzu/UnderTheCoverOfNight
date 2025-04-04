@@ -79,13 +79,15 @@ public partial class Enemy : CharacterBody3D
 		if (HasState(EnemyStates.IsEnemyWalking)) {
 			_animation.Play("ArmatureAction_003");
 		}
-		if (!HasState(EnemyStates.IsPursuit) && !HasState(EnemyStates.InPatrollingGuard)) {
-			BackToPost(delta);
+		if (!GameManager.Instance.IsEventAnimationIsOngoing) {
+			if (!HasState(EnemyStates.IsPursuit) && !HasState(EnemyStates.InPatrollingGuard)) {
+				BackToPost(delta);
+			}
+			if (HasState(EnemyStates.IsPursuit) || HasState(EnemyStates.InPatrollingGuard)) {
+				CheckAlertState(delta);
+			}
+			MoveAndSlide();
 		}
-		if (HasState(EnemyStates.IsPursuit) || HasState(EnemyStates.InPatrollingGuard)) {
-			CheckAlertState(delta);
-		}
-		MoveAndSlide();
 		if (HasState(EnemyStates.IsPlayerNearby) && !_ghostSound.Playing) {
 			_ghostSound.Play();
 		}

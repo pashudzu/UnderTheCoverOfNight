@@ -10,16 +10,6 @@ size = Vector3(4.04224, 1, 1.78589)
 
 [node name="MainHome" type="Node3D"]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.43833, 1.23923, -0.33417)
-light_color = Color(0.818379, 0.271164, 0, 1)
-light_energy = 0.1
-light_specular = 1.0
-shadow_enabled = true
-shadow_normal_bias = 2.0
-omni_range = 1.234
-omni_attenuation = 2.415
-
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15789, 1.27927, 0.0202708)
 light_color = Color(0.838897, 0.838897, 0.838897, 1)
