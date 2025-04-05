@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c5l2ck7l37e0a"
-path.s3tc="res://.godot/imported/moonTexture.png-2b67972d0e6b03b86140d324731b8df0.s3tc.ctex"
+path="res://.godot/imported/moonTexture.png-2b67972d0e6b03b86140d324731b8df0.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://textures/moonTexture.png"
-dest_files=["res://.godot/imported/moonTexture.png-2b67972d0e6b03b86140d324731b8df0.s3tc.ctex"]
+dest_files=["res://.godot/imported/moonTexture.png-2b67972d0e6b03b86140d324731b8df0.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
