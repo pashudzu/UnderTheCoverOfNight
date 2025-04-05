@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b31jwe28l0e8w"
+uid="uid://c02y00xa7123k"
 path.s3tc="res://.godot/imported/datch_Planks021_2K-JPG_NormalGL.jpg-9ef8a6fba5b784e9306b4eb06f13b7b0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://scenes/datch_Planks021_2K-JPG_NormalGL.jpg"
+roughness/src_normal="res://configs/datch_Planks021_2K-JPG_NormalGL.jpg"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

@@ -15,7 +15,7 @@ public partial class Enemy : CharacterBody3D
 	private List<Vector3> _allPoints = new List<Vector3>();
 	private int _nextPoint = 0;
 	private Random _rnd = new Random();
-	[Export]public float Speed = 50f;
+	[Export]public float Speed = 75f;
 	private AnimationPlayer _animation;
 	private AudioStreamPlayer3D _ghostSound;
 	[Flags]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b4pllrglk3jrt"]
 
-[ext_resource type="PackedScene" uid="uid://bsm2vrtx288t1" path="res://scenes/datch.glb" id="1_xndsb"]
+[ext_resource type="PackedScene" uid="uid://b425penbd6fct" path="res://scenes/datch.glb" id="1_xndsb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lrrd6"]
 size = Vector3(4.15021, 7.17053, 0.166748)
