@@ -7,7 +7,7 @@ public partial class CatScenes : AnimationPlayer
 	public override void _Ready()
 	{
 		Camera3D cameraHappyEnd = GetParent().GetNode<Camera3D>("car3/CameraHappyEnd");
-		Camera3D cameraBadEnd = GetParent().GetNode<Camera3D>("Armature/PlayerBody/CameraBadEnd");
+		Camera3D cameraBadEnd = GetParent().GetNode<Camera3D>("Armature/PlayerBody/Head/CameraBadEnd");
 		if (GameManager.Instance.IsEndHappy) {
 			cameraHappyEnd.MakeCurrent();
 			Play("HappyEnd");
