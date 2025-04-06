@@ -1284,8 +1284,8 @@ fov = 78.75
 visible = false
 offset_left = 426.0
 offset_top = 55.0
-offset_right = 1506.0
-offset_bottom = 1135.0
+offset_right = 1287.0
+offset_bottom = 946.0
 size_flags_vertical = 3
 
 [node name="MapViewport" type="SubViewport" parent="UI/SubViewportContainer2"]

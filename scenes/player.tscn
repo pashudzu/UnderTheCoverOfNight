@@ -361,6 +361,7 @@ skeleton = NodePath("../Body")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody/Head"]
 transform = Transform3D(1.42376, 0, 0, 0, 2.58665, 0, 0, 0, 1.50166, 0, 0.07, -0.5)
+cull_mask = 1048573
 current = true
 near = 0.001
 far = 51.57
@@ -460,3 +461,12 @@ layer = 2
 [node name="PauseMenu" parent="CharacterBody/PauseMenuLayer" instance=ExtResource("2_teuc2")]
 visible = false
 z_index = 1
+
+[node name="LightMarkOfPlayer" type="SpotLight3D" parent="CharacterBody"]
+visible = false
+layers = 2
+light_color = Color(1, 0, 0, 1)
+light_energy = 5.0
+spot_range = 20.0
+spot_attenuation = -1.0
+spot_angle_attenuation = 0.217638
