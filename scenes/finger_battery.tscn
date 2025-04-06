@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dinvgvr267nta"]
+
+[ext_resource type="PackedScene" uid="uid://8l07pfeku37h" path="res://models/finger battery.glb" id="1_coevq"]
+[ext_resource type="Script" uid="uid://c1hn60leljjjg" path="res://scenes/FingerBattery.cs" id="1_n4skc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n4skc"]
+size = Vector3(5, 5, 5)
+
+[node name="finger_battery" type="Area3D"]
+script = ExtResource("1_n4skc")
+
+[node name="finger battery" parent="." instance=ExtResource("1_coevq")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.00967979, 0)
+shape = SubResource("BoxShape3D_n4skc")

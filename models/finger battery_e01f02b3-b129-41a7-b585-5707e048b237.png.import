@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://3cmlhlwmn8w3"
+path.s3tc="res://.godot/imported/finger battery_e01f02b3-b129-41a7-b585-5707e048b237.png-0b875a55b10427df2487c40885c0c071.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "e9182b89cdf827f435c51bba187695e5"
+}
+
+[deps]
+
+source_file="res://models/finger battery_e01f02b3-b129-41a7-b585-5707e048b237.png"
+dest_files=["res://.godot/imported/finger battery_e01f02b3-b129-41a7-b585-5707e048b237.png-0b875a55b10427df2487c40885c0c071.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

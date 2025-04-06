@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://djjvqscs8l4f4"]
+
+[ext_resource type="Script" uid="uid://lkphtcgn5i3r" path="res://scenes/CompassInHand.cs" id="1_1inql"]
+[ext_resource type="PackedScene" uid="uid://fpplhkgd6waq" path="res://models/compass.glb" id="1_a3nv3"]
+
+[node name="CompassInHand" type="Node3D"]
+script = ExtResource("1_1inql")
+
+[node name="compass" parent="." instance=ExtResource("1_a3nv3")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://blxb06bkthg55"]
+
+[ext_resource type="Script" uid="uid://bvto2ac57ice0" path="res://CompassArea.cs" id="1_lynlm"]
+[ext_resource type="PackedScene" uid="uid://fpplhkgd6waq" path="res://models/compass.glb" id="2_napxm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1x56t"]
+size = Vector3(5, 5, 5)
+
+[node name="compassArea" type="Area3D"]
+script = ExtResource("1_lynlm")
+
+[node name="compass" parent="." instance=ExtResource("2_napxm")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.00967979, 0)
+shape = SubResource("BoxShape3D_1x56t")

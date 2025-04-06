@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://dqak8ec1eq5ii"]
+[gd_scene load_steps=62 format=4 uid="uid://dqak8ec1eq5ii"]
 
 [ext_resource type="Script" uid="uid://c2dsbbhkskojs" path="res://scripts/HomeScene.cs" id="1_srwtq"]
 [ext_resource type="PackedScene" uid="uid://b3fctgxoddghu" path="res://scenes/player.tscn" id="2_piolw"]
@@ -27,6 +27,9 @@
 [ext_resource type="PackedScene" uid="uid://w4phjbb8kiol" path="res://scenes/map.tscn" id="25_we53v"]
 [ext_resource type="PackedScene" uid="uid://kodcdqb2o35h" path="res://scenes/watch.tscn" id="26_4qyll"]
 [ext_resource type="PackedScene" uid="uid://dop60unc1twfx" path="res://scenes/mission_manager.tscn" id="26_y5vvj"]
+[ext_resource type="PackedScene" uid="uid://bkvedxqqfxjwt" path="res://scripts/scrap.tscn" id="28_ve0nc"]
+[ext_resource type="PackedScene" uid="uid://dinvgvr267nta" path="res://scenes/finger_battery.tscn" id="29_6p637"]
+[ext_resource type="PackedScene" uid="uid://blxb06bkthg55" path="res://scenes/compass_area.tscn" id="30_jsdjn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3qjf8"]
 size = Vector3(0.865055, 2.0217, 1.04883)
@@ -996,6 +999,7 @@ bones/43/rotation = Quaternion(0.033066, 0.00399158, 0.118383, 0.992409)
 bones/44/rotation = Quaternion(-1.31085e-08, 9.81375e-10, -1.48071e-08, 1)
 bones/45/rotation = Quaternion(-9.1208e-06, -5.56052e-13, 6.0966e-08, 1)
 bones/46/rotation = Quaternion(-0.325858, 6.57525e-08, 2.90209e-07, 0.945419)
+bones/47/position = Vector3(0.0908894, -0.0592473, 0.00838207)
 bones/47/rotation = Quaternion(0.706815, -0.147256, -0.678896, -0.133527)
 bones/48/rotation = Quaternion(-0.243691, 0.560812, -0.11195, 0.783309)
 bones/49/rotation = Quaternion(0.131977, -0.0406627, 0.00504746, 0.990405)
@@ -1312,3 +1316,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 323.979, 0.277954, 392.061)
 
 [node name="An_old_village_well_i_1214114109_texture" parent="." instance=ExtResource("16_rm5nu")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 259.222, 1.77813, 303.986)
+
+[node name="scrap" parent="." instance=ExtResource("28_ve0nc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 325.717, 0.232152, 389.569)
+
+[node name="finger_battery" parent="." instance=ExtResource("29_6p637")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 324.081, 0.349603, 386.244)
+
+[node name="compassArea" parent="." instance=ExtResource("30_jsdjn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 323.712, 0.205505, 388.882)
