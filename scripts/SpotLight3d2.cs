@@ -29,24 +29,28 @@ public partial class SpotLight3d2 : SpotLight3D
 			Discharge(delta);
 		}
 	}
+	private float TorchBatteryCharge {
+		get => GameManager.Instance.TorchBatteryCharge;
+		set => GameManager.Instance.TorchBatteryCharge = value;
+	}
 	private void Discharge(double delta) {
-		if (batteryCharge <= _maxEnergy && batteryCharge > _minEnergy) {
-			batteryCharge -= _dischargeRate * (float)delta;
+		if (TorchBatteryCharge <= _maxEnergy && TorchBatteryCharge > _minEnergy) {
+			TorchBatteryCharge -= _dischargeRate * (float)delta;
 		}
-		if (batteryCharge <= _minEnergy) {
+		if (TorchBatteryCharge <= _minEnergy) {
 			Visible = false;
-			batteryCharge = 0.0f;
+			TorchBatteryCharge = 0.0f;
 		}
 		UpdateChargeSprite();
 	}
 	private void UpdateChargeSprite() {
-		if (batteryCharge > 67.0f) {
+		if (TorchBatteryCharge > 67.0f) {
 			_chargeSprite.Texture = _fullCharge;
 		}
-		else if (batteryCharge > 33.0f) {
+		else if (TorchBatteryCharge > 33.0f) {
 			_chargeSprite.Texture = _twoThirdsCharge;
 		}
-		else if (batteryCharge > 0.0f) {
+		else if (TorchBatteryCharge > 0.0f) {
 			_chargeSprite.Texture = _oneThirdCharge;
 		}
 		else {

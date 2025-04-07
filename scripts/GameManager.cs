@@ -39,6 +39,7 @@ public partial class GameManager : Node
 	public string MainActionSceneName = "home_scene";
 	public bool IsPlayerNearMonster;
 	public AnimationPlayer CasherAnimationPlayer;
+	public float TorchBatteryCharge { get; set; } = 100f;
 	
 	public override void _Ready()
 	{
