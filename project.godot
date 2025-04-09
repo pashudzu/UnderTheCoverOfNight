@@ -17,7 +17,7 @@ config/features=PackedStringArray("4.4", "C#", "GL Compatibility")
 [autoload]
 
 GameManager="*res://scripts/GameManager.cs"
-Item="*res://scripts/Item.cs"
+Item="*res://scripts/items/Item.cs"
 Mission="*res://scripts/missions/Mission.cs"
 
 [dialogue_manager]

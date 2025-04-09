@@ -16,6 +16,7 @@ public partial class Scrap : Item
 		itemTextureInSlot = (Texture2D)ResourceLoader.Load(inSlotTexturePath);
 		itemTexture = (Texture2D)ResourceLoader.Load(texturePath);
 		itemScene = (PackedScene)ResourceLoader.Load(ScenePath);
+		IsUsableInInventory = false;
 		itemContains.Add(itemName, this);
 		ItemInWorldPath = ProjectSettings.GlobalizePath(GetPath());
 		GD.Print("Scrap готов");

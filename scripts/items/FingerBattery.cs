@@ -16,6 +16,7 @@ public partial class FingerBattery : Item
 		itemTextureInSlot = (Texture2D)ResourceLoader.Load(inSlotTexturePath);
 		itemTexture = (Texture2D)ResourceLoader.Load(texturePath);
 		itemScene = (PackedScene)ResourceLoader.Load(ScenePath);
+		IsUsableInInventory = true;
 		itemContains.Add(itemName, this);
 		ItemInWorldPath = ProjectSettings.GlobalizePath(GetPath());
 		GD.Print("FingerBattery готов");

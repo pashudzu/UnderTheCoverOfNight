@@ -22,6 +22,7 @@ public partial class Item : Area3D
 	private Node3D _player;
 	private Sprite2D _pressESprite;
 	public string ItemInWorldPath;
+	public bool IsUsableInInventory;
 	
 	public override void _Ready()
 	{

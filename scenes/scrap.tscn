@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bkvedxqqfxjwt"]
 
-[ext_resource type="Script" uid="uid://bdipocoiolr25" path="res://Scrap.cs" id="1_ditcl"]
+[ext_resource type="Script" uid="uid://bdipocoiolr25" path="res://scripts/items/Scrap.cs" id="1_ditcl"]
 [ext_resource type="PackedScene" uid="uid://6v8y8acjo6w1" path="res://models/Scrap.glb" id="2_ge04d"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pjoit"]

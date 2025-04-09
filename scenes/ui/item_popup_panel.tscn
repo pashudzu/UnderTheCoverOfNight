@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://detbjwcfvrowu"]
+
+[ext_resource type="Texture2D" uid="uid://cqqcuhi66bwyb" path="res://textures/buttonTexture.png" id="1_fvipr"]
+[ext_resource type="Texture2D" uid="uid://bu6cjv4c4ra3e" path="res://textures/buttonTexturePressed.png" id="2_12xl4"]
+[ext_resource type="FontFile" uid="uid://d1wnbtljy0c3e" path="res://fonts/Nervousfont-Regular.ttf" id="3_5f71s"]
+
+[node name="ItemPopupPanel" type="CanvasLayer"]
+layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 248.0
+offset_bottom = 126.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextureButton" type="TextureButton" parent="ColorRect"]
+layout_mode = 1
+offset_left = 81.0
+offset_top = 87.0
+offset_right = 364.0
+offset_bottom = 152.0
+scale = Vector2(0.3, 0.3)
+keep_pressed_outside = true
+texture_normal = ExtResource("1_fvipr")
+texture_pressed = ExtResource("2_12xl4")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="ColorRect/TextureButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_5f71s")
+theme_override_font_sizes/font_size = 30
+text = "использовать"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ItemNameLabel" type="Label" parent="ColorRect"]
+layout_mode = 1
+offset_left = 8.0
+offset_top = 4.0
+offset_right = 244.0
+offset_bottom = 27.0
+theme_override_fonts/font = ExtResource("3_5f71s")
+horizontal_alignment = 1
+
+[node name="ItemDescriptionLabel" type="Label" parent="ColorRect"]
+layout_mode = 1
+offset_left = 7.0
+offset_top = 22.0
+offset_right = 243.0
+offset_bottom = 82.0
+theme_override_fonts/font = ExtResource("3_5f71s")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 1

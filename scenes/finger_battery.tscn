@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dinvgvr267nta"]
 
 [ext_resource type="PackedScene" uid="uid://8l07pfeku37h" path="res://models/finger battery.glb" id="1_coevq"]
-[ext_resource type="Script" uid="uid://c1hn60leljjjg" path="res://scenes/FingerBattery.cs" id="1_n4skc"]
+[ext_resource type="Script" uid="uid://c1hn60leljjjg" path="res://scripts/items/FingerBattery.cs" id="1_n4skc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n4skc"]
 size = Vector3(5, 5, 5)

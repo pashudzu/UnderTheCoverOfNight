@@ -38,15 +38,15 @@ public partial class Inventory : Control
 		_buttons.Add(GetNode<TextureButton>("TextureRect/LeftHandButton"));
 		_buttons.Add(GetNode<TextureButton>("TextureRect/RightHandButton"));
 		
-		Action[] _buttonMethods = { OnButton1Pressed, 
-			OnButton2Pressed, OnButton3Pressed, OnButton4Pressed, 
-			OnButton5Pressed, OnButton6Pressed 
+		Action[] _buttonLMBMethods = { OnButton1LMBPressed, 
+			OnButton2LMBPressed, OnButton3LMBPressed, OnButton4LMBPressed, 
+			OnButton5LMBPressed, OnButton6LMBPressed 
 		};
 		for (int i = 0; i < _buttons.Count; i++) {
 			if (_buttons[i] != null) {
-				_buttons[i].Pressed += _buttonMethods[i];
+				_buttons[i].Pressed += _buttonLMBMethods[i];
 			} else {
-				GD.PrintErr($"Кнопка с интендификкатором {i} имеет значение null.");
+				GD.PrintErr($"Кнопка с интендификкатором {i} имеет значение null(ЛКМ).");
 			}
 		}
 		for (int i = 0; i < 6; i++) {
@@ -114,35 +114,59 @@ public partial class Inventory : Control
 			}
 		}
 	}
-	private void OnButton1Pressed() {
+	private void OnButton1LMBPressed() {
 		_buttonIndex = 0;
 		GD.Print($"Нажата кнопка {_buttonIndex} в инвентаре.");
 		IsItemContains(_buttonIndex);
 	}
-	private void OnButton2Pressed() {
+	private void OnButton2LMBPressed() {
 		_buttonIndex = 1;
 		GD.Print($"Нажата кнопка {_buttonIndex} в инвентаре.");
 		IsItemContains(_buttonIndex);
 	}
-	private void OnButton3Pressed() {
+	private void OnButton3LMBPressed() {
 		_buttonIndex = 2;
 		GD.Print($"Нажата кнопка {_buttonIndex} в инвентаре.");
 		IsItemContains(_buttonIndex);
 	}
-	private void OnButton4Pressed() {
+	private void OnButton4LMBPressed() {
 		_buttonIndex = 3;
 		GD.Print($"Нажата кнопка {_buttonIndex} в инвентаре.");
 		IsItemContains(_buttonIndex);
 	}
-	private void OnButton5Pressed() {
+	private void OnButton5LMBPressed() {
 		_buttonIndex = 4;
 		GD.Print($"Нажата кнопка {_buttonIndex} в инвентаре.");
 		IsItemContains(_buttonIndex);
 	}
-	private void OnButton6Pressed() {
+	private void OnButton6LMBPressed() {
 		_buttonIndex = 5;
 		GD.Print($"Нажата кнопка {_buttonIndex} в инвентаре.");
 		IsItemContains(_buttonIndex);
+	}
+	private void OnButton1RMBPressed() {
+		GD.Print("Была нажата правой кнопкой мышки кнопка 1.");
+		CreateItemPopupPanel();
+	}
+	private void OnButton2RMBPressed() {
+		GD.Print("Была нажата правой кнопкой мышки кнопка 2.");
+		CreateItemPopupPanel();
+	}
+	private void OnButton3RMBPressed() {
+		GD.Print("Была нажата правой кнопкой мышки кнопка 3.");
+		CreateItemPopupPanel();
+	}
+	private void OnButton4RMBPressed() {
+		GD.Print("Была нажата правой кнопкой мышки кнопка 4.");
+		CreateItemPopupPanel();
+	}
+	private void OnButton5RMBPressed() {
+		GD.Print("Была нажата правой кнопкой мышки кнопка 5.");
+		CreateItemPopupPanel();
+	}
+	private void OnButton6RMBPressed() {
+		GD.Print("Была нажата правой кнопкой мышки кнопка 6.");
+		CreateItemPopupPanel();
 	}
 	private void IsItemContains(int _buttonIndex) {
 		GD.Print($"В инвентаре нажата кнопка номер {_buttonIndex}");
@@ -208,9 +232,32 @@ public partial class Inventory : Control
 		_originalButton = draggedButton;
 		_isDragging = true;
 	}
-	public override void _Input(InputEvent @event)
-	{
-		ChangeInventoryVisible();
+	public override void _Input(InputEvent @event) {
+		if (@event is InputEventMouseButton mouseEvent) {
+			CountRMBPressing(mouseEvent);
+		}
+	}
+	private void CountRMBPressing(InputEventMouseButton mouseEvent) {
+		if (mouseEvent.ButtonIndex == MouseButton.Right && mouseEvent.Pressed) {
+			for (int i = 0; i < _buttons.Count; i++) {
+				if (_buttons[i].GetGlobalRect().HasPoint(GetGlobalMousePosition())) {
+					switch (i) {
+						case 0: OnButton1RMBPressed(); break;
+						case 1: OnButton2RMBPressed(); break;
+						case 2: OnButton3RMBPressed(); break;
+						case 3: OnButton4RMBPressed(); break;
+						case 4: OnButton5RMBPressed(); break;
+						case 5: OnButton6RMBPressed(); break;
+					}
+				}
+			}
+		}
+	}
+	private void CreateItemPopupPanel() {
+		PackedScene scene = (PackedScene)ResourceLoader.Load("res://scenes/ui/item_popup_panel.tscn");
+		CanvasLayer instance = scene.Instantiate<CanvasLayer>();
+		instance.GetNode<ColorRect>("ColorRect").GlobalPosition = GetGlobalMousePosition();
+		GetTree().CurrentScene.AddChild(instance);
 	}
 	private void ChangeInventoryVisible() {
 		if (Input.IsActionJustPressed("inventory") && Engine.TimeScale == 1) {
@@ -226,6 +273,7 @@ public partial class Inventory : Control
 		}
 	}
 	public override void _Process(double delta) {
+		ChangeInventoryVisible();
 		if (_isDragging && draggingSpriteInstance != null) {
 			_mousePosition = GetLocalMousePosition();
 			draggingSpriteInstance.Position = _mousePosition;

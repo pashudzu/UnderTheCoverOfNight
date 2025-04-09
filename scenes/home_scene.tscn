@@ -27,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://w4phjbb8kiol" path="res://scenes/map.tscn" id="25_we53v"]
 [ext_resource type="PackedScene" uid="uid://kodcdqb2o35h" path="res://scenes/watch.tscn" id="26_4qyll"]
 [ext_resource type="PackedScene" uid="uid://dop60unc1twfx" path="res://scenes/mission_manager.tscn" id="26_y5vvj"]
-[ext_resource type="PackedScene" uid="uid://bkvedxqqfxjwt" path="res://scripts/scrap.tscn" id="28_ve0nc"]
+[ext_resource type="PackedScene" uid="uid://bkvedxqqfxjwt" path="res://scenes/scrap.tscn" id="28_ve0nc"]
 [ext_resource type="PackedScene" uid="uid://dinvgvr267nta" path="res://scenes/finger_battery.tscn" id="29_6p637"]
 [ext_resource type="PackedScene" uid="uid://blxb06bkthg55" path="res://scenes/compass_area.tscn" id="30_jsdjn"]
 

@@ -17,6 +17,7 @@ public partial class Petrol : Item
 		itemTextureInSlot = (Texture2D)ResourceLoader.Load(inSlotTexturePath);
 		itemTexture = (Texture2D)ResourceLoader.Load(texturePath);
 		itemScene = (PackedScene)ResourceLoader.Load(ScenePath);
+		IsUsableInInventory = false;
 		itemContains.Add(itemName, this);
 	}
 	

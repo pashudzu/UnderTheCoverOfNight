@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://blxb06bkthg55"]
 
-[ext_resource type="Script" uid="uid://bvto2ac57ice0" path="res://CompassArea.cs" id="1_lynlm"]
+[ext_resource type="Script" uid="uid://bvto2ac57ice0" path="res://scripts/items/CompassArea.cs" id="1_lynlm"]
 [ext_resource type="PackedScene" uid="uid://fpplhkgd6waq" path="res://models/compass.glb" id="2_napxm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1x56t"]
