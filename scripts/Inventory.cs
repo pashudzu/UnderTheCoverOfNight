@@ -145,28 +145,28 @@ public partial class Inventory : Control
 		IsItemContains(_buttonIndex);
 	}
 	private void OnButton1RMBPressed() {
-		GD.Print("Была нажата правой кнопкой мышки кнопка 1.");
-		CreateItemPopupPanel();
+		ButtonRMBPressed(0);
 	}
 	private void OnButton2RMBPressed() {
-		GD.Print("Была нажата правой кнопкой мышки кнопка 2.");
-		CreateItemPopupPanel();
+		ButtonRMBPressed(1);
 	}
 	private void OnButton3RMBPressed() {
-		GD.Print("Была нажата правой кнопкой мышки кнопка 3.");
-		CreateItemPopupPanel();
+		ButtonRMBPressed(2);
 	}
 	private void OnButton4RMBPressed() {
-		GD.Print("Была нажата правой кнопкой мышки кнопка 4.");
-		CreateItemPopupPanel();
+		ButtonRMBPressed(3);
 	}
 	private void OnButton5RMBPressed() {
-		GD.Print("Была нажата правой кнопкой мышки кнопка 5.");
-		CreateItemPopupPanel();
+		ButtonRMBPressed(4);
 	}
 	private void OnButton6RMBPressed() {
-		GD.Print("Была нажата правой кнопкой мышки кнопка 6.");
-		CreateItemPopupPanel();
+		ButtonRMBPressed(5);
+	}
+	private void ButtonRMBPressed(int _buttonIndex) {
+		GD.Print($"Была нажата правой кнопкой мышки кнопка {_buttonIndex + 1}.");
+		if (_items[_buttonIndex] != null) {
+			CreateItemPopupPanel(_buttonIndex);
+		}
 	}
 	private void IsItemContains(int _buttonIndex) {
 		GD.Print($"В инвентаре нажата кнопка номер {_buttonIndex}");
@@ -253,10 +253,15 @@ public partial class Inventory : Control
 			}
 		}
 	}
-	private void CreateItemPopupPanel() {
+	private void CreateItemPopupPanel(int _buttonIndex) {
+		string itemInSlotName = _items[_buttonIndex].itemName;
+		string itemInSlotDescription = _items[_buttonIndex].itemDescription;
 		PackedScene scene = (PackedScene)ResourceLoader.Load("res://scenes/ui/item_popup_panel.tscn");
 		CanvasLayer instance = scene.Instantiate<CanvasLayer>();
-		instance.GetNode<ColorRect>("ColorRect").GlobalPosition = GetGlobalMousePosition();
+		ColorRect _rect = instance.GetNode<ColorRect>("ColorRect");
+		_rect.GlobalPosition = GetGlobalMousePosition();
+		_rect.GetNode<Label>("ItemNameLabel").Text = itemInSlotName;
+		_rect.GetNode<Label>("ItemDescriptionLabel").Text = itemInSlotDescription;
 		GetTree().CurrentScene.AddChild(instance);
 	}
 	private void ChangeInventoryVisible() {
