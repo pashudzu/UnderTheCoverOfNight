@@ -39,12 +39,12 @@ public partial class ItemPopupPanel : CanvasLayer
 		}
 	}
 	private void DeleteCurrentItemPopupPanel() {
-		ItemInSlot.DeleteFromInventory();
-		Instance = null;
 		QueueFree();
+		Instance = null;
 	}
 	public void OnUseItemButtonPressed() {
 		ItemInSlot.UseItem();
+		ItemInSlot.DeleteFromInventory();
 		
 		DeleteCurrentItemPopupPanel();
 	}
