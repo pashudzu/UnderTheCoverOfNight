@@ -11,7 +11,7 @@ public partial class Scrap : Item
 		inSlotTexturePath = ProjectSettings.GlobalizePath("res://textures/scrapSlot.png");
 		texturePath = ProjectSettings.GlobalizePath("res://textures/scrapObject.png");
 		ScenePath = ProjectSettings.GlobalizePath("res://scripts/scrap.tscn");
-		itemInHandScenePath = ProjectSettings.GlobalizePath("res://scenes/scrap_in_hand.tscn");
+		itemInHandScenePath = ProjectSettings.GlobalizePath("res://scenes/items/in_hand/scrap_in_hand.tscn");
 		itemInHandScene = (PackedScene)ResourceLoader.Load(itemInHandScenePath);
 		itemTextureInSlot = (Texture2D)ResourceLoader.Load(inSlotTexturePath);
 		itemTexture = (Texture2D)ResourceLoader.Load(texturePath);

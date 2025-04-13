@@ -19,6 +19,11 @@ public partial class Inventory : Control
 	public bool isInventoryVisible = false;
 	public Node3D itemSceneInstance;
 	private const int CountOfSlots = 4;
+	private static readonly Texture2D SlotTexture;
+	
+	static Inventory() {
+		SlotTexture = (Texture2D)GD.Load(ProjectSettings.GlobalizePath("res://textures/slot.png"));
+	}
 	
 	public override void _Ready() {
 		Instance = this;
@@ -257,12 +262,39 @@ public partial class Inventory : Control
 		string itemInSlotName = _items[_buttonIndex].itemName;
 		string itemInSlotDescription = _items[_buttonIndex].itemDescription;
 		PackedScene scene = (PackedScene)ResourceLoader.Load("res://scenes/ui/item_popup_panel.tscn");
-		CanvasLayer instance = scene.Instantiate<CanvasLayer>();
+		ItemPopupPanel instance = scene.Instantiate<ItemPopupPanel>();
+		instance.ItemInSlot = _items[_buttonIndex];
 		ColorRect _rect = instance.GetNode<ColorRect>("ColorRect");
 		_rect.GlobalPosition = GetGlobalMousePosition();
 		_rect.GetNode<Label>("ItemNameLabel").Text = itemInSlotName;
 		_rect.GetNode<Label>("ItemDescriptionLabel").Text = itemInSlotDescription;
 		GetTree().CurrentScene.AddChild(instance);
+	}
+	//public void DropItem(Item item) {
+		//
+	//}
+	public void DeleteItem(Item item) {
+		if (item == null) {
+			GD.Print("Попытка удаления пустого предмета из инвентаря.");
+			return;
+		}
+		int _itemIdentifier = GiveButtonNumberWhereItemLocated(item);
+		if (_itemIdentifier != -1) {
+			_buttons[_itemIdentifier].TextureNormal = SlotTexture;
+			_slots[_itemIdentifier].TextureNormal = SlotTexture;
+			_items[_itemIdentifier] = null;
+		} else {
+			GD.PrintErr("Попытка удалить прдмет из инвентаря, которого даже нет в инвентаре.");
+		}
+	}
+	
+	private int GiveButtonNumberWhereItemLocated(Item item) {
+		for (int i = 0; i < _items.Count; i++) {
+			if (_items[i] == item) {
+				return i;
+			}
+		}
+		return -1;
 	}
 	private void ChangeInventoryVisible() {
 		if (Input.IsActionJustPressed("inventory") && Engine.TimeScale == 1) {
@@ -284,21 +316,17 @@ public partial class Inventory : Control
 			draggingSpriteInstance.Position = _mousePosition;
 		}
 	}
-	public void addItem(Item item) {
+	public void AddItem(Item item) {
 		if (item == null) {
-			GD.Print("Попытка добавления пусого предмета в инвентарь");
-			return;
-		} else if (_items.ContainsValue(item)) {
-			GD.Print($"Item с key {item.itemId} уже есть в инвентаре.");
+			GD.Print("Попытка добавления пусого предмета в инвентарь.");
 			return;
 		}
-		Texture2D slotTexture = (Texture2D)GD.Load(ProjectSettings.GlobalizePath("res://textures/slot.png"));
 		for (int i = 0; i < _slots.Count; i++) {
 			if (_slots[i] == null) {
 				GD.PrintErr($"Слот с индексом {i} не проинициализирован");
 				continue;
 			}
-			if (_slots[i].TextureNormal == slotTexture) {
+			if (_slots[i].TextureNormal == SlotTexture) {
 				_items[i] = item;
 				GameManager.Instance.SavedItems[i] = item.itemName;
 				_slots[i].TextureNormal = item.itemTextureInSlot;

@@ -11,7 +11,7 @@ public partial class Map : Item
 		inSlotTexturePath = ProjectSettings.GlobalizePath("res://textures/MapSlot.png");
 		texturePath = ProjectSettings.GlobalizePath("res://textures/mapObject.png");
 		ScenePath = ProjectSettings.GlobalizePath("res://scenes/map.tscn");
-		itemInHandScenePath = ProjectSettings.GlobalizePath("res://scenes/map_in_hand.tscn");
+		itemInHandScenePath = ProjectSettings.GlobalizePath("res://scenes/items/in_hand/map_in_hand.tscn");
 		itemInHandScene = (PackedScene)ResourceLoader.Load(itemInHandScenePath);
 		itemTextureInSlot = (Texture2D)ResourceLoader.Load(inSlotTexturePath);
 		itemTexture = (Texture2D)ResourceLoader.Load(texturePath);

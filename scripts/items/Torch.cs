@@ -11,7 +11,7 @@ public partial class Torch : Item
 		inSlotTexturePath = ProjectSettings.GlobalizePath("res://textures/torchInSlot.png");
 		texturePath = ProjectSettings.GlobalizePath("res://textures/torch.png");
 		ScenePath = ProjectSettings.GlobalizePath("res://scenes/torch.tscn");
-		itemInHandScenePath = ProjectSettings.GlobalizePath("res://scenes/torch_in_hand.tscn");
+		itemInHandScenePath = ProjectSettings.GlobalizePath("res://scenes/items/in_hand/torch_in_hand.tscn");
 		itemInHandScene = (PackedScene)ResourceLoader.Load(itemInHandScenePath);
 		itemTextureInSlot = (Texture2D)ResourceLoader.Load(inSlotTexturePath);
 		itemTexture = (Texture2D)ResourceLoader.Load(texturePath);

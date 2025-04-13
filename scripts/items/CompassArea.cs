@@ -10,7 +10,7 @@ public partial class CompassArea : Item
 		inSlotTexturePath = ProjectSettings.GlobalizePath("res://textures/CompassSlot.png");
 		texturePath = ProjectSettings.GlobalizePath("res://textures/compassObject.png");
 		ScenePath = ProjectSettings.GlobalizePath("res://scenes/compass_area.tscn");
-		itemInHandScenePath = ProjectSettings.GlobalizePath("res://scenes/compass_in_hand.tscn");
+		itemInHandScenePath = ProjectSettings.GlobalizePath("res://scenes/items/in_hand/compass_in_hand.tscn");
 		itemInHandScene = (PackedScene)ResourceLoader.Load(itemInHandScenePath);
 		itemTextureInSlot = (Texture2D)ResourceLoader.Load(inSlotTexturePath);
 		itemTexture = (Texture2D)ResourceLoader.Load(texturePath);

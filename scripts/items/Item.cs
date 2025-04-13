@@ -23,6 +23,7 @@ public partial class Item : Area3D
 	private Sprite2D _pressESprite;
 	public string ItemInWorldPath;
 	public bool IsUsableInInventory;
+	public bool IsUseItemButtonPressed;
 	
 	public override void _Ready()
 	{
@@ -38,7 +39,7 @@ public partial class Item : Area3D
 			GD.Print("Сигнал body_exited успешно установлен");
 		}
 	}
-
+	
 	private void OnBodyEntered(Node body) {
 		GD.Print("Some body entered in range");
 		if (body.IsInGroup("Player")) {
@@ -67,11 +68,27 @@ public partial class Item : Area3D
 			GD.PrintErr("Ошибка: Inventory.Instance == null!");
 			return;
 		}
-		Inventory.Instance.addItem(this);
+		Inventory.Instance.AddItem(this);
 		GD.Print($"Добавлен item {itemName}, теперь освобождаю.");
 		QueueFree();
 	}
+	public void DeleteFromInventory() {
+		GD.Print($"Пытаюсь удалить item {itemName} из инвентаря.");
+		if (Inventory.Instance == null) {
+			GD.PrintErr("Ошибка: Inventory.Instance == null!");
+			return;
+		}
+		Inventory.Instance.DeleteItem(this);
+		GD.Print($"Предмет {itemName} успшно удалён из инвентаря.");
+		QueueFree();
+	}
+	public void DropFromInventory() {
+		
+	}
 	private void ChangePressESpriteVisibility() {
 		_pressESprite.Visible = !_pressESprite.Visible;
+	}
+	public virtual void UseItem() {
+		GD.Print("Попытка использовать предмет в инвентаре");
 	}
 }
