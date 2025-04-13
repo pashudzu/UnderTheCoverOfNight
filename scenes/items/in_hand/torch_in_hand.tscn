@@ -8,7 +8,7 @@ transform = Transform3D(0.35, 0, 1.42109e-14, 0, 0.35, 0, -1.42109e-14, 0, 0.35,
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.81074e-15, 0.1, -0.344597)
-layers = 3
+layers = 4
 shadow_enabled = true
 shadow_bias = 5.0
 shadow_opacity = 0.5

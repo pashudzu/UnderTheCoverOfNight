@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bbmxue7401opm"]
+[gd_scene load_steps=13 format=3 uid="uid://bbmxue7401opm"]
 
 [ext_resource type="PackedScene" uid="uid://cbgrvdl53g5e1" path="res://scenes/house.glb" id="1_iej5q"]
 [ext_resource type="Texture2D" uid="uid://co6yvseg7v6p2" path="res://models/house_Planks013_1K-JPG_Color.jpg" id="2_qtlar"]
+[ext_resource type="PackedScene" uid="uid://q2m3y4alskrs" path="res://scenes/door.tscn" id="3_rk7hg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rk7hg"]
 albedo_texture = ExtResource("2_qtlar")
@@ -59,10 +60,7 @@ shape = SubResource("BoxShape3D_345gf")
 [node name="second-floor-walls2" parent="." index="4"]
 lod_bias = 0.4
 
-[node name="door" parent="." index="5"]
-lod_bias = 0.4
-
-[node name="first-walls-and-floor" parent="." index="6"]
+[node name="first-walls-and-floor" parent="." index="5"]
 lod_bias = 0.4
 
 [node name="StaticBody3D" type="StaticBody3D" parent="first-walls-and-floor" index="0" groups=["Wood"]]
@@ -96,27 +94,27 @@ disabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00497437, -0.836673, 0)
 shape = SubResource("BoxShape3D_i6ebf")
 
-[node name="mirror_002" parent="." index="7"]
+[node name="mirror_002" parent="." index="6"]
 lod_bias = 0.4
 
-[node name="mirror_001" parent="." index="8"]
+[node name="mirror_001" parent="." index="7"]
 lod_bias = 0.4
 
-[node name="mirror_003" parent="." index="9"]
+[node name="mirror_003" parent="." index="8"]
 lod_bias = 0.4
 
-[node name="bed" parent="." index="10"]
+[node name="bed" parent="." index="9"]
 lod_bias = 0.4
 
-[node name="SnowBall_001" parent="." index="11"]
+[node name="SnowBall_001" parent="." index="10"]
 lod_bias = 0.4
 
-[node name="SnowBall_002" parent="." index="12"]
-lod_bias = 0.4
-
-[node name="StaticBody3D" type="StaticBody3D" parent="." index="13" groups=["Wood"]]
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="11" groups=["Wood"]]
 transform = Transform3D(0.107547, 0, 0.00130274, 0, 0.107555, 0, -0.00130274, 0, 0.107547, 3.72354, -1.39417, -1.034)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 transform = Transform3D(0.889705, 0.456537, -0.000260115, -0.456534, 0.889701, 0.00249678, 0.0013713, -0.00210265, 0.999997, 2.74854, 0.602427, 0.350872)
 shape = SubResource("BoxShape3D_p32ef")
+
+[node name="door" parent="." index="12" instance=ExtResource("3_rk7hg")]
+transform = Transform3D(6.19083e-08, 0, -0.905, 0, 0.94, 0, 0.82, 0, 6.83256e-08, 4.09272, -1.2233, -0.407955)

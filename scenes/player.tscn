@@ -336,6 +336,7 @@ _data = {
 script = ExtResource("1_a38lo")
 
 [node name="GPUParticles3D" parent="." instance=ExtResource("1_s3vnn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.00532, 0)
 
 [node name="CharacterBody" type="CharacterBody3D" parent="." groups=["Player"]]
 collision_layer = 3

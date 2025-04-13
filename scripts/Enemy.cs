@@ -66,13 +66,13 @@ public partial class Enemy : CharacterBody3D
 		_nearbyZone.Connect("body_exited", new Callable(this, nameof(OnNearbyZoneExited)));
 		_screamerZone.Connect("body_entered", new Callable(this, nameof(OnScremerZoneEntered)));
 		GD.Print("Монстр готов.");
-		if (EnemyState == null) {
+		if (!GameManager.Instance.WasGameSaved) {
 			EnemyState = EnemyStates.IsEnemyWalking | EnemyStates.IsPursuit;
 		} else {
 			int.TryParse(GameManager.Instance.SaveEnemyState, out int _saveEnemyStateInt);
 			EnemyState = (EnemyStates)_saveEnemyStateInt;
-			GD.Print($"EnemyState = {EnemyState}");
 		}
+		GD.Print($"EnemyState = {EnemyState}");
 		GameManager.Instance.Enemy = this;
 	}
 	public override void _Process(double delta) {

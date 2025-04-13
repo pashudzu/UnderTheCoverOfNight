@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://dqak8ec1eq5ii"]
+[gd_scene load_steps=63 format=4 uid="uid://dqak8ec1eq5ii"]
 
 [ext_resource type="Script" uid="uid://c2dsbbhkskojs" path="res://scripts/HomeScene.cs" id="1_srwtq"]
 [ext_resource type="PackedScene" uid="uid://b3fctgxoddghu" path="res://scenes/player.tscn" id="2_piolw"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://b75j5d6o7b03v" path="res://scripts/EventAnimationPlayer.cs" id="24_pedrn"]
 [ext_resource type="Texture2D" uid="uid://dmfhcfffli5py" path="res://textures/sky.png" id="24_rq51h"]
 [ext_resource type="Script" uid="uid://bcdl6o3w4mfi" path="res://scripts/RefuelingArea.cs" id="24_veulq"]
+[ext_resource type="Texture2D" uid="uid://dna4oxvlanj10" path="res://terrainBegining2/mapTexture.png" id="25_o3flv"]
 [ext_resource type="Script" uid="uid://kxtb5lyy3ndp" path="res://scripts/CarEnterArea.cs" id="25_qjxjy"]
 [ext_resource type="PackedScene" uid="uid://w4phjbb8kiol" path="res://scenes/items/map.tscn" id="25_we53v"]
 [ext_resource type="PackedScene" uid="uid://kodcdqb2o35h" path="res://scenes/watch.tscn" id="26_4qyll"]
@@ -868,6 +869,8 @@ fog_density = 0.08
 fog_sky_affect = 0.85
 
 [sub_resource type="Environment" id="Environment_0r683"]
+background_mode = 1
+background_color = Color(0.0338533, 0.0338533, 0.0338533, 1)
 
 [node name="home_scene" type="Node3D"]
 script = ExtResource("1_srwtq")
@@ -923,6 +926,40 @@ omni_attenuation = 2.415
 
 [node name="FireParticles" parent="NavigationRegion3D/MainHome" instance=ExtResource("6_ve0nc")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.43298, 0.930914, -0.361786)
+
+[node name="RoofParticlesCollision2" type="Node3D" parent="NavigationRegion3D/MainHome"]
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="NavigationRegion3D/MainHome/RoofParticlesCollision2"]
+transform = Transform3D(0.805308, 0.592857, 0, -0.592857, 0.805308, 0, 0, 0, 1, -1.48825, 5.16314, -0.0917358)
+size = Vector3(0.324951, 5.40344, 8.33997)
+
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="NavigationRegion3D/MainHome/RoofParticlesCollision2"]
+transform = Transform3D(-0.816924, 0.576746, 0, -0.576746, -0.816924, 0, 0, 0, 1, 1.57794, 5.18125, -0.183472)
+size = Vector3(0.324951, 5.27448, 8.33997)
+
+[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="NavigationRegion3D/MainHome/RoofParticlesCollision2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0620117, 2.86875, -4.96249)
+size = Vector3(3.12402, 0.331299, 1.88232)
+
+[node name="GPUParticlesCollisionBox3D4" type="GPUParticlesCollisionBox3D" parent="NavigationRegion3D/MainHome/RoofParticlesCollision2"]
+transform = Transform3D(0.84342, 0.537255, 0, -0.537255, 0.84342, 0, 0, 0, 1, -1.88693, 2.41685, -4.9328)
+size = Vector3(0.205688, 1.32607, 2)
+
+[node name="GPUParticlesCollisionBox3D5" type="GPUParticlesCollisionBox3D" parent="NavigationRegion3D/MainHome/RoofParticlesCollision2"]
+transform = Transform3D(-0.771125, 0.636684, 0, -0.636684, -0.771125, 0, 0, 0, 1, 1.84299, 2.45757, -4.9328)
+size = Vector3(0.205688, 1.32607, 2)
+
+[node name="GPUParticlesCollisionBox3D6" type="GPUParticlesCollisionBox3D" parent="NavigationRegion3D/MainHome/RoofParticlesCollision2"]
+transform = Transform3D(1, 0, 0, 0, 0.919828, -0.392321, 0, 0.392321, 0.919828, -0.0460205, 2.23099, -5.86084)
+size = Vector3(3.30347, 1.14984, 0.119202)
+
+[node name="GPUParticlesCollisionBox3D7" type="GPUParticlesCollisionBox3D" parent="NavigationRegion3D/MainHome/RoofParticlesCollision2"]
+transform = Transform3D(0.642541, 0.531033, 0.552399, -0.283878, 0.834586, -0.472102, -0.711726, 0.146531, 0.687004, -1.86179, 2.30129, -5.86856)
+size = Vector3(0.471966, 1.33359, 0.119202)
+
+[node name="GPUParticlesCollisionBox3D8" type="GPUParticlesCollisionBox3D" parent="NavigationRegion3D/MainHome/RoofParticlesCollision2"]
+transform = Transform3D(0.271823, -0.576254, 0.770742, 0.58067, 0.736887, 0.346152, -0.767421, 0.353455, 0.534915, 1.90134, 2.34938, -5.85938)
+size = Vector3(0.122213, 1.35879, 0.430305)
 
 [node name="house" parent="NavigationRegion3D" instance=ExtResource("9_jq7vk")]
 transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 65.7824, 1.19522, 136.055)
@@ -1055,12 +1092,14 @@ shape = SubResource("BoxShape3D_lkpp4")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="NavigationRegion3D/gas station"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2.02652, 3.46134, -2.95255)
+layers = 4
 light_energy = 2.0
 spot_range = 18.527
 spot_angle = 90.0
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="NavigationRegion3D/gas station"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -4.01813, 3.46134, -2.95255)
+layers = 4
 light_energy = 2.0
 spot_range = 18.527
 spot_angle = 90.0
@@ -1277,8 +1316,20 @@ render_target_update_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="UI/SubViewportContainer1/MapViewport"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 258.382, 308.609, 258.989)
+cull_mask = 1048571
 environment = SubResource("Environment_0r683")
 fov = 78.75
+
+[node name="SubViewport" type="SubViewport" parent="UI/SubViewportContainer1"]
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/SubViewportContainer1/SubViewport"]
+modulate = Color(1, 1, 1, 0.552941)
+position = Vector2(129, 130)
+scale = Vector2(0.255, 0.255)
+texture = ExtResource("25_o3flv")
 
 [node name="SubViewportContainer2" type="SubViewportContainer" parent="UI"]
 visible = false
@@ -1296,8 +1347,22 @@ render_target_update_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="UI/SubViewportContainer2/MapViewport"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 258.382, 308.609, 258.989)
+cull_mask = 1048571
 environment = SubResource("Environment_0r683")
 fov = 78.75
+far = 450.0
+
+[node name="SubViewport" type="SubViewport" parent="UI/SubViewportContainer2"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(800, 800)
+render_target_update_mode = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/SubViewportContainer2/SubViewport"]
+modulate = Color(1, 1, 1, 0.447059)
+position = Vector2(399, 396)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("25_o3flv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="UI"]
 layer = -1
