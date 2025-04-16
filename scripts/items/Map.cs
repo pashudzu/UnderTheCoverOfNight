@@ -6,7 +6,6 @@ public partial class Map : Item
 	public override void _Ready() {
 		base._Ready();
 		itemName = "Карта";
-		itemId = 4;
 		itemDescription = ProjectSettings.GlobalizePath("Ищи нужные места с помощью карты");
 		inSlotTexturePath = ProjectSettings.GlobalizePath("res://textures/MapSlot.png");
 		texturePath = ProjectSettings.GlobalizePath("res://textures/mapObject.png");
@@ -17,8 +16,9 @@ public partial class Map : Item
 		itemTexture = (Texture2D)ResourceLoader.Load(texturePath);
 		itemScene = (PackedScene)ResourceLoader.Load(ScenePath);
 		IsUsableInInventory = false;
-		itemContains.Add(itemName, this);
 		ItemInWorldPath = ProjectSettings.GlobalizePath(GetPath());
+		int id = FindFreeKey(itemName);
+		itemContains.Add(itemName + id, this);
 		GD.Print($"Map готов");
 	}
 	public override void _Process(double delta)

@@ -11,15 +11,10 @@ public partial class LightStoveMission : Mission
 		MissionContains.Add(this);
 		GD.Print("LightStoveMission был инициализирыван.");
 	}
-	public void StartMission() {
-		IsStarted = true;
-	}
-	public void CompleteMission() {
+	public override void CompleteMission() {
 		if (GameManager.Instance.IsStoveLighted) {
 			IsCompleted = true;
+			GD.Print($"Миссия LightStoveMission выполнена!");
 		}
-	}
-	public override void _Process(double delta) {
-		CompleteMission();
 	}
 }

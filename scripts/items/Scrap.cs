@@ -6,7 +6,6 @@ public partial class Scrap : Item
 	public override void _Ready() {
 		base._Ready();
 		itemName = "Лом";
-		itemId = 5;
 		itemDescription = "Сломай деревяшки и зайди в закрытые дома.";
 		inSlotTexturePath = ProjectSettings.GlobalizePath("res://textures/scrapSlot.png");
 		texturePath = ProjectSettings.GlobalizePath("res://textures/scrapObject.png");
@@ -17,8 +16,9 @@ public partial class Scrap : Item
 		itemTexture = (Texture2D)ResourceLoader.Load(texturePath);
 		itemScene = (PackedScene)ResourceLoader.Load(ScenePath);
 		IsUsableInInventory = false;
-		itemContains.Add(itemName, this);
 		ItemInWorldPath = ProjectSettings.GlobalizePath(GetPath());
+		int id = FindFreeKey(itemName);
+		itemContains.Add(itemName + id, this);
 		GD.Print("Scrap готов");
 	}
 	public override void _Process(double delta)

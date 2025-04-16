@@ -39,11 +39,21 @@ public partial class Item : Area3D
 			GD.Print("Сигнал body_exited успешно установлен");
 		}
 	}
-	
+	protected int FindFreeKey(string itemName) {
+		for (int i = 1; true; i++) {
+			if (!itemContains.ContainsKey(itemName + i)) {
+				return i;
+			}
+			if (i > 10) {//сделано для предотвращения возможного бесконечного цикла
+				GD.PrintErr($"В {itemName} мог быть бесконечный цикл.");
+				return -1;
+			}
+		}
+	}
 	private void OnBodyEntered(Node body) {
 		GD.Print("Some body entered in range");
 		if (body.IsInGroup("Player")) {
-			ChangePressESpriteVisibility();
+			_pressESprite.Visible = true;
 			isPlayerInRange = true;
 			GD.Print("Player is in range");
 		}
@@ -51,7 +61,7 @@ public partial class Item : Area3D
 	
 	private void OnBodyExited(Node body) {
 		if(body.IsInGroup("Player")) {
-			ChangePressESpriteVisibility();
+			_pressESprite.Visible = false;
 			isPlayerInRange = false;
 			GD.Print("Player is exited range");
 		}
@@ -84,9 +94,6 @@ public partial class Item : Area3D
 	}
 	public void DropFromInventory() {
 		
-	}
-	private void ChangePressESpriteVisibility() {
-		_pressESprite.Visible = !_pressESprite.Visible;
 	}
 	public virtual void UseItem() {
 		GD.Print("Попытка использовать предмет в инвентаре");

@@ -15,7 +15,7 @@ public partial class Menu : CanvasLayer
 	}
 	
 	public void OnPlayButtonPressed() {
-		GetTree().ChangeSceneToFile(ProjectSettings.GlobalizePath("res://scenes/saveChoice.tscn"));
+		GetTree().ChangeSceneToFile(ProjectSettings.GlobalizePath("res://scenes/ui/saveChoice.tscn"));
 	}
 	
 	public void OnSettingButtonPressed() {

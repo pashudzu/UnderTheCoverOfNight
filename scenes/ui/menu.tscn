@@ -1,12 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4vwsi6e2dq3d"]
+[gd_scene load_steps=6 format=3 uid="uid://c4vwsi6e2dq3d"]
 
 [ext_resource type="Script" uid="uid://8lop781j1d3m" path="res://scripts/Menu.cs" id="1_il315"]
+[ext_resource type="Texture2D" uid="uid://tyfdjsn4s52h" path="res://textures/menuTexture1.jpg" id="2_cx0sj"]
 [ext_resource type="Texture2D" uid="uid://cqqcuhi66bwyb" path="res://textures/buttonTexture.png" id="2_p2xlk"]
 [ext_resource type="FontFile" uid="uid://d1wnbtljy0c3e" path="res://fonts/Nervousfont-Regular.ttf" id="2_qixqx"]
 [ext_resource type="Texture2D" uid="uid://bu6cjv4c4ra3e" path="res://textures/buttonTexturePressed.png" id="3_mwbyt"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_il315")
+
+[node name="MenuTexture" type="Sprite2D" parent="."]
+position = Vector2(686, 447)
+scale = Vector2(1.66, 1.66)
+texture = ExtResource("2_cx0sj")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 8
@@ -15,9 +21,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -141.0
-offset_top = -3.0
+offset_top = 88.0
 offset_right = 142.0
-offset_bottom = 226.0
+offset_bottom = 317.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 17
@@ -76,7 +82,7 @@ text = "выйти"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="."]
+[node name="NameOfGame" type="Label" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmx5c06auc2yo"]
+[gd_scene load_steps=6 format=3 uid="uid://bmx5c06auc2yo"]
 
 [ext_resource type="Script" uid="uid://deqeqtfucfod" path="res://scripts/MasterVolumeSlider.cs" id="1_d53i3"]
+[ext_resource type="Texture2D" uid="uid://tyfdjsn4s52h" path="res://textures/menuTexture1.jpg" id="1_ncfhn"]
 [ext_resource type="Script" uid="uid://cwjyao51dk32y" path="res://scripts/MusicVolumeSlider.cs" id="2_k8ubb"]
 [ext_resource type="Script" uid="uid://f1gwt5vpcqte" path="res://scripts/SfxValumeSlider.cs" id="3_ae1wq"]
 [ext_resource type="Script" uid="uid://bvtqcxy5jn3ro" path="res://scripts/BackToMenuButton.cs" id="4_22hmw"]
@@ -12,6 +13,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(686, 447)
+scale = Vector2(1.66, 1.66)
+texture = ExtResource("1_ncfhn")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

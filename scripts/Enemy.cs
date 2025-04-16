@@ -16,7 +16,7 @@ public partial class Enemy : CharacterBody3D
 	private List<Vector3> _allPoints = new List<Vector3>();
 	private int _nextPoint = 0;
 	private Random _rnd = new Random();
-	[Export]public float Speed = 75f;
+	[Export]public float Speed = 85f;
 	private AnimationPlayer _animation;
 	private AudioStreamPlayer3D _ghostSound;
 	[Flags]
@@ -105,9 +105,9 @@ public partial class Enemy : CharacterBody3D
 			case var _ when HasState(EnemyStates.IsPursuit):
 				PursuitState(delta);
 				break;
-			case var _ when HasState(EnemyStates.IsEnemyVigilance):
-				Vigilance(delta, _playerLastSeenPosition);
-				break;
+			//case var _ when HasState(EnemyStates.IsEnemyVigilance):
+				//Vigilance(delta, _playerLastSeenPosition);
+				//break;
 			case var _ when HasState(EnemyStates.InPatrollingGuard):
 				Patroling(delta);
 				break;
@@ -184,33 +184,33 @@ public partial class Enemy : CharacterBody3D
 			}
 		}
 	}
-	private void Vigilance(double delta, Vector3 _lastPlayerPos) {
-		_navAgent.TargetPosition = _lastPlayerPos;
-		Vector3 direction = (_navAgent.GetNextPathPosition() - GlobalPosition).Normalized();
-		Vector3 targetPosition = GlobalPosition + direction;
-		Vector3 targetVelocity = direction * Speed * (float)delta;
-		Velocity = Velocity.Lerp(targetVelocity, 0.1f);
-		direction.Y = 0;
-		if (!GlobalTransform.Origin.IsEqualApprox(targetPosition)) {
-			LookAt(targetPosition);
-		} else {
-			GD.PrintErr($"Призрак не может смотреть в одиноковую позицию. Current Position: {GlobalTransform.Origin}, Target Position: {targetPosition}. Ошибка в функции преследываения.");
-		}
-		if (!_animation.IsPlaying()) {
-			_animation.Play("ArmatureAction");
-		}
-		if (GlobalPosition.DistanceTo(targetPosition) < 0.1f) {
-			RemoveState(EnemyStates.IsEnemyVigilance);
-			ChangeStateToGameManager();
-		}
-	}
+	//private void Vigilance(double delta, Vector3 _lastPlayerPos) {
+		//_navAgent.TargetPosition = _lastPlayerPos;
+		//Vector3 direction = (_navAgent.GetNextPathPosition() - GlobalPosition).Normalized();
+		//Vector3 targetPosition = GlobalPosition + direction;
+		//Vector3 targetVelocity = direction * Speed * (float)delta;
+		//Velocity = Velocity.Lerp(targetVelocity, 0.1f);
+		//direction.Y = 0;
+		//if (!GlobalTransform.Origin.IsEqualApprox(targetPosition)) {
+			//LookAt(targetPosition);
+		//} else {
+			//GD.PrintErr($"Призрак не может смотреть в одиноковую позицию. Current Position: {GlobalTransform.Origin}, Target Position: {targetPosition}. Ошибка в функции преследываения.");
+		//}
+		//if (!_animation.IsPlaying()) {
+			//_animation.Play("ArmatureAction");
+		//}
+		//if (GlobalPosition.DistanceTo(targetPosition) < 0.1f) {
+			//RemoveState(EnemyStates.IsEnemyVigilance);
+			//ChangeStateToGameManager();
+		//}
+	//}
 	private void OnFOVBodyEntered(Node body) {
 		if (body.IsInGroup("Player")) {
 			SetState(EnemyStates.IsPursuit);
 			SetState(EnemyStates.IsSeenPlayer);
 			RemoveState(EnemyStates.IsAtPost);
 			RemoveState(EnemyStates.InPatrollingGuard);
-			RemoveState(EnemyStates.IsEnemyVigilance);
+			//RemoveState(EnemyStates.IsEnemyVigilance);
 			ChangeStateToGameManager();
 		}
 	}
@@ -218,7 +218,7 @@ public partial class Enemy : CharacterBody3D
 		if (body.IsInGroup("Player")) {
 			RemoveState(EnemyStates.IsSeenPlayer);
 			RemoveState(EnemyStates.IsPursuit);
-			SetState(EnemyStates.IsEnemyVigilance);
+			//SetState(EnemyStates.IsEnemyVigilance);
 			SetState(EnemyStates.InPatrollingGuard);
 			ChangeStateToGameManager();
 			_playerLastSeenPosition = GameManager.Instance.PlayerCharacterBody.GlobalPosition;

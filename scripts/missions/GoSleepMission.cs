@@ -10,15 +10,10 @@ public partial class GoSleepMission : Mission
 		Id = 1;
 		MissionContains.Add(this);
 	}
-	public void StartMission() {
-		IsStarted = true;
-	}
-	public void CompleteMission() {
+	public override void CompleteMission() {
 		if (GameManager.Instance.IsWentSleep) {
 			IsCompleted = true;
+			GD.Print($"Миссия GoSleepMission выполнена!");
 		}
-	}
-	public override void _Process(double delta) {
-		CompleteMission();
 	}
 }

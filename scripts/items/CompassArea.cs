@@ -16,8 +16,9 @@ public partial class CompassArea : Item
 		itemTexture = (Texture2D)ResourceLoader.Load(texturePath);
 		itemScene = (PackedScene)ResourceLoader.Load(ScenePath);
 		IsUsableInInventory = false;
-		itemContains.Add(itemName, this);
 		ItemInWorldPath = ProjectSettings.GlobalizePath(GetPath());
+		int id = FindFreeKey(itemName);
+		itemContains.Add(itemName + id, this);
 		GD.Print("Scrap готов");
 	}
 	public override void _Process(double delta)

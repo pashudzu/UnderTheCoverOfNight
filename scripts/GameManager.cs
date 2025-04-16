@@ -37,9 +37,12 @@ public partial class GameManager : Node
 	public bool IsWentSleep;
 	public bool IsPetrolGotten;
 	public string MainActionSceneName = "home_scene";
-	public bool IsPlayerNearMonster;
+	public bool IsPlayerNearMonster = true;
 	public AnimationPlayer CasherAnimationPlayer;
 	public float TorchBatteryCharge { get; set; } = 100f;
+	public TextureRect PopUpMissionAd { get; set; }
+	public Label PopUpMissionLabel { get; set; }
+	public AnimationPlayer PopUpMissionAdAnimaion { get; set; }
 	
 	public override void _Ready()
 	{

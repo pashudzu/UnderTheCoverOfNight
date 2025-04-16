@@ -1,7 +1,7 @@
 [gd_scene load_steps=40 format=3 uid="uid://b3fctgxoddghu"]
 
 [ext_resource type="Script" uid="uid://bdk3wacre4jan" path="res://scripts/CharacterBody.cs" id="1_31f3j"]
-[ext_resource type="Script" uid="uid://4wgaaahir7b5" path="res://scenes/Player.cs" id="1_a38lo"]
+[ext_resource type="Script" uid="uid://4wgaaahir7b5" path="res://scripts/Player.cs" id="1_a38lo"]
 [ext_resource type="PackedScene" uid="uid://ybjrto1uhpox" path="res://scenes/snowParticles.tscn" id="1_s3vnn"]
 [ext_resource type="PackedScene" uid="uid://cljfi6uu0vgj4" path="res://scenes/ui/glitch_effect.tscn" id="2_2mq1p"]
 [ext_resource type="PackedScene" uid="uid://m6mficmce4ok" path="res://scenes/ui/pause_menu.tscn" id="2_teuc2"]

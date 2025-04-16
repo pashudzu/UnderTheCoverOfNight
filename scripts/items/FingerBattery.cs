@@ -8,7 +8,6 @@ public partial class FingerBattery : Item
 		base._Ready();
 		itemName = "Пальчиковая батарейка";
 		itemDescription = "Заряди фонарик.";
-		itemId = 6;
 		inSlotTexturePath = ProjectSettings.GlobalizePath("res://textures/fingerBatterySlot.png");
 		texturePath = ProjectSettings.GlobalizePath("res://textures/fingerBatteryObject.png");
 		ScenePath = ProjectSettings.GlobalizePath("res://scenes/finger_battery.tscn");
@@ -18,8 +17,9 @@ public partial class FingerBattery : Item
 		itemTexture = (Texture2D)ResourceLoader.Load(texturePath);
 		itemScene = (PackedScene)ResourceLoader.Load(ScenePath);
 		IsUsableInInventory = true;
-		itemContains.Add(itemName, this);
 		ItemInWorldPath = ProjectSettings.GlobalizePath(GetPath());
+		int id = FindFreeKey(itemName);
+		itemContains.Add(itemName + id, this);
 		GD.Print("FingerBattery готов");
 	}
 	public override void _Process(double delta)

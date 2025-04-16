@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://d1vu4wq0i8f64" path="res://textures/pauseBackground.png" id="1_lbvbn"]
 [ext_resource type="Texture2D" uid="uid://cqqcuhi66bwyb" path="res://textures/buttonTexture.png" id="2_suxbd"]
 [ext_resource type="Texture2D" uid="uid://bu6cjv4c4ra3e" path="res://textures/buttonTexturePressed.png" id="3_0jbqt"]
-[ext_resource type="Script" uid="uid://qsmqs4dcxxff" path="res://scenes/ui/MissionLabel.cs" id="3_4inpj"]
-[ext_resource type="Script" uid="uid://tr6hpj4u14ao" path="res://scenes/ui/MissionName.cs" id="4_2rlsb"]
+[ext_resource type="Script" uid="uid://qsmqs4dcxxff" path="res://scripts/missions/MissionLabel.cs" id="3_4inpj"]
+[ext_resource type="Script" uid="uid://tr6hpj4u14ao" path="res://scripts/missions/MissionName.cs" id="4_2rlsb"]
 [ext_resource type="FontFile" uid="uid://d1wnbtljy0c3e" path="res://fonts/Nervousfont-Regular.ttf" id="4_cdbb2"]
-[ext_resource type="Script" uid="uid://87j8vijqtajc" path="res://scenes/ui/MissionDescription.cs" id="5_coo1x"]
+[ext_resource type="Script" uid="uid://87j8vijqtajc" path="res://scripts/missions/MissionDescription.cs" id="5_coo1x"]
 
 [node name="pause_menu" type="Control"]
 layout_mode = 3

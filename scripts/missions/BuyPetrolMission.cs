@@ -10,15 +10,10 @@ public partial class BuyPetrolMission : Mission
 		Description = "В деревне есть заправка. \nБензин будет нужен, \nчтобы уехать из деревни.";
 		MissionContains.Add(this);
 	}
-	public void StartMission() {
-		IsStarted = true;
-	}
-	public void CompleteMission() {
+	public override void CompleteMission() {
 		if (GameManager.Instance.IsPetrolGotten) {
 			IsCompleted = true;
+			GD.Print($"Миссия BuyPetrolMission выполнена!");
 		}
-	}
-	public override void _Process(double delta) {
-		CompleteMission();
 	}
 }

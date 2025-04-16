@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dop60unc1twfx"]
+[gd_scene load_steps=15 format=3 uid="uid://dop60unc1twfx"]
 
 [ext_resource type="Script" uid="uid://rvhwoyci0hcr" path="res://scripts/missions/MissionManager.cs" id="1_2r4n0"]
 [ext_resource type="Script" uid="uid://drwydypycs6tv" path="res://scripts/missions/LightStoveMission.cs" id="2_bd482"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" uid="uid://cndnkd6gfwfpq" path="res://scripts/missions/EscapeFromVillageMission.cs" id="6_puiwj"]
 [ext_resource type="Texture2D" uid="uid://cjiklh3hhg1yi" path="res://textures/popUpAd.png" id="7_ktxhp"]
 [ext_resource type="FontFile" uid="uid://d1wnbtljy0c3e" path="res://fonts/Nervousfont-Regular.ttf" id="8_3j838"]
+[ext_resource type="Script" uid="uid://xxd7bxg3rpey" path="res://scripts/PopUpAd.cs" id="8_ku53p"]
+[ext_resource type="Script" uid="uid://dn02iog3db1x4" path="res://scripts/PopUpLabel.cs" id="10_0ygrp"]
+[ext_resource type="Script" uid="uid://bki4q6kvq3fa4" path="res://scenes/PopUpAdAnimationPlayer.cs" id="11_g57ny"]
 
 [sub_resource type="Animation" id="Animation_idqua"]
 length = 0.001
@@ -73,6 +76,7 @@ offset_bottom = 949.89
 rotation = -0.0436332
 texture = ExtResource("7_ktxhp")
 expand_mode = 1
+script = ExtResource("8_ku53p")
 
 [node name="PopUpLabel" type="Label" parent="PopUpAd"]
 layout_mode = 1
@@ -91,8 +95,10 @@ theme_override_fonts/font = ExtResource("8_3j838")
 theme_override_font_sizes/font_size = 35
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("10_0ygrp")
 
 [node name="PopUpAdAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_30na4")
 }
+script = ExtResource("11_g57ny")

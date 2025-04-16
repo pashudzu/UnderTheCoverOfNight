@@ -43,8 +43,9 @@ public partial class Begining : Node3D
 			GameManager.Instance.IsBeginingCutSceneSeen = true;
 			GameManager.Instance.IsEventAnimationIsOngoing = false;
 		}
-		if (_playerInArea) {
+		if (_playerInArea && Input.IsActionJustPressed("take_item")) {
 			ShowFire();
+			ChangeEnvironmentToNight();
 		}
 		if (_animation.IsPlaying() && Input.IsActionPressed("skip")) {
 			_animation.Stop();
@@ -64,13 +65,16 @@ public partial class Begining : Node3D
 			_playerInArea = false;
 		}
 	}
+	private void ChangeEnvironmentToNight() {
+		WorldEnvironment nightEnvironment = GetNode<WorldEnvironment>("Day&NightCycle/NightEnvironment");
+		WorldEnvironment worldEnvironment = GetNode<WorldEnvironment>("Day&NightCycle/WroldEnvironment");
+		worldEnvironment.Environment = nightEnvironment.Environment;
+	}
 	private void ShowFire() {
-		if (Input.IsActionJustPressed("take_item")) {
-			_fireParticles.Show();
-			GD.Print("Игрок зажёг печь.");
-			_pressESprite.Visible = false;
-			GameManager.Instance.IsStoveLighted = true;
-			_bakeArea.QueueFree();
-		}
+		_fireParticles.Show();
+		GD.Print("Игрок зажёг печь.");
+		_pressESprite.Visible = false;
+		GameManager.Instance.IsStoveLighted = true;
+		_bakeArea.QueueFree();
 	}
 }

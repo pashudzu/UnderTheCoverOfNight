@@ -10,15 +10,10 @@ public partial class EscapeFromVillageMission : Mission
 		Description = "Найди машину, \nзаправив её, \nпосле уезжай из деревни.";
 		MissionContains.Add(this);
 	}
-	public void StartMission() {
-		IsStarted = true;
-	}
-	public void CompleteMission() {
+	public override void CompleteMission() {
 		if (GameManager.Instance.IsEndHappy) {
 			IsCompleted = true;
+			GD.Print($"Миссия EscapeFromVillageMission выполнена!");
 		}
-	}
-	public override void _Process(double delta) {
-		CompleteMission();
 	}
 }

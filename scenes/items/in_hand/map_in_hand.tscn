@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cicacx6nh3a6v"]
 
-[ext_resource type="Script" uid="uid://clpb88oabxnni" path="res://scenes/MapInHand.cs" id="1_a7pyl"]
+[ext_resource type="Script" uid="uid://clpb88oabxnni" path="res://scripts/items/in_hand/MapInHand.cs" id="1_a7pyl"]
 [ext_resource type="PackedScene" uid="uid://c00pq82j3yicj" path="res://scenes/map.glb" id="1_seyfd"]
 
 [node name="MapInHand" type="Node3D"]

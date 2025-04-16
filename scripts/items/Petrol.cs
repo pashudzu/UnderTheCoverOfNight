@@ -7,7 +7,6 @@ public partial class Petrol : Item
 	{
 		base._Ready();
 		itemName = "Бензин";
-		itemId = 3;
 		itemDescription = "Можешь заправить машину и уезжать.";
 		inSlotTexturePath = ProjectSettings.GlobalizePath("res://textures/petrolSlot.png");
 		texturePath = ProjectSettings.GlobalizePath("res://textures/petrol.png");
@@ -18,7 +17,8 @@ public partial class Petrol : Item
 		itemTexture = (Texture2D)ResourceLoader.Load(texturePath);
 		itemScene = (PackedScene)ResourceLoader.Load(ScenePath);
 		IsUsableInInventory = false;
-		itemContains.Add(itemName, this);
+		int id = FindFreeKey(itemName);
+		itemContains.Add(itemName + id, this);
 	}
 	
 	public override void _Process(double delta)

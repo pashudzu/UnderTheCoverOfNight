@@ -6,7 +6,6 @@ public partial class Torch : Item
 	public override void _Ready() {
 		base._Ready();
 		itemName = "Фонарик";
-		itemId = 1;
 		itemDescription = "Освети себе дорогу фонариком, но помни, энергия не бесконечна.";
 		inSlotTexturePath = ProjectSettings.GlobalizePath("res://textures/torchInSlot.png");
 		texturePath = ProjectSettings.GlobalizePath("res://textures/torch.png");
@@ -17,8 +16,9 @@ public partial class Torch : Item
 		itemTexture = (Texture2D)ResourceLoader.Load(texturePath);
 		itemScene = (PackedScene)ResourceLoader.Load(ScenePath);
 		IsUsableInInventory = false;
-		itemContains.Add(itemName, this);
 		ItemInWorldPath = ProjectSettings.GlobalizePath(GetPath());
+		int id = FindFreeKey(itemName);
+		itemContains.Add(itemName + id, this);
 		GD.Print($"Torch готов");
 	}
 	public override void _Process(double delta)
