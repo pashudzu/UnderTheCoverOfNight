@@ -12,10 +12,8 @@ public partial class RunAwayMission : Mission
 		GD.Print("RunAwayMission был инициализирыван.");
 	}
 	public override void CompleteMission() {
-		//GD.Print($"{!GameManager.Instance.IsPlayerNearMonster}, {GetTree().CurrentScene.Name == "home_scene"}");
 		if (!GameManager.Instance.IsPlayerNearMonster && GetTree().CurrentScene.Name == "home_scene") {
 			IsCompleted = true;
-			GD.Print($"Миссия RunAwayMission выполнена!");
 		}
 	}
 }

@@ -273,6 +273,16 @@ public partial class Inventory : Control
 	//public void DropItem(Item item) {
 		//
 	//}
+	public bool IsItemAssignedInInventory(string _itemName) {
+		for (int i = 0; i < _items.Count - 1; i++) {
+			if (_items[i] != null) {
+				if (_items[i].itemName == _itemName) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 	public void DeleteItem(Item item) {
 		if (item == null) {
 			GD.Print("Попытка удаления пустого предмета из инвентаря.");

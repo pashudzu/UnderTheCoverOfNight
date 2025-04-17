@@ -13,7 +13,6 @@ public partial class BuyPetrolMission : Mission
 	public override void CompleteMission() {
 		if (GameManager.Instance.IsPetrolGotten) {
 			IsCompleted = true;
-			GD.Print($"Миссия BuyPetrolMission выполнена!");
 		}
 	}
 }

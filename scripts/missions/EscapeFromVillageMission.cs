@@ -13,7 +13,6 @@ public partial class EscapeFromVillageMission : Mission
 	public override void CompleteMission() {
 		if (GameManager.Instance.IsEndHappy) {
 			IsCompleted = true;
-			GD.Print($"Миссия EscapeFromVillageMission выполнена!");
 		}
 	}
 }

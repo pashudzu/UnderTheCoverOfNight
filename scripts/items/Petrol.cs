@@ -27,6 +27,8 @@ public partial class Petrol : Item
 	}
 	public override void HandleInteraction() {
 		base.HandleInteraction();
-		GameManager.Instance.IsPetrolGotten = true;
+		if (Inventory.Instance.IsItemAssignedInInventory("Бензин")) {
+			GameManager.Instance.IsPetrolGotten = true;
+		}
 	}
 }

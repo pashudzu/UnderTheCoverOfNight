@@ -13,7 +13,6 @@ public partial class GoSleepMission : Mission
 	public override void CompleteMission() {
 		if (GameManager.Instance.IsWentSleep) {
 			IsCompleted = true;
-			GD.Print($"Миссия GoSleepMission выполнена!");
 		}
 	}
 }
