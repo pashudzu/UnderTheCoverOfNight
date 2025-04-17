@@ -10,26 +10,43 @@ public partial class MissionManager : Node
 	private Label _popUpLabel;
 	private Label _missionName;
 	private Label _missionDescription;
-	private AnimationPlayer animationPlayer;
+	private AnimationPlayer _animationPlayer;
+	private bool _isFirstRepeat = true;
 	private const string EmptyMissionText = "";
 	
-	public override void _Ready() {
+	public async override void _Ready() {
 		if (Instance != null) {
 			QueueFree();
 		}
 		Instance = this;
+		AddChildPopUpThings();
 		GD.Print("MissionManager инициализирован");
+	}
+	
+	private void AddChildPopUpThings() {
+		PackedScene _popUpThingsScene = (PackedScene)ResourceLoader.Load("res://scenes/mission_pop_up_things.tscn");
+		Control _popUpThingsInstance = _popUpThingsScene.Instantiate<Control>();
+		AddChild(_popUpThingsInstance);
 	}
 	
 	private void InitPopUpThings() {
 		_missionName = GameManager.Instance.MissionNameLabel;
 		_missionDescription = GameManager.Instance.MissionDescriptionLabel;
-		_popUpAd = GameManager.Instance.PopUpMissionAd;//GetNode<TextureRect>("PopUpAd");
-		_popUpLabel = GameManager.Instance.PopUpMissionLabel;//GetNode<Label>("PopUpAd/PopUpLabel");
-		animationPlayer = GameManager.Instance.PopUpMissionAdAnimaion;//GetNode<AnimationPlayer>("PopUpAdAnimationPlayer");
+		_popUpAd = GameManager.Instance.PopUpMissionAd;
+		_popUpLabel = GameManager.Instance.PopUpMissionLabel;
+		_animationPlayer = GameManager.Instance.PopUpMissionAdAnimaion;
 	}
 	
 	public override void _Process(double delta) {
+		if (GameManager.Instance.IsInFieldScene) {
+			if (_isFirstRepeat) {
+				if (Mission.CurrentMission > 0) {
+					InitPopUpThings();
+					SetCurrentMission();
+				}
+				_isFirstRepeat = false;
+			}
+		}
 		if (GameManager.Instance.MissionNameLabel == null || GameManager.Instance.MissionDescriptionLabel == null) {
 			return;
 		}
@@ -41,12 +58,13 @@ public partial class MissionManager : Node
 	}
 	
 	private void SetCurrentMission() {
+		GD.Print($"Попытка поставить миссию {Mission.MissionContains[Mission.CurrentMission].Name}");
 		SetMissionTextAndPopUpAd(Mission.CurrentMission);
+		GD.Print($"Миссия {Mission.MissionContains[Mission.CurrentMission].Name} была поставлена игроку.");
 	}
 	
 	private void SetNewMission() {
 		if (Mission.MissionContains[Mission.CurrentMission].IsCompleted && Mission.MissionContains.Count - 1 > Mission.CurrentMission) {
-			GD.Print($"Миссия {Mission.MissionContains[Mission.CurrentMission].Name} была поставлена игроку.");
 			Mission.CurrentMission++;
 			SetCurrentMission();
 		} else if (Mission.CurrentMission == 0) {
@@ -90,6 +108,6 @@ public partial class MissionManager : Node
 	
 	private void SetPopUpAd(int _key) {
 		_popUpLabel.Text = $"Новая миссия:\n{Mission.MissionContains[_key].Name} \n{Mission.MissionContains[_key].Description}";
-		animationPlayer.Play("advertisement");
+		_animationPlayer.Play("advertisement");
 	}
 }

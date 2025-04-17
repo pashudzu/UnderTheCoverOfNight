@@ -9,6 +9,7 @@ public partial class HomeScene : Node3D
 	{
 		_player = GameManager.Instance.Player;
 		GameManager.Instance.World = this;
+		GameManager.Instance.IsInFieldScene = true;
 	}
 
 	public override void _PhysicsProcess(double delta) {

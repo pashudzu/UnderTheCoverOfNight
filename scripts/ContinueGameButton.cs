@@ -12,8 +12,8 @@ public partial class ContinueGameButton : TextureButton
 	private Dictionary<int, string> _savedItems = new Dictionary<int, string>();
 	private string _enemyState;
 	private string _currentScene;
-	private const int _countOfSlots = 4;
-	private const int _countOfItems = 6;
+	private const int CountOfSlots = 4;
+	private const int CountOfItems = 6;
 	
 	public override void _Ready() 
 	{
@@ -56,12 +56,13 @@ public partial class ContinueGameButton : TextureButton
 		_newEnemyPosition.Z = (float)config.GetValue("Enemy", "enemy_position_z");
 		_enemyState = (string)config.GetValue("Enemy", "enemy_states");
 		_currentScene = (string)config.GetValue("Scene", "current_scene");
-		for (int i = 0; i < _countOfSlots; i++) {
+		for (int i = 0; i < CountOfSlots; i++) {
 			_savedSlots.Add((string)config.GetValue("Inventory", $"inventory_slot_texture_path_{i}"));
 		}
-		for(int i = 0; i < _countOfItems; i++) {
+		for(int i = 0; i < CountOfItems; i++) {
 			_savedItems[i] = (string)config.GetValue("Inventory", $"inventory_item_{i}");
 		}
+		Mission.CurrentMission = (int)config.GetValue("Missions", "current_mission");
 		GameManager.Instance.IsBeginingCutSceneSeen = (bool)config.GetValue("CutSceneSeen", "is_begining_cut_scene_seen");
 		GameManager.Instance.IsAwakeningCutSceneSeen = (bool)config.GetValue("CutSceneSeen","is_awakening_cut_scene_seen");
 	}

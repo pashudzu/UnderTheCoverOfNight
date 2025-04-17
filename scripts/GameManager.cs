@@ -43,6 +43,7 @@ public partial class GameManager : Node
 	public TextureRect PopUpMissionAd { get; set; }
 	public Label PopUpMissionLabel { get; set; }
 	public AnimationPlayer PopUpMissionAdAnimaion { get; set; }
+	public bool IsInFieldScene = false;
 	
 	public override void _Ready()
 	{

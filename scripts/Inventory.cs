@@ -84,10 +84,12 @@ public partial class Inventory : Control
 		if (GameManager.Instance.SavedSlots != null) {
 			string texturePath;
 			for (int i = 0; i < GameManager.Instance.SavedSlots.Count; i++) {
-				texturePath = GameManager.Instance.SavedSlots[i];
-				Texture2D texture = ResourceLoader.Load<Texture2D>(texturePath);
-				if (texture != null) {
-					_slots[i].TextureNormal = texture;
+				if (GameManager.Instance.SavedSlots[i] != "") {
+					texturePath = GameManager.Instance.SavedSlots[i];
+					Texture2D texture = ResourceLoader.Load<Texture2D>(texturePath);
+					if (texture != null) {
+						_slots[i].TextureNormal = texture;
+					}
 				}
 			}
 		}

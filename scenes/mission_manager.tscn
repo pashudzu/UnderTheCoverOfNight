@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dop60unc1twfx"]
+[gd_scene load_steps=7 format=3 uid="uid://dop60unc1twfx"]
 
 [ext_resource type="Script" uid="uid://rvhwoyci0hcr" path="res://scripts/missions/MissionManager.cs" id="1_2r4n0"]
 [ext_resource type="Script" uid="uid://drwydypycs6tv" path="res://scripts/missions/LightStoveMission.cs" id="2_bd482"]
@@ -6,49 +6,6 @@
 [ext_resource type="Script" uid="uid://d3aryu3bqor3j" path="res://scripts/missions/RunAwayMission.cs" id="4_jqeuj"]
 [ext_resource type="Script" uid="uid://dv31y5b82k5j8" path="res://scripts/missions/BuyPetrolMission.cs" id="5_6nf8e"]
 [ext_resource type="Script" uid="uid://cndnkd6gfwfpq" path="res://scripts/missions/EscapeFromVillageMission.cs" id="6_puiwj"]
-[ext_resource type="Texture2D" uid="uid://cjiklh3hhg1yi" path="res://textures/popUpAd.png" id="7_ktxhp"]
-[ext_resource type="FontFile" uid="uid://d1wnbtljy0c3e" path="res://fonts/Nervousfont-Regular.ttf" id="8_3j838"]
-[ext_resource type="Script" uid="uid://xxd7bxg3rpey" path="res://scripts/PopUpAd.cs" id="8_ku53p"]
-[ext_resource type="Script" uid="uid://dn02iog3db1x4" path="res://scripts/PopUpLabel.cs" id="10_0ygrp"]
-[ext_resource type="Script" uid="uid://bki4q6kvq3fa4" path="res://scenes/PopUpAdAnimationPlayer.cs" id="11_g57ny"]
-
-[sub_resource type="Animation" id="Animation_idqua"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PopUpAd:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(100, 650)]
-}
-
-[sub_resource type="Animation" id="Animation_3j838"]
-resource_name = "advertisement"
-length = 10.0
-step = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("PopUpAd:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 9, 10),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(100, 1000), Vector2(100, 650), Vector2(100, 650), Vector2(100, 1000)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_30na4"]
-_data = {
-&"RESET": SubResource("Animation_idqua"),
-&"advertisement": SubResource("Animation_3j838")
-}
 
 [node name="MissionManager" type="Node"]
 script = ExtResource("1_2r4n0")
@@ -67,38 +24,3 @@ script = ExtResource("5_6nf8e")
 
 [node name="EscapeFromVillageMission" type="Node" parent="."]
 script = ExtResource("6_puiwj")
-
-[node name="PopUpAd" type="TextureRect" parent="."]
-offset_left = 100.0
-offset_top = 650.0
-offset_right = 595.53
-offset_bottom = 949.89
-rotation = -0.0436332
-texture = ExtResource("7_ktxhp")
-expand_mode = 1
-script = ExtResource("8_ku53p")
-
-[node name="PopUpLabel" type="Label" parent="PopUpAd"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -230.696
-offset_top = -108.116
-offset_right = 212.304
-offset_bottom = 103.884
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("8_3j838")
-theme_override_font_sizes/font_size = 35
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("10_0ygrp")
-
-[node name="PopUpAdAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_30na4")
-}
-script = ExtResource("11_g57ny")

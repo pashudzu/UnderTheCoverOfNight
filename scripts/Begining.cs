@@ -14,10 +14,13 @@ public partial class Begining : Node3D
 	
 	public override void _Ready()
 	{
+		GameManager.Instance.IsInFieldScene = true;
 		_animation = GetNode<AnimationPlayer>("AnimationPlayer");
 		if (!GameManager.Instance.IsBeginingCutSceneSeen) {
 			_animation.Play("BeginingCutScene");
 		} else {
+			GameManager.Instance.IsBeginingCutSceneSeen = true;
+			GameManager.Instance.IsEventAnimationIsOngoing = false;
 			GetNode<Polygon2D>("Car/Dialogue").Hide();
 		}
 		
@@ -44,6 +47,10 @@ public partial class Begining : Node3D
 			GameManager.Instance.IsEventAnimationIsOngoing = false;
 		}
 		if (_playerInArea && Input.IsActionJustPressed("take_item")) {
+			ShowFire();
+			ChangeEnvironmentToNight();
+		}
+		if (Mission.CurrentMission > 0) {
 			ShowFire();
 			ChangeEnvironmentToNight();
 		}
