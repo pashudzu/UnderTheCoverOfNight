@@ -16,12 +16,12 @@ public partial class Enemy : CharacterBody3D
 	private List<Vector3> _allPoints = new List<Vector3>();
 	private int _nextPoint = 0;
 	private Random _rnd = new Random();
-	[Export]public float Speed = 85f;
+	[Export]public float Speed = 65f;
 	private AnimationPlayer _animation;
 	private AudioStreamPlayer3D _ghostSound;
 	[Flags]
 	public enum EnemyStates {
-		IsNone =            0b_0000_0000, //без действи
+		IsNone =            0b_0000_0000, //без действий
 		IsPursuit =         0b_0000_0001, //преследует
 		IsSeenPlayer =      0b_0000_0010, //видит игрока
 		IsPlayerNearby =    0b_0000_0100, //игрок не подолёку

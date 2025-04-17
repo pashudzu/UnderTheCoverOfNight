@@ -47,12 +47,12 @@ public partial class Begining : Node3D
 			GameManager.Instance.IsEventAnimationIsOngoing = false;
 		}
 		if (_playerInArea && Input.IsActionJustPressed("take_item")) {
-			ShowFire();
 			ChangeEnvironmentToNight();
+			ShowFire();
 		}
 		if (Mission.CurrentMission > 0) {
-			ShowFire();
 			ChangeEnvironmentToNight();
+			ShowFire();
 		}
 		if (_animation.IsPlaying() && Input.IsActionPressed("skip")) {
 			_animation.Stop();
