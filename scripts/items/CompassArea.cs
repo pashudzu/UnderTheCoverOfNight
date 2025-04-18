@@ -6,7 +6,7 @@ public partial class CompassArea : Item
 	public override void _Ready() {
 		base._Ready();
 		itemName = "Компас";
-		itemDescription = "В связке с картой прекрасный инструмент. Можно увидеть себя на карте и ориентироватсья по карте.";
+		itemDescription = "В связке с картой прекрасный инструмент. Можно увидеть себя на карте и ориентироваться по карте.";
 		inSlotTexturePath = ProjectSettings.GlobalizePath("res://textures/CompassSlot.png");
 		texturePath = ProjectSettings.GlobalizePath("res://textures/compassObject.png");
 		ScenePath = ProjectSettings.GlobalizePath("res://scenes/compass_area.tscn");

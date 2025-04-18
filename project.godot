@@ -20,6 +20,7 @@ GameManager="*res://scripts/GameManager.cs"
 Item="*res://scripts/items/Item.cs"
 Mission="*res://scripts/missions/Mission.cs"
 MissionManager="*res://scenes/mission_manager.tscn"
+MusAudioStreamPlayer="*res://scenes/mus_audio_stream_player.tscn"
 
 [dialogue_manager]
 

@@ -53,6 +53,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PopUpAd" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 100.0
 offset_top = 650.0
 offset_right = 595.53

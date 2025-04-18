@@ -6,7 +6,7 @@ public partial class Map : Item
 	public override void _Ready() {
 		base._Ready();
 		itemName = "Карта";
-		itemDescription = ProjectSettings.GlobalizePath("Ищи нужные места с помощью карты");
+		itemDescription = ProjectSettings.GlobalizePath("Ищи определённые места с помощью карты");
 		inSlotTexturePath = ProjectSettings.GlobalizePath("res://textures/MapSlot.png");
 		texturePath = ProjectSettings.GlobalizePath("res://textures/mapObject.png");
 		ScenePath = ProjectSettings.GlobalizePath("res://scenes/map.tscn");

@@ -11,7 +11,7 @@ public partial class Petrol : Item
 		inSlotTexturePath = ProjectSettings.GlobalizePath("res://textures/petrolSlot.png");
 		texturePath = ProjectSettings.GlobalizePath("res://textures/petrol.png");
 		ScenePath = ProjectSettings.GlobalizePath("res://scenes/petrol.tscn");
-		itemInHandScenePath = ProjectSettings.GlobalizePath("res://scenes/items/in_hand/petrolInHand.tscn");
+		itemInHandScenePath = ProjectSettings.GlobalizePath("res://scexnes/items/in_hand/petrolInHand.tscn");
 		itemInHandScene = (PackedScene)ResourceLoader.Load(itemInHandScenePath);
 		itemTextureInSlot = (Texture2D)ResourceLoader.Load(inSlotTexturePath);
 		itemTexture = (Texture2D)ResourceLoader.Load(texturePath);

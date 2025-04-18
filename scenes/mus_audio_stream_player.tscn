@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwqgjqtj1oyv"]
+
+[ext_resource type="Script" uid="uid://3mftmb06w5rb" path="res://MusAudioStreamPlayer.cs" id="1_cmvcx"]
+[ext_resource type="AudioStream" uid="uid://dw1v7sli1usk" path="res://sounds/dark ambient horror.wav" id="1_d2u0m"]
+
+[node name="MusAudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_d2u0m")
+volume_db = -2.5
+script = ExtResource("1_cmvcx")

@@ -68,14 +68,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -110.0
+offset_left = -118.0
 offset_top = 23.0
-offset_right = 110.0
+offset_right = 123.0
 offset_bottom = 83.0
 grow_horizontal = 2
 theme_override_font_sizes/bold_font_size = 40
 bbcode_enabled = true
-text = "[b]Инвенарь[/b]"
+text = "[b]Инвентарь[/b]"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="TextureRect"]
 layout_mode = 1

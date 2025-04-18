@@ -7,7 +7,7 @@ public partial class EscapeFromVillageMission : Mission
 		base._Ready();
 		Id = 4;
 		Name = "Побег";
-		Description = "Найди машину, \nзаправив её, \nпосле уезжай из деревни.";
+		Description = "Найди машину, \nзаправив её, \nуезжай из деревни.";
 		MissionContains.Add(this);
 	}
 	public override void CompleteMission() {
