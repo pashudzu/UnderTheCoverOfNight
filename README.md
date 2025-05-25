@@ -26,5 +26,55 @@
 # Development
 The game is built in Godot engine Mono using C#. Also game using addons Godot-jolt and HTerrain.
 
+# 🌌 Under the Cover of Night
+
+Can you escape... or will the village keep you forever?
+
+# 🕯️ About the Game:
+
+The year is 2010. You arrive at your recently purchased dacha in a remote, snow-covered Russian village called Voronitsa. Once a small Soviet settlement, it's now nothing more than a forgotten ghost town — crumbling, decaying, and left to time.
+
+But something still lingers here.
+
+You came for peace and quiet.
+You found silence.
+Too much of it.
+
+Strange things begin to happen as night falls. Your phone signal vanishes. And something — or someone — is watching from the woods.
+
+Your only chance is to escape.
+To do that, you’ll need to search old Soviet-era buildings, roads swallowed by snow, and half-collapsed gas stations for the supplies needed to fuel your car. But the deeper you dig into the village’s past, the more disturbing the truth becomes.
+
+# ❄️ Features:
+
+🧭 Explore a snowbound open environment full of eerie atmosphere and hidden secrets
+
+🏚️ Search through old Soviet objects, abandoned houses, and relics from the past
+
+👁️ Avoid the gaze of something that haunts the village still
+
+🚗 Find fuel to fix your vehicle and get out
+
+🎧 Feel the tension build through sound, ambience, and mystery — no cheap jumpscares
+
+# Status of project: I've stopped working on this project.
+
+# ⏳ Gameplay Duration:
+
+A short, narrative-driven horror experience — around 45 minutes to 1 hour of gameplay.
+
+# ⚠️ Content Warning:
+
+This game contains themes of loneliness, psychological horror, and supernatural elements.
+No gore or explicit violence.
+Recommended age: 12+
+
+# 🛠️ Made with:
+
+Created solo in Godot (C#) with handcrafted environments, custom story elements, and atmospheric sound. Inspired by real abandoned villages and the eerie beauty of post-Soviet decay.
+
+You're not the first to enter Voronitsa.
+The question is — will you be the last?
+
 # Feedback
 If you have suggestions or find bugs, feel free to create an issue or leave a comment!
